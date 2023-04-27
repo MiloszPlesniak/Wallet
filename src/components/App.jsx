@@ -1,19 +1,17 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from './Layout';
-import RegistrationPage from './RegistrationPage/RegistrationPage';
-import DashboardPage from './DashboardPage/DashboardPage';
 export const App = () => {
+  
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* Przy ścieżkach rejestracji i loginu bedą restrictedRoutu przy zalogowanym uzytkoniku bedą przenościć na dashboard */}
-          <Route path="registration" element={<RegistrationPage />} />
-          <Route path="login" element={<RegistrationPage />} />
-          {/* Poniżej priv route który bedzie przenosił do loginu/rejestracji gdy użytkownik nie bedzie zalogowany */}
-          <Route path="dashboard" element={DashboardPage} />
-        </Route>
-      </Routes>
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 40,
+        color: '#010101'
+      }}
+    >
+      React homework template
     </div>
   );
 };

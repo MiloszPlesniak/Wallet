@@ -8,6 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import Box from '@mui/material/Box';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import Logo from 'components/Logo/Logo';
 import styles from './RegistrationForm.module.scss';
 
 const RegistrationForm = () => {
@@ -27,6 +28,7 @@ const RegistrationForm = () => {
       <Typography align="center" className={styles.RegistrationForm__title}>
         Wallet
       </Typography>
+      <Logo />
 
       <TextField
         name="email"

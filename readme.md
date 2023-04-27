@@ -17,11 +17,11 @@
 
 ## Development team:
 
-[Bolek](https://github.com/BoloMasta)
-[Urszula Molska](https://github.com/Urszula-Molska)
-[Miłosz Pleśniak](https://github.com/MiloszPlesniak)
-[Angelika Gralewska](https://github.com/AngelikaGralewska)
-[Jacek Pietrzak](https://github.com/jacekpietrzak)
-[Karolina Zinczuk](https://github.com/KarolinaZinczuk)
+[Bolek](https://github.com/BoloMasta) (ScrumMaster)
+[Urszula Molska](https://github.com/Urszula-Molska) (Developer)
+[Miłosz Pleśniak](https://github.com/MiloszPlesniak) (TeamLeader)
+[Angelika Gralewska](https://github.com/AngelikaGralewska) (Developer)
+[Jacek Pietrzak](https://github.com/jacekpietrzak) (Developer)
+[Karolina Zinczuk](https://github.com/KarolinaZinczuk) (Developer)
 
 [LIVe](https://miloszplesniak.github.io/Wallet/)

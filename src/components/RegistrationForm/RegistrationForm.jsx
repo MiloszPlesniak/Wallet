@@ -1,11 +1,12 @@
 // import { useDispatch, useSelector } from 'react-redux';
 // import { registration } from 'redux/auth/operations';
-
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
+import Box from '@mui/material/Box';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Logo from 'components/Logo/Logo';
 import styles from './RegistrationForm.module.scss';
@@ -24,7 +25,10 @@ const RegistrationForm = () => {
       className={styles.RegistrationForm}
       // onSubmit={handleSubmit}
     >
-      <Logo className={styles.RegistrationForm__logo} />
+      <Typography align="center" className={styles.RegistrationForm__title}>
+        Wallet
+      </Typography>
+      <Logo />
 
       <TextField
         name="email"
@@ -77,14 +81,12 @@ const RegistrationForm = () => {
           ),
         }}
       />
-
       <TextField
         name="firstName"
         className={styles.RegistrationForm__input}
         variant="standard"
         fullWidth
         margin="normal"
-        sx={{ marginBottom: '40px' }}
         placeholder="First name"
         InputProps={{
           startAdornment: (
@@ -95,14 +97,17 @@ const RegistrationForm = () => {
         }}
       />
 
-      <Button variant="contained" className={styles.RegistrationForm__button}>
-        Register
-      </Button>
-      <Button variant="outlined" className={styles.RegistrationForm__button}>
-        Log in
-      </Button>
+      <Box className={styles.RegistrationForm__buttons}>
+        <Button variant="contained" className={styles.RegistrationForm__button}>
+          Register
+        </Button>
+        <Button variant="outlined" className={styles.RegistrationForm__button}>
+          Log in
+        </Button>
+      </Box>
     </form>
   );
 };
 
 export default RegistrationForm;
+

@@ -1,10 +1,8 @@
-// import logo from '../../images/logo.svg';
-
-import Typography from '@mui/material/Typography';
+import styles from './Logo.module.scss';
 
 const Logo = () => {
   return (
-    <div className="logo">
+    <div className={styles.Logo}>
       <svg
         width="40"
         height="40"
@@ -29,9 +27,7 @@ const Logo = () => {
           fill="#4A56E2"
         />
       </svg>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        Wallet
-      </Typography>
+      <h3 className={styles.Logo__title}>Wallet</h3>
     </div>
   );
 };

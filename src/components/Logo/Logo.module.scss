@@ -1,0 +1,13 @@
+.Logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+    margin-left: 20px;
+  }
+}

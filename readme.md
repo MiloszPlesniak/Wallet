@@ -16,14 +16,14 @@
 </ul>
 
 ## Development team:
-
 <ul>
-<li><a href="https://github.com/BoloMasta">Bolek</a> (ScrumMaster)</li>
-<li><a href="https://github.com/Urszula-Molska">Urszula Molska</a> (Developer)</li>
-<li><a href="https://github.com/MiloszPlesniak">Miłosz Pleśniak</a> (TeamLeader)</li>
-<li><a href="https://github.com/AngelikaGralewska">Angelika Gralewska</a> (Developer)</li>
-<li><a href="https://github.com/jacekpietrzak">Jacek Pietrzak</a> (Developer)</li>
-<li><a href="https://github.com/KarolinaZinczuk">Karolina Zinczuk</a> (Developer)</li>
+<li>[Bolek](https://github.com/BoloMasta) (ScrumMaster)</li>
+<li>[Urszula Molska](https://github.com/Urszula-Molska) (developer)</li>
+<li>[Miłosz Pleśniak](https://github.com/MiloszPlesniak) (TeamLider)</li>
+<li>[Angelika Gralewska](https://github.com/AngelikaGralewska) (developer)</li>
+<li>[Jacek Pietrzak](https://github.com/jacekpietrzak) (developer)</li>
+<li>[Karolina Zinczuk](https://github.com/KarolinaZinczuk) (developer)</li>
 </ul>
 
-[LIVe](https://miloszplesniak.github.io/Wallet/)
+[LIVE](https://miloszplesniak.github.io/Wallet/)
+

@@ -21,6 +21,7 @@ let theme = createTheme({
   typography: {
     fontFamily: [
       'Circe',
+      'Poppins',
       'Roboto',
       'Helvetica Neue',
       'Arial',

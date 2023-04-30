@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 533px;
   padding: 40px 60px;
   border-radius: 20px;
   transition: box-shadow 250ms ease-in-out;
@@ -11,32 +12,41 @@
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
   }
 
-  &__input {
-    margin-bottom: 20px;
-    opacity: 0.7;
-    transition: opacity 250ms ease-in-out;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
   &__icon {
     margin: 10px;
   }
 
-  &__button {
-    display: block;
+  &__passwordStrengthBar {
+    width: 100%;
     margin: 0 auto;
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-    text-align: center;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    border-radius: 2px;
+
+    & > div {
+      margin: 5px 0px 0px 4px !important;
+
+      & > div {
+        width: 0px !important;
+        height: 4px !important;
+        border-radius: 2px !important;
+        margin-left: -4px !important;
+        transition: all 250ms ease-in-out !important;
+
+        &:first-child {
+          z-index: 5;
+        }
+
+        &:nth-child(2) {
+          z-index: 4;
+        }
+
+        &:nth-child(3) {
+          z-index: 3;
+        }
+
+        &:nth-child(4) {
+          z-index: 2;
+        }
+      }
+    }
   }
 }

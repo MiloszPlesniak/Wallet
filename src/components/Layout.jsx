@@ -6,7 +6,6 @@ import LoginPage from './LoginPage/LoginPage';
 const Layout = () => {
   return (
     <>
-      <RegistrationPage />
       <Navigation />
       <Outlet />
     </>

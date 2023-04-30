@@ -6,7 +6,7 @@ import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 
 import style from "./Navigation.module.scss";
 
- const Navigation = () => {
+const Navigation = () => {
     return (
       <div className={style.Navigation}>
         <NavLink className={style.Navigation__link} to="/home">
@@ -32,6 +32,6 @@ import style from "./Navigation.module.scss";
       </NavLink>
       </div>
     );
-  }; 
+}; 
 
-  export default Navigation;
+export default Navigation;

@@ -21,6 +21,7 @@ let theme = createTheme({
   typography: {
     fontFamily: [
       'Circe',
+      'Poppins',
       'Roboto',
       'Helvetica Neue',
       'Arial',
@@ -55,9 +56,11 @@ let theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          textAlign: 'center',
           borderRadius: '18px',
           backgroundColor: '#24CCA7',
           color: '#FFFFFF',
+          marginBottom: '20px',
         },
       },
     },

@@ -1,17 +1,19 @@
+import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { registration } from 'redux/auth/operations';
-import Typography from '@mui/material/Typography';
+import PasswordStrengthBar from 'react-password-strength-bar';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
-import Box from '@mui/material/Box';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Logo from 'components/Logo/Logo';
+import Buttons from 'components/Buttons/Buttons';
 import styles from './RegistrationForm.module.scss';
 
 const RegistrationForm = () => {
+  const [password, setPassword] = useState('');
+
   // const error = useSelector(selectError);
   // const dispatch = useDispatch();
   // const handleSubmit = e => {
@@ -25,19 +27,11 @@ const RegistrationForm = () => {
       className={styles.RegistrationForm}
       // onSubmit={handleSubmit}
     >
-      <Typography align="center" className={styles.RegistrationForm__title}>
-        Wallet
-      </Typography>
       <Logo />
 
       <TextField
         name="email"
-        className={styles.RegistrationForm__input}
-        variant="standard"
         type="email"
-        autoComplete="email"
-        fullWidth
-        margin="normal"
         placeholder="Email"
         InputProps={{
           startAdornment: (
@@ -49,12 +43,7 @@ const RegistrationForm = () => {
       />
       <TextField
         name="password"
-        className={styles.RegistrationForm__input}
         type="password"
-        autoComplete="current-password"
-        variant="standard"
-        fullWidth
-        margin="normal"
         placeholder="Password"
         InputProps={{
           startAdornment: (
@@ -66,13 +55,10 @@ const RegistrationForm = () => {
       />
       <TextField
         name="password"
-        className={styles.RegistrationForm__input}
         type="password"
-        autoComplete="current-password"
-        variant="standard"
-        fullWidth
-        margin="normal"
         placeholder="Confirm password"
+        onChange={e => setPassword(e.target.value)}
+        sx={{ marginBottom: '2px' }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -81,12 +67,16 @@ const RegistrationForm = () => {
           ),
         }}
       />
+      <PasswordStrengthBar
+        password={password}
+        minLength={6}
+        shortScoreWord={false}
+        barColors={['#E5F1EF', '#24CCA7', '#24CCA7', '#24CCA7', '#24CCA7']}
+        className={styles.RegistrationForm__passwordStrengthBar}
+        scoreWords={false}
+      />
       <TextField
         name="firstName"
-        className={styles.RegistrationForm__input}
-        variant="standard"
-        fullWidth
-        margin="normal"
         placeholder="First name"
         InputProps={{
           startAdornment: (
@@ -97,17 +87,14 @@ const RegistrationForm = () => {
         }}
       />
 
-      <Box className={styles.RegistrationForm__buttons}>
-        <Button variant="contained" className={styles.RegistrationForm__button}>
-          Register
-        </Button>
-        <Button variant="outlined" className={styles.RegistrationForm__button}>
-          Log in
-        </Button>
-      </Box>
+      <Buttons
+        firstButtonText="Register"
+        firstButtonHandler={() => console.log('Register')}
+        secondButtonText="Log in"
+        secondButtonHandler={() => console.log('Log in')}
+      />
     </form>
   );
 };
 
 export default RegistrationForm;
-

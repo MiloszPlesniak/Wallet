@@ -1,6 +1,123 @@
+:root {
+  --tablewidth: 393px;
+}
+
 .Currency {
   &__container {
-    background-color: #4a56e2;
+    width: var(--tablewidth);
+    min-height: 331px;
     border-radius: 30px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.6);
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__row_selected {
+    background-color: rgb(98, 31, 207);
+  }
+
+  &__spinnerContainer {
+    width: 100%;
+    min-height: 331px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4a56e2;
+  }
+
+  &__spinner {
+    color: rgb(248, 122, 97);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: none;
+
+    & thead {
+      display: block;
+    }
+
+    & th {
+      background-color: rgba(74, 86, 226, 0.6);
+      color: #fff;
+      width: calc((var(--tablewidth) - 5px) / 3 + 5px);
+      cursor: auto;
+      height: 60px;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 27px;
+
+      &:last-child {
+        padding-right: 15px;
+      }
+    }
+
+    & tbody {
+      height: 271px;
+      overflow-y: scroll;
+      display: block;
+      scrollbar-gutter: stable;
+      background-color: #4a56e2;
+      color: #fff;
+
+      & tr:hover {
+        box-shadow: inset 0 0 8px 2px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+      }
+    }
+
+    & tbody::-webkit-scrollbar {
+      width: 7px;
+      background-color: #4a56e2;
+    }
+
+    & tbody::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+      border-radius: 2.5px;
+    }
+
+    & tbody::-webkit-scrollbar-thumb {
+      border-radius: 2.5px;
+      background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.44, rgb(250, 180, 166)),
+        color-stop(0.72, rgb(250, 159, 141)),
+        color-stop(0.86, rgb(248, 122, 97))
+      );
+    }
+
+    & tr {
+      height: 90px;
+    }
+
+    & td {
+      width: calc(var(--tablewidth) / 3);
+      text-transform: capitalize;
+    }
+
+    & tr:hover td {
+      color: white;
+    }
+
+    & td:first-child {
+      text-align: center;
+    }
+  }
+
+  &__symbol {
+    margin-left: 7px;
+    font-weight: 700;
   }
 }

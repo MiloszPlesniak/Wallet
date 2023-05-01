@@ -9,7 +9,7 @@ export const GlobalStylesProvider = (
         margin: '0',
       },
       body: {
-        padding: '0 20px',
+        padding: '0',
         margin: '0',
         overflowY: 'scroll',
         overflow: 'overlay',

@@ -13,7 +13,7 @@ export const App = () => {
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="login" element={<RegistrationPage />} />
           {/* Poniżej priv route który bedzie przenosił do loginu/rejestracji gdy użytkownik nie bedzie zalogowany */}
-          <Route path="dashboard" element={DashboardPage} />
+          <Route path="dashboard" element={<DashboardPage />} />
         </Route>
       </Routes>
     </div>

@@ -17,13 +17,13 @@ const RegistrationPage = () => {
         query="(min-width:768px)"
         render={() => (
           <div className={styles.RegistrationPage__leftSide}>
-            <img
-              className={styles.RegistrationPage__img}
-              src={registrationImg}
-              alt="cellphone and a girl"
-              width="453"
-              height="413"
-            />
+            <div className={styles.RegistrationPage__pictureBox}>
+              <img
+                className={styles.RegistrationPage__img}
+                src={registrationImg}
+                alt="cellphone and a girl"
+              />
+            </div>
             <h1 className={styles.RegistrationPage__title}>Finance App</h1>
           </div>
         )}

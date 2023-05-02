@@ -1,4 +1,5 @@
 import styles from './DashboardPage.module.scss';
+// eslint-disable-next-line no-unused-vars
 import { Box, Grid2 } from '@mui/material';
 
 const DashboardPage = () => {

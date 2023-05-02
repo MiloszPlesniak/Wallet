@@ -1,0 +1,68 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  & > div {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    width: 36.8vw;
+    max-width: 394px;
+  }
+
+  &__dateTime {
+    width: 18.1vw;
+    max-width: 181px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 18px;
+    text-align: center;
+    height: 27px;
+    background-image: url(../../images/svg/Vectorcalendar.svg);
+    background-repeat: no-repeat;
+    background-position: 100% 15%;
+  }
+  &__amount {
+    text-align: center;
+    width: 18.1vw;
+    max-width: 181px;
+  }
+  &__comment {
+    width: 30.8vw;
+    max-width: 394px;
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+  }
+}
+.switchBtn {
+  margin: 40px 0px 42px 0px;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .form {
+    display: flex;
+    justify-content: center;
+    & > div {
+      max-width: none;
+      display: block;
+      width: 80%;
+      max-width: 430px;
+    }
+    &__dateTime {
+      max-width: none;
+      width: 100%;
+      margin: 40px 0px 40px 0px;
+      background-position: 95%;
+    }
+    &__amount {
+      max-width: none;
+      width: 30.8vw;
+    }
+  }
+}

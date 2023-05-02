@@ -66,7 +66,10 @@ const SwitchIncomeExpense = ({ handleToogle }) => {
       </p>
       <ExpenseSwitch
         checked={checked}
-        onChange={() => setChecked(!checked)}
+        onChange={() => {
+          setChecked(!checked);
+          handleToogle();
+        }}
         color="default"
         name="expenseSwitch"
         inputProps={{ 'aria-label': 'expense switch' }}

@@ -1,13 +1,12 @@
-import { Outlet } from 'react-router-dom';
-import Navigation from './Navigation/Navigation';
-import RegistrationPage from './RegistrationPage/RegistrationPage';
-import LoginPage from './LoginPage/LoginPage';
-
+// import { Outlet } from 'react-router-dom';
+// import Navigation from './Navigation/Navigation';
+import ModalAddTransaction from './ModalAddTransaction/ModalAddTransaction';
 const Layout = () => {
   return (
     <>
-      <Navigation />
-      <Outlet />
+      {/* <Navigation /> */}
+      {/* <Outlet /> */}
+      <ModalAddTransaction />
     </>
   );
 };

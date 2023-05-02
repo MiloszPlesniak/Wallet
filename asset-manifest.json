@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Wallet/static/css/main.96ba033a.css",
-    "main.js": "/Wallet/static/js/main.1df5d79a.js",
+    "main.js": "/Wallet/static/js/main.b74cdb43.js",
     "static/media/registration-page-right-background.png": "/Wallet/static/media/registration-page-right-background.290c2c34a3b8fda53420.png",
     "static/media/registration-page-image.png": "/Wallet/static/media/registration-page-image.5d52b14df26fa5db288e.png",
     "index.html": "/Wallet/index.html",
     "main.96ba033a.css.map": "/Wallet/static/css/main.96ba033a.css.map",
-    "main.1df5d79a.js.map": "/Wallet/static/js/main.1df5d79a.js.map"
+    "main.b74cdb43.js.map": "/Wallet/static/js/main.b74cdb43.js.map"
   },
   "entrypoints": [
     "static/css/main.96ba033a.css",
-    "static/js/main.1df5d79a.js"
+    "static/js/main.b74cdb43.js"
   ]
 }

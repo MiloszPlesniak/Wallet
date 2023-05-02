@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/Wallet/static/css/main.96ba033a.css",
-    "main.js": "/Wallet/static/js/main.b74cdb43.js",
-    "static/media/registration-page-right-background.png": "/Wallet/static/media/registration-page-right-background.290c2c34a3b8fda53420.png",
-    "static/media/registration-page-image.png": "/Wallet/static/media/registration-page-image.5d52b14df26fa5db288e.png",
+    "main.css": "/Wallet/static/css/main.2c1bcf37.css",
+    "main.js": "/Wallet/static/js/main.d4f75ff2.js",
+    "static/media/registration-page-right-background.png": "/Wallet/static/media/registration-page-right-background.f3929f932cce0881cec9.png",
+    "static/media/login-page-image.png": "/Wallet/static/media/login-page-image.74dafbaa5f82195c4f5d.png",
+    "static/media/registration-page-image.png": "/Wallet/static/media/registration-page-image.b9cb1c0a32000aa981d4.png",
     "index.html": "/Wallet/index.html",
-    "main.96ba033a.css.map": "/Wallet/static/css/main.96ba033a.css.map",
-    "main.b74cdb43.js.map": "/Wallet/static/js/main.b74cdb43.js.map"
+    "main.2c1bcf37.css.map": "/Wallet/static/css/main.2c1bcf37.css.map",
+    "main.d4f75ff2.js.map": "/Wallet/static/js/main.d4f75ff2.js.map"
   },
   "entrypoints": [
-    "static/css/main.96ba033a.css",
-    "static/js/main.b74cdb43.js"
+    "static/css/main.2c1bcf37.css",
+    "static/js/main.d4f75ff2.js"
   ]
 }

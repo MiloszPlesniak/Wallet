@@ -1,5 +1,5 @@
 import Media from 'react-media';
-import RegistrationForm from '../RegistrationForm/RegistrationForm.jsx';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 import styles from './RegistrationPage.module.scss';
 import registrationImg from 'images/desktop/registration-page-image.png';
 const RegistrationPage = () => {
@@ -21,9 +21,10 @@ const RegistrationPage = () => {
               className={styles.RegistrationPage__img}
               src={registrationImg}
               alt="cellphone and a girl"
-              width="453"
-              height="413"
+              width="452px"
+              height="413px"
             />
+
             <h1 className={styles.RegistrationPage__title}>Finance App</h1>
           </div>
         )}

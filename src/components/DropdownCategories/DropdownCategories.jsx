@@ -1,18 +1,9 @@
 import { useState } from 'react';
-
-import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-
-import TextField from '@mui/material/TextField';
-
 import Select from '@mui/material/Select';
-import Menu from '@mui/material/Menu';
-import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
-import styles from './DropdownCategories.module.scss';
-
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import styles from './DropdownCategories.module.scss';
 
 const listOfCategories = [
   'Main expenses',
@@ -27,32 +18,13 @@ const listOfCategories = [
 
 const DropdownCategories = () => {
   const [category, setCategory] = useState('');
-  //   const open = Boolean(category);
-  //   const handleClick = event => {
-  //     setCategory(event.currentTarget);
-  //   };
-  //   const handleClose = () => {
-  //     setCategory(null);
-  //   };
   const handleChange = event => {
     setCategory(event.target.value);
-    // event.target.blur();
   };
 
   return (
     <div className={styles.DropdownCategories}>
       <FormControl fullWidth variant="standard" blurOnSelect="true">
-        {/* {category === '' ? (
-          <InputLabel
-            disableAnimation
-            shrink={false}
-            focused={false}
-            id="expense-category"
-          >
-            Category
-          </InputLabel>
-        ) : null} */}
-
         <Select
           blurOnSelect="true"
           labelId="expense-category"
@@ -67,18 +39,22 @@ const DropdownCategories = () => {
                 : value
               : 'Select a category'
           }
-          sx={{ backgroundColor: 'white' }}
-          //   style={{
-          //     backgroundColor: 'white',
-          //   }}
-          //   sx={{ MuiList: { paddingTop: 0, paddingBottom: 0 } }}
+          sx={{
+            padding: '0 20px',
+            color: '#BDBDBD',
+            ...(category && {
+              color: '#000000',
+            }),
+          }}
           IconComponent={KeyboardArrowDownIcon}
           MenuProps={{
             disableAutoFocusItem: true,
             PaperProps: {
               style: {
-                maxHeight: 300,
                 borderRadius: '20px',
+                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                backdropFilter: 'blur(25px)',
+                boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
               },
             },
             MenuListProps: {
@@ -87,6 +63,7 @@ const DropdownCategories = () => {
                 paddingBottom: 0,
               },
             },
+            marginThreshold: 0,
           }}
           onClose={() => {
             setTimeout(() => {
@@ -95,37 +72,17 @@ const DropdownCategories = () => {
           }}
         >
           {listOfCategories.map(category => (
-            <MenuItem key={category} value={category}>
+            <MenuItem
+              key={category}
+              value={category}
+              className={styles.DropdownCategories__MenuItem}
+            >
               {category}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
     </div>
-
-    /* <TextField
-        id="expense-category"
-        select
-        hiddenLabel
-        // label={category ? '' : 'Select a category'}
-        // placeholder="Select a category"
-        value={category}
-        onChange={handleChange}
-        InputLabelProps={{
-          shrink: false,
-        }}
-        // onChange={handleChange}
-        // helperText="Please select your category"
-        variant="standard"
-        fullWidth
-        style={{ margin: 0 }}
-      >
-        {listOfCategories.map(category => (
-          <MenuItem key={category} value={category}>
-            {category}
-          </MenuItem>
-        ))}
-      </TextField> */
   );
 };
 

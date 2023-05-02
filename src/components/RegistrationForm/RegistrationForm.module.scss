@@ -9,20 +9,13 @@
   transition: box-shadow 250ms ease-in-out;
   background-color: #ffffff;
   @media screen and (max-width: 767px) {
-    width: 100%;
-    max-width: 533px;
     padding: 36px 20px;
-    margin: 20px 20px;
   }
 
   @media screen and (min-width: 768px) {
     padding: 40px 59px 66px 65px;
     width: 533px;
     height: 616px;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-top: -30px;
   }
 
   &:hover {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 import ModalTemplate from 'components/ModalTemplate/ModalTemplate';
 import Logo from 'components/Logo/Logo';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -33,7 +34,7 @@ const listOfAppCreators = [
   {
     name: 'Karolina',
     role: 'Developer',
-    github: 'asd',
+    github: 'test',
   },
 ];
 
@@ -42,10 +43,21 @@ const Footer = () => {
 
   return (
     <footer className={styles.Footer}>
-      <Logo className={styles.Footer__logo} />
-      <p className={styles.Footer__text}>{`© ${new Date().getFullYear()}`}</p>
-      <p className={styles.Footer__text} onClick={() => setIsModalOpen(true)}>
-        {'Web squirrels 🐿️'}
+      <div className={styles.Footer__logo}>
+        <Logo />
+      </div>
+      <p
+        className={styles.Footer__text}
+      >{`© ${new Date().getFullYear()} All rights don't reserved`}</p>
+
+      <p className={styles.Footer__text}>
+        {'made with passion by'}
+        <span
+          className={styles.Footer__link}
+          onClick={() => setIsModalOpen(true)}
+        >
+          {'Web squirrels 🐿️'}
+        </span>
       </p>
 
       <ModalTemplate
@@ -70,6 +82,14 @@ const Footer = () => {
             </li>
           ))}
         </ul>
+
+        <Button
+          variant="contained"
+          className={styles.Footer__modalButton}
+          onClick={() => setIsModalOpen(false)}
+        >
+          {'Close'}
+        </Button>
       </ModalTemplate>
     </footer>
   );

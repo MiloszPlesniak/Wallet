@@ -1,0 +1,15 @@
+.Chart{
+    &__exspense{
+        position: absolute;
+        top: 21%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        font-family: Circe;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 27px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+}

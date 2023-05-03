@@ -1,11 +1,12 @@
 import 'react-datetime/css/react-datetime.css';
 import Datetime from 'react-datetime';
-import Buttons from 'components/Buttons/Buttons';
-import { TextField } from '@mui/material';
 import { useState } from 'react';
+import { TextField } from '@mui/material';
 import style from './ModalAddTransaction.module.scss';
+import Buttons from 'components/Buttons/Buttons';
 import ModalTemplate from 'components/ModalTemplate/ModalTemplate';
 import SwitchIncomeExpense from 'components/SwitchIncomeExpense/SwitchIncomeExpense';
+import DropdownCategories from 'components/DropdownCategories/DropdownCategories';
 const ModalAddTransaction = () => {
   const [typeOfTransaction, setTypeOfTransaction] = useState(false);
 
@@ -19,19 +20,12 @@ const ModalAddTransaction = () => {
         />
       </div>
       <form className={style.form}>
-        {typeOfTransaction && (
-          <label>
-            <select name="" id="">
-              <option>dasdasd</option>
-            </select>
-          </label>
-        )}
+        {typeOfTransaction && <DropdownCategories />}
         <div>
           <TextField
             className={style.form__amount}
             name="amount"
             placeholder="0.00"
-            type="number"
           />
           <Datetime
             timeFormat={false}

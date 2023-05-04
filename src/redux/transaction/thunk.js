@@ -3,19 +3,19 @@ import axios from 'axios';
 
 axios.defaults.baseURL = '';
 export const fetchTransactions = createAsyncThunk(
-  'transactions/fetch',
-  async (data,time) => {}
+  'finances/fetchTransactions',
+  async (data, time) => {}
 );
 export const addTransactions = createAsyncThunk(
-  'transactions/add',
+  'finances/addTransactions',
   async data => {}
 );
 export const editTransactions = createAsyncThunk(
-  'transactions/edit',
+  'finances/editTransactions',
   async data => {}
 );
 export const deleteTransactions = createAsyncThunk(
-  'transactions/delete',
+  'finances/deleteTransactions',
   async id => {}
 );
 

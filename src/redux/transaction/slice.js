@@ -8,7 +8,7 @@ import {
 } from './thunk';
 
 export const financesSlice = createSlice({
-  name: 'transaction',
+  name: 'finances',
   initialState: {
     transactions: [],
     balance: 0,

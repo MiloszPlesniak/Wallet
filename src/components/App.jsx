@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import ModalAddTransaction from './ModalAddTransaction/ModalAddTransaction';
+// import ModalEditTransaction from './ModalEditTransaction/ModalEditTransaction';
+// import ModalAddTransaction from './ModalAddTransaction/ModalAddTransaction';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import HomeTab from './HomeTab/HomeTab';
@@ -17,7 +18,7 @@ export const App = () => {
           <Route paht="statistics" element={<HomeTab />} />
         </Route>
         <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/login" element={<ModalAddTransaction />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );

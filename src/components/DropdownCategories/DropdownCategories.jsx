@@ -24,9 +24,9 @@ const DropdownCategories = () => {
 
   return (
     <div className={styles.DropdownCategories}>
-      <FormControl fullWidth variant="standard" blurOnSelect="true">
+      <FormControl fullWidth variant="standard" bluronselect="true">
         <Select
-          blurOnSelect="true"
+          bluronselect="true"
           labelId="expense-category"
           id="expense-category"
           displayEmpty={true}

@@ -5,7 +5,6 @@
   justify-content: center;
   max-width: 533px;
   border-radius: 20px;
-
   transition: box-shadow 250ms ease-in-out;
   background-color: #ffffff;
   @media screen and (max-width: 767px) {
@@ -65,11 +64,5 @@
         }
       }
     }
-  }
-  &__buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-top: 20px;
   }
 }

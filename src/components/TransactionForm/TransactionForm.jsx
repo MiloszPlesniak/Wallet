@@ -18,6 +18,7 @@ const TransactionForm = ({
           className={style.form__amount}
           name="amount"
           placeholder="0.00"
+          inputProps={{ style: { textAlign: 'center', fontWeight: 700 } }}
         />
         <Datetime
           timeFormat={false}
@@ -33,6 +34,11 @@ const TransactionForm = ({
         className={style.form__comment}
         name="Comment"
         placeholder="Comment"
+        inputProps={{
+          style: {
+            padding: 10,
+          },
+        }}
       />
       <div className={style.form__btn}>
         <Buttons

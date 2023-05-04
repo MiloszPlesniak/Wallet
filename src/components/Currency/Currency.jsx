@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import CircularProgress from '@mui/material/CircularProgress';
-import Tooltip from '@mui/material/Tooltip';
 import styles from './Currency.module.scss';
 
 const Currency = () => {

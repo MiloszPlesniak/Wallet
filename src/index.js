@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import { store, persistor } from './redux/store';
 import { ThemeProvider } from '@mui/material/styles';
 import { GlobalStylesProvider } from './styles/GlobalStyles';
+
 import theme from './styles/Theme';
 import { App } from 'components/App';
 import './index.css';

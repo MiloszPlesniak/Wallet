@@ -2,6 +2,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 let theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
       main: '#24CCA7',
     },
@@ -21,6 +22,7 @@ let theme = createTheme({
   typography: {
     fontFamily: [
       'Circe',
+      'Poppins',
       'Roboto',
       'Helvetica Neue',
       'Arial',

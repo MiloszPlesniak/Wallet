@@ -1,0 +1,115 @@
+:root {
+  // --tableWidth: calc(100vw);
+}
+
+.container {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.Table {
+  // width: var(--tableWidth);
+  position: relative;
+  border-collapse: collapse;
+
+  &__container {
+    position: relative;
+  }
+
+  &__headerBackground {
+    position: absolute;
+    top: 0;
+    left: -20px;
+    background-color: #fff;
+    height: 58px;
+    width: calc(100% + 40px);
+    border-radius: 30px;
+    z-index: 0;
+  }
+
+  &__headContainer {
+    border-radius: 30px;
+    padding: 0px 20px;
+  }
+
+  & thead {
+    tr {
+      height: 58px;
+    }
+
+    th {
+      // border: 1px solid black;
+      text-align: start;
+      color: #000;
+      font-family: 'Circe';
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.47em;
+      text-transform: capitalize;
+      &:not(:first-child, :last-child) {
+        padding: 14px;
+      }
+    }
+
+    th[data-type='sum'] {
+      text-align: right;
+    }
+
+    th:first-of-type {
+      text-align: left;
+      padding-right: 14px;
+      // padding-left: 20px;
+    }
+    th:last-of-type {
+      // text-align: right;
+      padding-left: 14px;
+      // padding-right: 20px;
+    }
+  }
+
+  & tbody {
+    font-family: 'Circe';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5em;
+    color: #000;
+
+    display: table-row-group;
+
+    tr {
+      box-shadow: 0px 1px rgba(255, 255, 255, 0.6);
+    }
+
+    td {
+      height: 50px;
+      border-bottom: 1px solid #dcdcdf;
+      text-align: start;
+      text-transform: capitalize;
+      display: table-cell;
+
+      &:not(:first-child, :last-child) {
+        padding: 0 14px;
+      }
+    }
+
+    td[data-type='sum'] {
+      text-align: right;
+    }
+
+    td[data-type='type'] {
+      text-align: center;
+    }
+
+    td:first-of-type {
+      text-align: left;
+      padding-right: 14px;
+      // padding-left: 20px;
+    }
+
+    td:last-of-type {
+      // text-align: right;
+      padding-left: 14px;
+      // padding-right: 20px;
+    }
+  }
+}

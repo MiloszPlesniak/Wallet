@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-//import Layout from './Layout';
+// import ModalEditTransaction from './ModalEditTransaction/ModalEditTransaction';
+// import ModalAddTransaction from './ModalAddTransaction/ModalAddTransaction';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import HomeTab from './HomeTab/HomeTab';
@@ -12,14 +13,12 @@ export const App = () => {
   return (
     <div className="container">
       <Routes>
-        {/* Poniżej priv route który bedzie przenosił do loginu/rejestracji gdy użytkownik nie bedzie zalogowany */}
         <Route path="/" element={<DashboardPage />}>
-          <Route path="home" element={<HomeTab />} />
-          <Route paht="statistics" element={<Table />} />
-          {/* Przy ścieżkach rejestracji i loginu bedą restrictedRoutu przy zalogowanym uzytkoniku bedą przenościć na dashboard */}
-          <Route path="registration" element={<RegistrationPage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path="home" element={<Table />} />
+          <Route paht="statistics" element={<HomeTab />} />
         </Route>
+        <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );

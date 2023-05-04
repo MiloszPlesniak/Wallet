@@ -11,24 +11,28 @@
     }
  
     &__icon{
-        height: 36px;
-        width: 36px;
-        padding: 1px;
+        height: 38px;
+        width: 38px;
+        padding: 2px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 6px;
         color: #fff; ;
         background-color:#6E78E8 ;
+        font-size:26px;
 
         &:hover{
             background-color: #4A56E2;
-            box-shadow: 8px 8px 30px 0px rgba(138, 138, 146, 0.63);
+            box-shadow: 4px 4px 20px 0px rgba(87, 87, 92, 0.63);
         }
 
         @media screen and (min-width: 480px) {
-            height: 16px;
-            width: 16px;
+            height: 18px;
+            width: 18px;
+            border-radius: 2px;
+            font-size:14px;
+    
         }
     }
 
@@ -45,7 +49,7 @@
     
         &:hover{
             background-color: #4A56E2;
-            box-shadow: 8px 8px 30px 0px rgba(138, 138, 146, 0.63);
+            box-shadow: 4px 4px 20px 0px rgba(87, 87, 92, 0.63);
         }
 
          @media screen and (min-width: 480px) {
@@ -58,10 +62,10 @@
 
         @media screen and (min-width: 480px) {
             visibility:visible;
-            font-family: Poppins;
             font-size: 18px;
             font-weight: 400;
             line-height: 27px;
+  
         }
 
         &:hover{
@@ -73,5 +77,9 @@
     &__link{
         display: flex;
         gap: 23px;
+        text-decoration: none;
+        color: black;
+        font-family: Poppins;
+
     }
   }

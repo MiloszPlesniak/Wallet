@@ -11,7 +11,7 @@ const Navigation = () => {
       <div className={style.Navigation}>
         <NavLink className={style.Navigation__link} to="/home">
             <div className={style.Navigation__icon}>
-            <HomeRoundedIcon/>
+            <HomeRoundedIcon fontSize="inherit"/>
             </div>
             <div className={style.Navigation__text}>
                 Home
@@ -19,7 +19,7 @@ const Navigation = () => {
         </NavLink>
         <NavLink className={style.Navigation__link} to="/diagram">
             <div className={style.Navigation__icon}>
-            <ShowChartRoundedIcon />
+            <ShowChartRoundedIcon fontSize="inherit" />
             </div>
             <div className={style.Navigation__text}>
                 Statistics
@@ -27,7 +27,7 @@ const Navigation = () => {
         </NavLink>
         <NavLink className={style.Navigation__link} to="/currency">
           <div className={style.Navigation__iconMobile}>
-            <AttachMoneyRoundedIcon />
+            <AttachMoneyRoundedIcon fontSize="inherit"/>
           </div>
       </NavLink>
       </div>

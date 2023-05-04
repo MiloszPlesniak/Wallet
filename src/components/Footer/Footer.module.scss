@@ -1,0 +1,116 @@
+.Footer {
+  width: 100%;
+  height: 30px;
+  color: #313131;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Circe';
+  font-size: 0.75rem;
+  font-weight: 400;
+  gap: 30px;
+  opacity: 0.5;
+  letter-spacing: 0.7px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
+
+  &:hover {
+    opacity: 0.8;
+    cursor: default;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 35px;
+    width: 700px;
+    background-color: rgba(214, 214, 214, 0.3);
+    z-index: -1;
+    bottom: 0;
+    filter: blur(1px);
+    border-radius: 20px 20px 0 0;
+    border: 1px solid #b8b8b8;
+    border-bottom: none;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  &__logo {
+    transform: scale(0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+
+  &__text {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    margin-left: 10px;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__modalText {
+    margin: 30px auto;
+    text-align: justify;
+  }
+
+  &__modalTeamList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__modalTeamListItem {
+    width: calc(100% / 3);
+    height: 120px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  &__modalTeamListItemRole {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+    font-style: italic;
+  }
+
+  &__modalButton {
+    display: none;
+    margin: 30px auto;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+}

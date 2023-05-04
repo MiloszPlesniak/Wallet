@@ -3,9 +3,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 60px;
   border-radius: 20px;
   transition: box-shadow 250ms ease-in-out;
+  background-color: #ffffff;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    max-width: 533px;
+    padding: 36px 20px;
+    margin: 20px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 40px 59px 62px 65px;
+    width: 533px;
+    height: 468px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-bottom: 196px;
+    margin-top: -30px;
+    padding-left: 118px;
+    padding-right: 117px;
+  }
 
   &:hover {
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);

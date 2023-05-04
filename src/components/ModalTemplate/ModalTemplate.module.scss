@@ -1,0 +1,49 @@
+.ModalTemplate {
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    width: 540px;
+    min-height: 508px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      min-height: 100%;
+      border-radius: 0;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    margin-top: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  &__close {
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+}

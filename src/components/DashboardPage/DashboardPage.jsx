@@ -28,6 +28,7 @@ const data = [
   createData('07.01.19', '+', 'Income', 'Gift', 1000.0),
 ];
 
+
 const DashboardPage = () => {
   return (
     <>

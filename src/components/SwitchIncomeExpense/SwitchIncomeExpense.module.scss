@@ -1,0 +1,23 @@
+.toogleIncomeExpense {
+  width: 235px;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+
+  &__text {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #e0e0e0;
+
+    &__income {
+      color: #24cca7;
+    }
+
+    &__expense {
+      color: #ff6596;
+    }
+  }
+}

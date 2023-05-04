@@ -1,12 +1,11 @@
 // import { useDispatch, useSelector } from 'react-redux';
 // import { logIn } from 'redux/auth/operations';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
 import Logo from 'components/Logo/Logo';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
+import Buttons from 'components/Buttons/Buttons';
 import styles from './LoginForm.module.scss';
 
 const LoginForm = () => {
@@ -50,22 +49,12 @@ const LoginForm = () => {
         }}
       />
 
-      <Box className={styles.LoginForm__buttons}>
-        <Button variant="contained" className={styles.LoginForm__button}>
-          Log in
-        </Button>
-        <Button
-          variant="outlined"
-          className={styles.LoginForm__button}
-          color="secondary"
-          sx={{
-            color: 'secondary.main',
-            backgroundColor: 'transparent',
-          }}
-        >
-          Register
-        </Button>
-      </Box>
+      <Buttons
+        firstButtonText="Log in"
+        firstButtonHandler={() => console.log('Log in')}
+        secondButtonText="Register"
+        secondButtonHandler={() => console.log('Register')}
+      />
     </form>
   );
 };

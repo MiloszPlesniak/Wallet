@@ -30,6 +30,7 @@ const Currency = () => {
 
   return (
     <div className={styles.Currency__container}>
+      <div className={styles.Currency__bgGraph} />
       {isLoading && (
         <div className={styles.Currency__spinnerContainer}>
           <CircularProgress className={styles.Currency__spinner} />
@@ -50,29 +51,24 @@ const Currency = () => {
 
           <tbody>
             {currency?.map(currency => (
-              <Tooltip key={currency.code} title={currency.currency} arrow>
-                <tr
-                  key={currency.code}
-                  onClick={event =>
-                    event.currentTarget.classList.toggle(
-                      styles.Currency__row_selected
-                    )
-                  }
-                >
-                  <td>
-                    {currency.code}
-                    {getSymbolFromCurrency(currency.code) !== undefined &&
-                      getSymbolFromCurrency(currency.code) !==
-                        currency.code && (
-                        <span className={styles.Currency__symbol}>
-                          {'(' + getSymbolFromCurrency(currency.code) + ')'}
-                        </span>
-                      )}
-                  </td>
-                  <td>{currency.bid.toFixed(4)}</td>
-                  <td>{currency.ask.toFixed(4)}</td>
-                </tr>
-              </Tooltip>
+              <tr
+                key={currency.code}
+                onClick={event =>
+                  event.currentTarget.classList.toggle(
+                    styles.Currency__row_selected
+                  )
+                }
+              >
+                <td>
+                  {currency.code}
+                  {getSymbolFromCurrency(currency.code) !== undefined &&
+                    getSymbolFromCurrency(currency.code) !== currency.code && (
+                      <span className={styles.Currency__symbol}></span>
+                    )}
+                </td>
+                <td>{currency.bid.toFixed(4)}</td>
+                <td>{currency.ask.toFixed(4)}</td>
+              </tr>
             ))}
           </tbody>
         </table>

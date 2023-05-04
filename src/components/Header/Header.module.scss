@@ -1,25 +1,128 @@
 .Header {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 16px;
-  height: 80px;
+  padding: 15px 20px;
+  height: 60px;
+  background-color: #fff;
 
-  &__auth {
+  &__logOut {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12px;
+    height: 30px;
   }
 
-  &__exit {
+  &__logOutUserName {
+    color: #bdbdbd;
+    padding-top: 4px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5em;
+    text-align: right;
+  }
+
+  &__logOutButton {
     height: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    align-content: center;
     gap: 8px;
+    padding-top: 0;
+    padding-bottom: 0;
     padding-left: 12px;
-    border-left: 1px solid #bdbdbd;
+    padding-right: 12px;
+    color: #bdbdbd;
+  }
+
+  &__logOutButtonText {
+    padding-top: 4px;
+    color: #bdbdbd;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: left;
+  }
+
+  &__logOutButtonIcon {
+    display: flex;
+    align-content: center;
+    width: 18px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .Header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 16px;
+    height: 80px;
+    background-color: #fff;
+
+    &__logOut {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 30px;
+    }
+
+    &__logOutUserName {
+      color: #bdbdbd;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-left: 12px;
+      font-family: 'Circe';
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.5em;
+      text-align: right;
+    }
+
+    &__logOutButton {
+      height: 30px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      align-content: center;
+      gap: 8px;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: #bdbdbd;
+    }
+
+    &__logOutButtonText {
+      padding-top: 4px;
+      color: #bdbdbd;
+      font-family: 'Circe';
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 18px;
+      text-align: left;
+    }
+
+    &__logOutButtonIcon {
+      display: flex;
+      align-content: center;
+      width: 18px;
+      height: 30px;
+    }
   }
 }

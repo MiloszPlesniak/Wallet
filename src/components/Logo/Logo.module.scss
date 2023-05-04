@@ -1,12 +1,32 @@
 .Logo {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16.56px;
 
   &__title {
     margin: 0;
+    font-family: 'Poppins';
     font-weight: 700;
-    font-size: 30px;
+    font-size: 17px;
     line-height: 45px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .Logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &__title {
+      margin: 0;
+      font-family: 'Poppins';
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 45px;
+    }
   }
 }

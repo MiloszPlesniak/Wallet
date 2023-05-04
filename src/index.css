@@ -2,16 +2,43 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Circle', 'Poppins',
-    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*max-width: 1280px;*/
+  @media screen and (max-width: 767) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Circe';
+  src: local('Circe Bold'), local('Circe-Bold'),
+    /* url('./assets/fonts/Circe-Bold.woff') format('woff'),
+    url('./assets/fonts/Circe-Bold.woff2') format('woff2'), */
+      url('./assets/fonts/Circe-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: local('Circe Regular'), local('Circe-Regular'),
+    /* url('./assets/fonts/Circe-Regular.woff') format('woff'),
+    url('./assets/fonts/Circe-Regular.woff2') format('woff2'), */
+      url('./assets/fonts/Circe-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
 .container {

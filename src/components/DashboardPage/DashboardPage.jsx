@@ -15,9 +15,7 @@ function createData(date, type, category, comment, sum) {
 const DashboardDivider = styled(Divider)(({ theme }) => ({
   borderRightColor: 'e7e5F2',
   borderRightWidth: '1px',
-  boxShadow:
-    '1px 0px rgba(255, 255, 255, 0.6),\
-  -1px 0px rgba(0, 0, 0, 0.05)',
+  boxShadow: '1px 0px rgba(255, 255, 255, 0.6),-1px 0px rgba(0, 0, 0, 0.05)',
 }));
 
 const data = [
@@ -27,7 +25,6 @@ const data = [
   createData('07.01.19', '-', 'Products', 'Vegetables for the week', 280.0),
   createData('07.01.19', '+', 'Income', 'Gift', 1000.0),
 ];
-
 
 const DashboardPage = () => {
   return (

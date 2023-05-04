@@ -12,7 +12,7 @@ const ModalEditTransaction = ({ typeOfTransaction }) => {
   return (
     <ModalTemplate
       title={'Edit transaction'}
-      open={true}
+      open={modalIsOpen}
       onClose={() => dispatch(changeIsModalEditTransactionOpen)}
     >
       <div className={style.switch}>

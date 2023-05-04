@@ -34,7 +34,7 @@ const Chart = ({ categories, expenses }) => {
   return (
     <div>
         <Doughnut data={data} options={options}/>
-        <p className={style.Chart__exspense}>$ {expenses}</p>
+        <p className={style.Chart__exspense}> {expenses}</p>
     </div>
   );
 };

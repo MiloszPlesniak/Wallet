@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-// import ModalEditTransaction from './ModalEditTransaction/ModalEditTransaction';
-// import ModalAddTransaction from './ModalAddTransaction/ModalAddTransaction';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import HomeTab from './HomeTab/HomeTab';
 import Table from './Table/Table';
-
 import DashboardPage from './DashboardPage/DashboardPage';
 import 'index.css';
+
+
+
 
 export const App = () => {
   return (
@@ -18,7 +18,7 @@ export const App = () => {
           <Route paht="statistics" element={<HomeTab />} />
         </Route>
         <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage/>} />
       </Routes>
     </div>
   );

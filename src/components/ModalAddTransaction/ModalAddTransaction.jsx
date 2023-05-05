@@ -6,10 +6,12 @@ import SwitchIncomeExpense from 'components/SwitchIncomeExpense/SwitchIncomeExpe
 import TransactionForm from 'components/TransactionForm/TransactionForm';
 import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
-const ModalAddTransaction = () => {
+
+const ModalAddTransaction = props => {
   const [typeOfTransaction, setTypeOfTransaction] = useState(false);
   const modalIsOpen = useSelector(selectIsModalAddTransactionOpen);
   const dispath = useDispatch();
+
   return (
     <ModalTemplate
       title={'Add transaction'}

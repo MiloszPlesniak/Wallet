@@ -1,0 +1,35 @@
+.Balance {
+  &__container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 40px 11px 40px;
+    border-radius: 30px;
+  }
+  &__title {
+    color: #a6a6a6;
+    font-family: 'Circe';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.47em;
+    text-transform: uppercase;
+  }
+  &__currency {
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.5em;
+    text-transform: uppercase;
+  }
+  &__number {
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.5em;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,94 @@
+.income {
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  color: #24cca7;
+}
+
+.expense {
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  color: #ff6596;
+}
+
+.TableRowMobile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &__stripe {
+    &Income {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      min-height: 100%;
+      width: 5px;
+      background-color: #24cca7;
+    }
+    &Expense {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      min-height: 100%;
+      width: 5px;
+      background-color: #ff6596;
+    }
+  }
+
+  &__element {
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 20px 8px 20px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #dcdcdf;
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
+
+  &__key {
+    font-family: 'Circe';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  &__value {
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+
+.DeleteButton__Text {
+  padding-top: 3px;
+}
+
+.EditButton__Text {
+  padding-top: 4px;
+  max-width: 22px;
+  color: #000;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media screen and (min-width: 1280px) {
+}

@@ -21,7 +21,7 @@ const Navigation = () => {
         </div>
         <div className={style.Navigation__text}>Statistics</div>
       </NavLink>
-      <NavLink className={style.Navigation__link} to="/currency">
+      <NavLink className={style.Navigation__linkMobile} to="/currency">
         <div className={style.Navigation__iconMobile}>
           <AttachMoneyRoundedIcon fontSize="inherit" />
         </div>

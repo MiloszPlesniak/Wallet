@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import Button from '@mui/material/Button';
 import ModalTemplate from 'components/ModalTemplate/ModalTemplate';
-import Logo from 'components/Logo/Logo';
+import Buttons from 'components/Buttons/Buttons';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import logoSvg1 from 'assets/images/icons/logoIcon.svg';
+import logoSvg2 from 'assets/images/icons/logoName.svg';
 import styles from './Footer.module.scss';
 
 const listOfAppCreators = [
@@ -34,7 +35,7 @@ const listOfAppCreators = [
   {
     name: 'Karolina',
     role: 'Developer',
-    github: 'test',
+    github: 'https://github.com/KarolinaZinczuk',
   },
 ];
 
@@ -44,7 +45,16 @@ const Footer = () => {
   return (
     <footer className={styles.Footer}>
       <div className={styles.Footer__logo}>
-        <Logo />
+        <img
+          className={styles.Footer__logo__svg1}
+          src={logoSvg1}
+          alt="logoIcon"
+        />
+        <img
+          className={styles.Footer__logo__svg2}
+          src={logoSvg2}
+          alt="logoName"
+        />
       </div>
       <p
         className={styles.Footer__text}
@@ -56,8 +66,9 @@ const Footer = () => {
           className={styles.Footer__link}
           onClick={() => setIsModalOpen(true)}
         >
-          {'Web squirrels 🐿️'}
+          {'Web squirrels '}
         </span>
+        <span className={styles.Footer__link__icon}>{'🐿️'}</span>
       </p>
 
       <ModalTemplate
@@ -83,13 +94,14 @@ const Footer = () => {
           ))}
         </ul>
 
-        <Button
-          variant="contained"
-          className={styles.Footer__modalButton}
-          onClick={() => setIsModalOpen(false)}
-        >
-          {'Close'}
-        </Button>
+        <Buttons
+          firstButtonText="Visit project's GitHub"
+          secondButtonText="Close"
+          firstButtonHandler={() => {
+            window.open('https://github.com/MiloszPlesniak/Wallet');
+          }}
+          secondButtonHandler={() => setIsModalOpen(false)}
+        />
       </ModalTemplate>
     </footer>
   );

@@ -2,9 +2,9 @@ import React from 'react';
 import Media from 'react-media';
 import Logo from 'components/Logo/Logo';
 import styles from './Header.module.scss';
-import ExitIcon from './ExitIcon/ExitIcon';
 import Divider from '@mui/material/Divider';
 import ListItemButton from '@mui/material/ListItemButton';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Header = () => {
   return (
@@ -26,7 +26,11 @@ const Header = () => {
               sx={{ color: '#bdbdbd' }}
             />
             <ListItemButton className={styles.Header__logOutButton}>
-              <ExitIcon className={styles.Header__logOutButtonIcon} />
+              <LogoutIcon
+                sx={{
+                  color: '#bdbdbd',
+                }}
+              />
               <span className={styles.Header__logOutButtonText}>Exit</span>
             </ListItemButton>
           </div>

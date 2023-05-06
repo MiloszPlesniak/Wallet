@@ -23,6 +23,7 @@ const DashboardPage = () => {
 
             {matches.mobile && <DashboardMobile />}
             {(matches.desktop || matches.tablet) && <DashboardTabletDesktop />}
+
           </div>
         )}
       </Media>

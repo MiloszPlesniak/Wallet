@@ -1,0 +1,16 @@
+.switch {
+  margin: 40px 0px 60px 0px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Circe';
+  font-size: 16px;
+  font-weight: 700;
+  color: #e0e0e0;
+  gap: 11px;
+  &__active_expense {
+    color: #ff6596;
+  }
+  &__active_income {
+    color: #24cca7;
+  }
+}

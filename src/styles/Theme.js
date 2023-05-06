@@ -2,7 +2,6 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 let theme = createTheme({
   palette: {
-    mode: 'light',
     primary: {
       main: '#24CCA7',
     },
@@ -57,9 +56,11 @@ let theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          textAlign: 'center',
           borderRadius: '18px',
           backgroundColor: '#24CCA7',
           color: '#FFFFFF',
+          marginBottom: '20px',
         },
       },
     },
@@ -68,6 +69,23 @@ let theme = createTheme({
       styleOverrides: {
         root: {
           margin: '10px',
+        },
+      },
+    },
+
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Circe',
+          position: 'absolute',
+          right: '0',
+          top: '15%',
+          opacity: '0.8',
+          transition: 'opacity .3s ease-in-out',
+
+          '&:hover': {
+            opacity: '1',
+          },
         },
       },
     },

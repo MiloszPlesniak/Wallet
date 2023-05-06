@@ -1,0 +1,108 @@
+.LoginPage {
+  display: flex;
+  width: 100%;
+  background-color: #e7eaf2;
+  &__leftSide {
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+  }
+  &__rightSide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+  &__img {
+    display: block;
+  }
+  &__title {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    background-color: #e5e5e5;
+    flex-direction: column;
+    width: 100%;
+    align-content: center;
+    background-image: url(/images/purple-ellipse.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+
+    &__leftSide {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 114px;
+      background-color: #e5e5e5;
+      background-image: url(/images/tablet/pink-ellipse-tablet.png);
+      background-position: right top;
+      background-size: 383px 368px;
+      width: 100%;
+    }
+    &__rightSide {
+      width: 100%;
+    }
+
+    &__img {
+      width: 100%;
+      object-fit: contain;
+      margin-top: 60px;
+      margin-bottom: 70px;
+      width: 260px;
+      height: 250px;
+    }
+
+    &__title {
+      margin-left: 40px;
+      //margin-right: 161px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+    width: 100%;
+    &__leftSide {
+      flex-direction: column;
+      justify-content: center;
+      width: 43%;
+      flex: float;
+      background-color: #e7eaf2;
+      background-image: url(/images/purple-ellipse.png);
+      background-position: left bottom;
+    }
+    &__rightSide {
+      padding-right: 91px;
+      padding-left: 107px;
+      padding-bottom: 116px;
+      padding-top: 136px;
+      width: 57%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: float;
+      background-color: rgba(255, 255, 255, 0.4);
+      background-image: url(/images/desktop/registration-page-right-background.png);
+      background-repeat: no-repeat;
+      background-position: left bottom;
+      background-size: cover;
+    }
+
+    &__img {
+      width: 435px;
+      height: 420px;
+      margin-top: 171px;
+      margin-bottom: 28px;
+      margin-left: 76px;
+      margin-right: 38px;
+    }
+
+    &__title {
+      padding-bottom: 78px;
+    }
+  }
+}

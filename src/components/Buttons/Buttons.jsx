@@ -8,6 +8,7 @@ const Buttons = props => {
         variant="contained"
         className={styles.Buttons__button}
         onClick={props.firstButtonHandler}
+        href={props.firstButtonPath}
       >
         {props.firstButtonText.toString()}
       </Button>
@@ -15,6 +16,7 @@ const Buttons = props => {
         variant="outlined"
         className={styles.Buttons__button}
         onClick={props.secondButtonHandler}
+        href={props.secondButtonPath}
         color="secondary"
         sx={{
           color: 'secondary.main',
@@ -28,3 +30,4 @@ const Buttons = props => {
 };
 
 export default Buttons;
+//onClick={props.firstButtonHandler}

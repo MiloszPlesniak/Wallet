@@ -25,6 +25,23 @@
   &:hover {
     opacity: 0.8;
     cursor: default;
+
+    & .Footer__logo {
+      flex-direction: row;
+    }
+
+    & .Footer__logo__svg1 {
+      transform: translateX(-60px);
+    }
+
+    & .Footer__logo__svg2 {
+      transform: translateX(50px);
+      opacity: 1;
+    }
+
+    & .Footer__link__icon {
+      animation: movingSquirrel 3s linear infinite;
+    }
   }
 
   &::before {
@@ -49,10 +66,24 @@
   &__logo {
     transform: scale(0.5);
     display: flex;
+
     justify-content: center;
     align-items: center;
     gap: 10px;
     margin-bottom: 5px;
+
+    &__svg1 {
+      position: absolute;
+
+      transition: all 0.3s ease-in-out;
+      margin-right: -20px;
+    }
+
+    &__svg2 {
+      transition: all 0.3s ease-in-out;
+      margin-left: -150px;
+      opacity: 0;
+    }
   }
 
   &__text {
@@ -63,6 +94,11 @@
   &__link {
     margin-left: 10px;
     font-weight: 600;
+
+    &__icon {
+      display: inline-block;
+      transition: all 0.3s ease-in-out;
+    }
 
     &:hover {
       cursor: pointer;
@@ -112,5 +148,27 @@
     @media (max-width: 768px) {
       display: block;
     }
+  }
+}
+
+@keyframes movingSquirrel {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  6% {
+    transform: rotate(-40deg);
+  }
+
+  18% {
+    transform: rotate(40deg);
+  }
+
+  25% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }

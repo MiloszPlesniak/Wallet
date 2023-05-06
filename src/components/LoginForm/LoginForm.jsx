@@ -51,8 +51,10 @@ const LoginForm = () => {
 
       <Buttons
         firstButtonText="Log in"
+        firstButtonPath="login"
         firstButtonHandler={() => console.log('Log in')}
         secondButtonText="Register"
+        secondButtonPath="registration"
         secondButtonHandler={() => console.log('Register')}
       />
     </form>

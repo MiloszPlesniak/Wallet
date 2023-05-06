@@ -89,10 +89,12 @@ const RegistrationForm = () => {
 
       <Buttons
         firstButtonText="Register"
-        firstButtonHandler={() => console.log('Register')}
+        firstButtonPath="registration"
+        firstButtonHandler={() => console.log('register')}
         secondButtonText="Log in"
-        secondButtonHandler={() => console.log('Log in')}
-      />
+        secondButtonPath="login"
+        secondButtonHandler={() => console.log('login')}
+      ></Buttons>
     </form>
   );
 };

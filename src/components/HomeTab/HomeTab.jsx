@@ -1,7 +1,16 @@
 const HomeTab = () => {
-    return <>
-    :P
+  return (
+    <>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <p>tu bedzie piekna tabelka do wykresu :)</p>
+      </div>
     </>
-}
+  );
+};
 
-export default HomeTab
+export default HomeTab;

@@ -1,25 +1,78 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+//import { useEffect, lazy, Suspense } from 'react';
+//import { useDispatch } from 'react-redux';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage/LoginPage';
+import Statistics from '../components/Statistics/Statistics';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
-import HomeTab from './HomeTab/HomeTab';
-import Table from './Table/Table';
-import DashboardPage from './DashboardPage/DashboardPage';
+import PrivateRoute from 'pages/PrivateRoute.js';
+import RestrictedRoute from 'pages/RestrictedRoute.js';
+import { useAuth } from 'hooks/useAuth.js';
+//import { refreshUser } from 'redux/auth/operations';
+import TableDashboard from './TableDashboard/TableDashboard';
+import DashboardPage from '../pages/DashboardPage/DashboardPage';
 import 'index.css';
 
-
-
-
 export const App = () => {
-  return (
+  const { isRefreshing } = useAuth();
+  //const dispatch = useDispatch();
+
+  /*useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);*/
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <div className="container">
       <Routes>
         <Route path="/" element={<DashboardPage />}>
-          <Route path="home" element={<Table />} />
-          <Route paht="statistics" element={<HomeTab />} />
+          <Route
+            index
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<TableDashboard />}
+              />
+            }
+          />
+
+          <Route
+            path="home"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<TableDashboard />}
+              />
+            }
+          />
+
+          <Route
+            path="statistics"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Statistics />} />
+            }
+          />
         </Route>
-        <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage/>} />
+
+        <Route
+          path="/registration"
+          element={
+            <RestrictedRoute
+              redirectTo="/home"
+              component={<RegistrationPage />}
+            />
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
+          }
+        />
+
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

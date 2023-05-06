@@ -1,0 +1,8 @@
+.Dashboard {
+  &__gridColumn {
+    padding: 40px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}

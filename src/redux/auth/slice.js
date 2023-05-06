@@ -5,9 +5,9 @@ import { registerUser, loginUser, logOutUser, refreshUser } from './thunk';
 const initialState = {
   user: { name: null, email: null },
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isRefreshing: false,
-  error: null,
+  error: {},
 };
 
 export const authSlice = createSlice({

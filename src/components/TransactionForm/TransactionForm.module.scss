@@ -23,9 +23,17 @@
     background-image: url(../../images/svg/Vectorcalendar.svg);
     background-repeat: no-repeat;
     background-position: 100% 15%;
+
+    &:hover {
+      cursor: pointer;
+      border-bottom: 2px solid black;
+    }
+
+    &:focus {
+      border-bottom: 2px solid #24cca7;
+    }
   }
   &__amount {
-    text-align: center;
     width: 18.1vw;
     max-width: 181px;
   }
@@ -53,10 +61,14 @@
     &__dateTime {
       max-width: none;
       width: 100%;
-      margin: 40px 0px 40px 0px;
+      margin: 40px 0px 0px 0px;
       background-position: 95%;
-      
     }
+
+    &__comment {
+      margin-top: 40px !important;
+    }
+
     &__amount {
       max-width: none;
       width: 30.8vw;

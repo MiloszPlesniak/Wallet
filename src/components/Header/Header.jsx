@@ -18,18 +18,32 @@ const Header = () => {
       {matches => (
         <div className={styles.Header}>
           <Logo />
-          <div className={styles.Header__logOut}>
-            <span className={styles.Header__logOutUserName}>Name</span>
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{ color: '#bdbdbd' }}
-            />
-            <ListItemButton className={styles.Header__logOutButton}>
-              <ExitIcon className={styles.Header__logOutButtonIcon} />
-              <span className={styles.Header__logOutButtonText}>Exit</span>
-            </ListItemButton>
-          </div>
+          {matches.mobile && (
+            <div className={styles.Header__logOut}>
+              <ListItemButton
+                sx={{ px: 0 }}
+                className={styles.Header__logOutButton}
+              >
+                <span className={styles.Header__logOutUserName}>Name</span>
+                <ExitIcon className={styles.Header__logOutButtonIcon} />
+              </ListItemButton>
+            </div>
+          )}
+          {(matches.desktop || matches.tablet) && (
+            <div className={styles.Header__logOut}>
+              <span className={styles.Header__logOutUserName}>Name</span>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ color: '#bdbdbd' }}
+              />
+
+              <ListItemButton className={styles.Header__logOutButton}>
+                <ExitIcon className={styles.Header__logOutButtonIcon} />
+                <span className={styles.Header__logOutButtonText}>Exit</span>
+              </ListItemButton>
+            </div>
+          )}
         </div>
       )}
     </Media>

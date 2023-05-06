@@ -1,32 +1,24 @@
 import React from 'react';
-import styles from './Table.module.scss';
-import TableRow from './TableRow/TableRow';
+import Media from 'react-media';
 
-export default function TransactionsTable({ data }) {
+import TableMobile from './TableMobile/TableMobile';
+import TableDesktop from './TableDesktop/TableDesktop';
+
+export default function TransactionsTable() {
   return (
-    <div className={styles.container}>
-      <div className={styles.Table__container}>
-        <div className={styles.Table__headerBackground}></div>
-        <table className={styles.Table}>
-          <thead className={styles.Table__headContainer}>
-            <tr>
-              <th>date</th>
-              <th>type</th>
-              <th>category</th>
-              <th>comment</th>
-              <th data-type="sum">sum</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {data.map((data, index) => (
-              <TableRow data={data} key={index + 1} />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <Media
+      queries={{
+        mobile: '(max-width: 767px)',
+        tablet: '(min-width: 768px) and (max-width: 1279px)',
+        desktop: '(min-width: 1280px)',
+      }}
+    >
+      {matches => (
+        <>
+          {matches.mobile && <TableMobile />}
+          {(matches.desktop || matches.tablet) && <TableDesktop />}
+        </>
+      )}
+    </Media>
   );
 }

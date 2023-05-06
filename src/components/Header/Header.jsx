@@ -14,6 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
+
     <>
       <Media
         queries={{
@@ -25,6 +26,7 @@ const Header = () => {
         {matches => (
           <div className={styles.Header}>
             <Logo />
+
             <div className={styles.Header__logOut}>
               <span className={styles.Header__logOutUserName}>Name</span>
               <Divider
@@ -32,6 +34,7 @@ const Header = () => {
                 flexItem
                 sx={{ color: '#bdbdbd' }}
               />
+
               <ListItemButton
                 className={styles.Header__logOutButton}
                 onClick={() => dispatch(changeIsModalLogoutOpen())}
@@ -53,6 +56,7 @@ const Header = () => {
         handleModalClose={() => dispatch(changeIsModalLogoutOpen())}
       />
     </>
+
   );
 };
 

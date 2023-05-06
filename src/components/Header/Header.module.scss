@@ -19,8 +19,6 @@
   &__logOutUserName {
     color: #bdbdbd;
     padding-top: 4px;
-    padding-right: 12px;
-    padding-left: 12px;
     font-family: 'Circe';
     font-weight: 400;
     font-size: 18px;
@@ -37,8 +35,6 @@
     gap: 8px;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: 12px;
-    padding-right: 12px;
     color: #bdbdbd;
   }
 
@@ -54,6 +50,19 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
+  .Header {
+    &__logOutUserName {
+      color: #bdbdbd;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-left: 12px;
+      font-family: 'Circe';
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.5em;
+      text-align: right;
+    }
+  }
 }
 
 @media screen and (min-width: 1280px) {

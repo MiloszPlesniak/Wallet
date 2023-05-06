@@ -2,10 +2,9 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from './EditIcon/EditIcon';
+import EditIcon from '../../EditIcon/EditIcon';
 import { styled } from '@mui/material/styles';
-import styles from './TableRow.module.scss';
-import { Icon } from '@mui/material';
+import styles from './TableDesktopRow.module.scss';
 
 const DeleteButton = styled(Button)(({ theme }) => ({
   margin: 0,
@@ -19,7 +18,7 @@ const DeleteButton = styled(Button)(({ theme }) => ({
   padding: '4px 12px',
 }));
 
-export default function TableBodyRow({ data }) {
+export default function TableDesktopRow({ data }) {
   const dynamicCss = data.type === '-' ? styles.expense : styles.income;
 
   return (

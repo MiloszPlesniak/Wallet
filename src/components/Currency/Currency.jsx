@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import getSymbolFromCurrency from 'currency-symbol-map';
 import CircularProgress from '@mui/material/CircularProgress';
 import styles from './Currency.module.scss';
 
@@ -43,8 +42,9 @@ const Currency = () => {
           <thead>
             <tr>
               <th>Currency</th>
-              <th>Purchase</th>
-              <th>Sale</th>
+              <th data-type="bid">Purchase</th>
+              <th data-type="ask">Sale</th>
+              <th></th>
             </tr>
           </thead>
 
@@ -58,15 +58,9 @@ const Currency = () => {
                   )
                 }
               >
-                <td>
-                  {currency.code}
-                  {getSymbolFromCurrency(currency.code) !== undefined &&
-                    getSymbolFromCurrency(currency.code) !== currency.code && (
-                      <span className={styles.Currency__symbol}></span>
-                    )}
-                </td>
-                <td>{currency.bid.toFixed(4)}</td>
-                <td>{currency.ask.toFixed(4)}</td>
+                <td>{currency.code}</td>
+                <td data-type="bid">{currency.bid.toFixed(4)}</td>
+                <td data-type="ask">{currency.ask.toFixed(4)}</td>
               </tr>
             ))}
           </tbody>

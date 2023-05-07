@@ -1,0 +1,41 @@
+.Chart{
+    width: 288px;
+    height: 288px;
+    margin: 0 auto;
+    padding-bottom: 32px;
+
+    @media screen and (min-width: 768px) {
+        width: 336px;
+        height: 336px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 280px;
+        height: 280px; 
+    }
+}
+
+.Statistics{
+
+    &__container{
+        display: block;
+
+        @media screen and (min-width: 768px) {
+            display: flex;
+        }
+    }
+
+    &__title{
+        font-family: Poppins;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 45px;
+        letter-spacing: 0em;
+        padding-bottom: 8px;
+    }
+}
+
+.DiagramTab{
+    display: flex;
+    justify-content: center;
+}

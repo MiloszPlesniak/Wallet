@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet';
 import Chart from 'components/Chart/Chart';
-import HomeTab from 'components/HomeTab/HomeTab';
+import DiagramTab from 'components/DiagramTab/DiagramTab';
+
+import style from "./Statistics.module.scss"
 
 const Statistics = () => {
   return (
@@ -8,8 +10,18 @@ const Statistics = () => {
       <Helmet title="Statistics">
         <meta name="description" content="Statistics" />
       </Helmet>
-      <Chart />
-      <HomeTab />
+      
+            <h2 className={style.Statistics__title}>Statistics</h2>
+
+          <div className={style.Statistics__container}>
+                <div className={style.Chart}>
+                <Chart/>
+                </div>
+                <div className={style.DiagramTab}>
+                  <DiagramTab />
+                </div>
+        </div>
+     
     </>
   );
 };

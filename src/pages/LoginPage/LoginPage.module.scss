@@ -1,7 +1,6 @@
 .LoginPage {
   display: flex;
   width: 100%;
-  background-color: #e7eaf2;
   &__leftSide {
     display: flex;
     align-items: center;
@@ -9,7 +8,7 @@
   }
   &__rightSide {
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: center;
     @media screen and (max-width: 767px) {
       width: 100%;
@@ -22,6 +21,7 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 45px;
+    font-family: 'Poppins';
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -38,7 +38,6 @@
       flex-direction: row;
       align-items: center;
       padding-left: 114px;
-      background-color: #e5e5e5;
       background-image: url(/images/tablet/pink-ellipse-tablet.png);
       background-position: right top;
       background-size: 383px 368px;
@@ -59,64 +58,58 @@
 
     &__title {
       margin-left: 40px;
-      //margin-right: 161px;
     }
   }
 
   @media screen and (min-width: 1280px) {
-    flex-direction: row;
-    width: 100%;
+    max-width: 1280px;
+    height: 720px;
 
-    &::before {
-      content: '';
+    &__pinkEllipse {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, #c5baff 0%, #ffd8d0 100%);
-      filter: blur(10px);
-      z-index: -1;
-      opacity: 0.4;
+      right: 0px;
+      top: 0px;
+      z-index: -2;
+      filter: blur(50px);
     }
-  }
+    &__pinkEllipseImg {
+      width: auto;
+    }
 
-  &__leftSide {
-    flex-direction: column;
-    justify-content: center;
-    width: 43%;
-    flex: float;
-    background-color: #e7eaf2;
-    background-image: url(/images/purple-ellipse.png);
-    background-position: left bottom;
-  }
-  &__rightSide {
-    padding-right: 91px;
-    padding-left: 107px;
-    padding-bottom: 116px;
-    padding-top: 136px;
-    width: 57%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: float;
-    background-color: rgba(255, 255, 255, 0.4);
-    background-image: url(/images/desktop/registration-page-right-background.png);
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-size: cover;
-  }
+    &__leftSide {
+      flex-direction: column;
+      justify-content: center;
+      width: 43%;
+      flex: float;
+      background-image: url(/images/purple-ellipse.png);
+      background-position: left bottom;
+    }
 
-  &__img {
-    width: 435px;
-    height: 420px;
-    margin-top: 171px;
-    margin-bottom: 28px;
-    margin-left: 76px;
-    margin-right: 38px;
-  }
+    &__rightSide {
+      padding-right: 91px;
+      padding-left: 107px;
+      padding-bottom: 116px;
+      padding-top: 136px;
+      width: 57%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: float;
+      background-repeat: no-repeat;
+      background-position: left bottom;
+    }
 
-  &__title {
-    padding-bottom: 78px;
+    &__img {
+      width: 435px;
+      height: 420px;
+      margin-top: 171px;
+      margin-bottom: 28px;
+      margin-left: 76px;
+      margin-right: 38px;
+    }
+
+    &__title {
+      margin-bottom: 78px;
+    }
   }
 }

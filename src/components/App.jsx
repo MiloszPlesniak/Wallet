@@ -30,7 +30,7 @@ export const App = () => {
           index
           element={<PrivateRoute redirectTo="/login" component={<Table />} />}
         />
-
+        
         <Route
           path="home"
           element={<PrivateRoute redirectTo="/login" component={<Table />} />}
@@ -60,7 +60,6 @@ export const App = () => {
           <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
         }
       />
-
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

@@ -15,7 +15,7 @@ const LoginPage = () => {
   // };
 
   return (
-    <div className={styles.LoginPage}>
+    <>
       <Helmet title="Login">
         <meta name="description" content="Login" />
       </Helmet>
@@ -70,7 +70,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ const RegistrationPage = () => {
   // };
 
   return (
-    <div className={styles.RegistrationPage}>
+    <>
       <Helmet title="Registration">
         <meta name="description" content="Registration" />
       </Helmet>
@@ -40,6 +40,7 @@ const RegistrationPage = () => {
               </>
             )}
           />
+
           <Media
             query="(min-width:1280px)"
             render={() => (
@@ -75,7 +76,7 @@ const RegistrationPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

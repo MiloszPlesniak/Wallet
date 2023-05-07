@@ -24,7 +24,8 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <div className="container">
+    //<div className="container">
+    <>
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route
@@ -74,6 +75,7 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </div>
+    </>
+    //</div>
   );
 };

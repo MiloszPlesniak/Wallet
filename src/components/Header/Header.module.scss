@@ -1,4 +1,7 @@
+@import '../../styles/container.scss';
+
 .Header {
+  @extend .container;
   position: relative;
   z-index: 10;
   display: flex;
@@ -7,7 +10,10 @@
   align-items: center;
   padding: 15px 20px;
   height: 60px;
-  background-color: #fff;
+
+  &__container {
+    background-color: #fff;
+  }
 
   &__logOut {
     display: flex;
@@ -75,7 +81,6 @@
     align-items: center;
     padding: 20px 16px;
     height: 80px;
-    background-color: #fff;
 
     &__logOut {
       display: flex;

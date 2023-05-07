@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import styles from '../DashboardPage.module.scss';
+import styles from '../DashboardTabletDesktop/DashboardTabletDesktop.module.scss';
 import Media from 'react-media';
 import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
@@ -25,33 +25,31 @@ export default function DashboardTabletDesktop() {
       }}
     >
       {matches => (
-        <div className={styles.Dashboard__container}>
-          <div>
-            <div className={styles.Dashboard__backgroundElipse1} />
-            <div className={styles.Dashboard__backgroundElipse2} />
-          </div>
-          <div className={styles.Dashboard__main}>
-            <div className={styles.Dashboard__balanceCurrency}>
-              <div className={styles.Dashboard__navBalance}>
-                <div className={styles.Dashboard__navContainer}>
-                  <Navigation />
+        <div className={styles.Dashboard__bg}>
+          <div className={styles.Dashboard__bgBlur} />
+          <div className={styles.Dashboard__container}>
+            <div className={styles.Dashboard__main}>
+              <div className={styles.Dashboard__balanceCurrency}>
+                <div className={styles.Dashboard__navBalance}>
+                  <div className={styles.Dashboard__navContainer}>
+                    <Navigation />
+                  </div>
+                  <div className={styles.Dashboard__balanceContainer}>
+                    <Balance />
+                  </div>
                 </div>
-                <div className={styles.Dashboard__balanceContainer}>
-                  <Balance />
+                <div className={styles.Dashboard__currencyContainer}>
+                  <Currency />
                 </div>
               </div>
-              <div className={styles.Dashboard__currencyContainer}>
-                <Currency />
+              {matches.desktop && (
+                <DashboardDivider orientation="vertical" flexItem />
+              )}
+              <div className={styles.Dashboard__contentContainer}>
+                <Suspense fallback={<p>loading...</p>}>
+                  <Outlet />
+                </Suspense>
               </div>
-            </div>
-            {matches.desktop && (
-              <DashboardDivider orientation="vertical" flexItem />
-            )}
-            <div className={styles.Dashboard__contentContainer}>
-              <Suspense fallback={<p>loading...</p>}>
-                <Outlet />
-              </Suspense>
-              {/* <Table data={data} /> */}
             </div>
           </div>
         </div>

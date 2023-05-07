@@ -1,0 +1,122 @@
+.DiagramTab{
+
+    &__titleBackground{
+        background-color: #FFFFFF;
+        border-radius: 30px;
+        width: 280px;
+        height: 58px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 135px;
+
+        @media screen and (min-width: 768px) {
+            width: 336px;
+            gap:191px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            width: 395px;
+            gap:250px;  
+        }
+
+    }
+
+    &__item{
+        list-style: none;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 280px;
+        height: 54px;
+        border-bottom: 1px solid #DCDCDF;
+        box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+
+
+        @media screen and (min-width: 768px) {
+            width: 336px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            width: 395px;
+        }
+    }
+
+    &__itemCategory{
+        display:flex;
+        justify-content: left;
+        gap: 16px;
+    }
+
+    &__title{
+        font-family: Circe;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0em;
+        list-style: none;
+    }
+
+    &__text{
+        font-family: Circe;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+    }
+
+    &__number{
+        font-family: Circe;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        justify-content: right;
+    }
+
+    &__itemStat{
+        list-style: none;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 280px;
+        height: 54px;
+        
+        @media screen and (min-width: 768px) {
+            width: 336px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            width: 395px;
+        }
+    }
+
+    &__numberRed{
+        font-family: Circe;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0em;
+        color: #FF6596;
+    }
+
+    &__numberGreen{
+        font-family: Circe;
+        font-size: 16px;
+        font-weight:700;
+        line-height: 24px;
+        letter-spacing: 0em;
+        color: #24CCA7;
+    }
+
+    &__color{
+        width: 24px;
+        height: 24px;
+        border-radius: 2px;
+        display: flex;
+    }
+}

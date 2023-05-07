@@ -19,54 +19,55 @@ const LoginPage = () => {
       <Helmet title="Login">
         <meta name="description" content="Login" />
       </Helmet>
-    <div className="container_for_reg_and_log_page">
-      <div className={styles.LoginPage}>
-        <Media
-          query="(min-width:768px)and (max-width:1279px)"
-          render={() => (
-            <div className={styles.LoginPage__leftSide}>
-              <div className={styles.LoginPage__pictureBox}>
-                <img
-                  className={styles.LoginPage__img}
-                  src={loginImg}
-                  alt="cellphone and a boy"
-                  width="435px"
-                  height="420px"
-                />
-              </div>
-              <h1 className={styles.LoginPage__title}>Finance App</h1>
-            </div>
-          )}
-        />
-        <Media
-          query="(min-width:1280px)"
-          render={() => (
-            <>
-              <div className={styles.LoginPage__pinkEllipse}>
-                <img
-                  className={styles.LoginPage__pinkEllipseImg}
-                  src={ellipse2}
-                  alt="pink ellipse"
-                />
-              </div>
-
+      <div className="container_for_reg_and_log_page">
+        <div className={styles.LoginPage}>
+          <Media
+            query="(min-width:768px)and (max-width:1279px)"
+            render={() => (
               <div className={styles.LoginPage__leftSide}>
-                <img
-                  className={styles.LoginPage__img}
-                  src={loginImg}
-                  alt="cellphone and a girl"
-                  width="452px"
-                  height="413px"
-                />
-
+                <div className={styles.LoginPage__pictureBox}>
+                  <img
+                    className={styles.LoginPage__img}
+                    src={loginImg}
+                    alt="cellphone and a boy"
+                    width="435px"
+                    height="420px"
+                  />
+                </div>
                 <h1 className={styles.LoginPage__title}>Finance App</h1>
               </div>
-            </>
-          )}
-        />
+            )}
+          />
+          <Media
+            query="(min-width:1280px)"
+            render={() => (
+              <>
+                <div className={styles.LoginPage__pinkEllipse}>
+                  <img
+                    className={styles.LoginPage__pinkEllipseImg}
+                    src={ellipse2}
+                    alt="pink ellipse"
+                  />
+                </div>
 
-        <div className={styles.LoginPage__rightSide}>
-          <LoginForm className={styles.LoginPage__loginForm} />
+                <div className={styles.LoginPage__leftSide}>
+                  <img
+                    className={styles.LoginPage__img}
+                    src={loginImg}
+                    alt="cellphone and a girl"
+                    width="452px"
+                    height="413px"
+                  />
+
+                  <h1 className={styles.LoginPage__title}>Finance App</h1>
+                </div>
+              </>
+            )}
+          />
+
+          <div className={styles.LoginPage__rightSide}>
+            <LoginForm className={styles.LoginPage__loginForm} />
+          </div>
         </div>
       </div>
     </div>

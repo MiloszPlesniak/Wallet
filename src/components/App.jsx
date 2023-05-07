@@ -25,46 +25,47 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <div className="container">
+    <div>
       <Helmet titleTemplate="%s - Wallet" defaultTitle="Wallet">
         <meta name="description" content="Wallet" />
       </Helmet>
-    <Routes>
-      <Route path="/" element={<DashboardPage />}>
-        <Route
-          index
-          element={<PrivateRoute redirectTo="/login" component={<Table />} />}
-        />
-        
-        <Route
-          path="home"
-          element={<PrivateRoute redirectTo="/login" component={<Table />} />}
-        />
+      <Routes>
+        <Route path="/" element={<DashboardPage />}>
+          <Route
+            index
+            element={<PrivateRoute redirectTo="/login" component={<Table />} />}
+          />
+
+          <Route
+            path="home"
+            element={<PrivateRoute redirectTo="/login" component={<Table />} />}
+          />
+
+          <Route
+            path="statistics"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Statistics />} />
+            }
+          />
+        </Route>
 
         <Route
-          path="statistics"
+          path="/registration"
           element={
-            <PrivateRoute redirectTo="/login" component={<Statistics />} />
+            <RestrictedRoute
+              redirectTo="/home"
+              component={<RegistrationPage />}
+            />
           }
         />
-      </Route>
-
-      <Route
-        path="/registration"
-        element={
-          <RestrictedRoute
-            redirectTo="/home"
-            component={<RegistrationPage />}
-          />
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
-        }
-      />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </div>
   );
 };

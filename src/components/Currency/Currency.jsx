@@ -1,30 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCurrency } from '../../redux/currency/thunk';
+import { useSelector } from 'react-redux';
+import {
+  selectIsLoading,
+  selectIsError,
+  selectCurrency,
+  selectLastFetchDate,
+} from '../../redux/currency/selectors';
 import CircularProgress from '@mui/material/CircularProgress';
 import styles from './Currency.module.scss';
 
 const Currency = () => {
-  const [currency, setCurrency] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const getCurrency = async () => {
-    try {
-      const response = await axios.get(
-        'https://api.nbp.pl/api/exchangerates/tables/c'
-      );
-      setCurrency(response.data[0].rates);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const dispatch = useDispatch();
+  const currency = useSelector(selectCurrency);
+  const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectIsError);
+  const lastFetchDate = useSelector(selectLastFetchDate);
 
   useEffect(() => {
-    setIsLoading(true);
-    getCurrency();
-  }, []);
+    if (!currency.length) {
+      dispatch(fetchCurrency());
+    } else {
+      const timeDiff = Date.now() - lastFetchDate;
+      if (timeDiff > 3600000) {
+        dispatch(fetchCurrency());
+      }
+    }
+  }, [currency, dispatch, lastFetchDate]);
 
   return (
     <div className={styles.Currency__container}>
@@ -35,9 +38,8 @@ const Currency = () => {
         </div>
       )}
 
-      {error && <p>{error.message}</p>}
-
-      {!isLoading && !error && (
+      {isError && <p>{isError.message}</p>}
+      {!isLoading && !isError && (
         <table className={styles.Currency__table}>
           <thead>
             <tr>

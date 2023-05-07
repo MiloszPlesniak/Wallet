@@ -11,6 +11,22 @@ const data = [
   createData('07.01.19', '-', 'Car', 'Oil', 1000.0),
   createData('07.01.19', '-', 'Products', 'Vegetables for the week', 280.0),
   createData('07.01.19', '+', 'Income', 'Gift', 1000.0),
+  createData('04.01.19', '-', 'Other', 'Gift for your wife', 300.0),
+  createData('05.01.19', '+', 'Income', 'January bonus', 8000.0),
+  createData('04.01.19', '-', 'Other', 'Gift for your wife', 300.0),
+  createData('05.01.19', '+', 'Income', 'January bonus', 8000.0),
+  createData('07.01.19', '-', 'Car', 'Oil', 1000.0),
+  createData('07.01.19', '-', 'Products', 'Vegetables for the week', 280.0),
+  createData('07.01.19', '+', 'Income', 'Gift', 1000.0),
+  createData('04.01.19', '-', 'Other', 'Gift for your wife', 300.0),
+  createData('05.01.19', '+', 'Income', 'January bonus', 8000.0),
+  createData('04.01.19', '-', 'Other', 'Gift for your wife', 300.0),
+  createData('05.01.19', '+', 'Income', 'January bonus', 8000.0),
+  createData('07.01.19', '-', 'Car', 'Oil', 1000.0),
+  createData('07.01.19', '-', 'Products', 'Vegetables for the week', 280.0),
+  createData('07.01.19', '+', 'Income', 'Gift', 1000.0),
+  createData('04.01.19', '-', 'Other', 'Gift for your wife', 300.0),
+  createData('05.01.19', '+', 'Income', 'January bonus', 8000.0),
 ];
 
 export default function TransactionsTable() {
@@ -21,11 +37,12 @@ export default function TransactionsTable() {
         <table className={styles.Table}>
           <thead className={styles.Table__headContainer}>
             <tr>
-              <th>date</th>
-              <th>type</th>
+              <th data-type="date">date</th>
+              <th data-type="type">type</th>
               <th>category</th>
-              <th>comment</th>
+              <th data-type="comment">comment</th>
               <th data-type="sum">sum</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>

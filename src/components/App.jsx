@@ -25,7 +25,7 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <div>
+    <>
       <Helmet titleTemplate="%s - Wallet" defaultTitle="Wallet">
         <meta name="description" content="Wallet" />
       </Helmet>
@@ -66,6 +66,6 @@ export const App = () => {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </div>
+    </>
   );
 };

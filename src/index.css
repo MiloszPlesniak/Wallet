@@ -34,19 +34,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(202, 189, 251);
-  background: linear-gradient(
-    62deg,
-    rgba(202, 189, 251, 1) 21%,
-    rgba(229, 229, 229, 1) 32%,
-    rgba(255, 255, 255, 1) 75%,
-    rgba(248, 220, 214, 1) 88%,
-    rgba(248, 220, 214, 1) 100%
-  );
-  backdrop-filter: blur(50px);
+}
 
-  @media screen and (max-width: 767) {
+@media screen and (max-width: 767px) {
+  .container_for_reg_and_log_page {
     padding-left: 20px;
     padding-right: 20px;
+    background: white;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container_for_reg_and_log_page {
+    background: linear-gradient(
+      62deg,
+      rgba(202, 189, 251, 1) 21%,
+      rgba(229, 229, 229, 1) 32%,
+      rgba(255, 255, 255, 1) 75%,
+      rgba(248, 220, 214, 1) 88%,
+      rgba(248, 220, 214, 1) 100%
+    );
+    backdrop-filter: blur(50px);
   }
 }

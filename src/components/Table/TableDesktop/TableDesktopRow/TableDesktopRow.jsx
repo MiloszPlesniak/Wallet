@@ -23,10 +23,10 @@ export default function TableDesktopRow({ data }) {
 
   return (
     <tr>
-      <td>{data.date}</td>
+      <td data-type="date">{data.date}</td>
       <td data-type="type">{data.type}</td>
       <td>{data.category}</td>
-      <td>{data.comment}</td>
+      <td data-type="comment">{data.comment}</td>
       <td data-type="sum" className={dynamicCss}>
         {data.sum}
       </td>

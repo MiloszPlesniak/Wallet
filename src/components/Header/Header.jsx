@@ -14,7 +14,6 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-
     <>
       <Media
         queries={{
@@ -24,28 +23,50 @@ const Header = () => {
         }}
       >
         {matches => (
-          <div className={styles.Header}>
-            <Logo />
+          <div className={styles.Header__container}>
+            <div className={styles.Header}>
+              <Logo />
 
-            <div className={styles.Header__logOut}>
-              <span className={styles.Header__logOutUserName}>Name</span>
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ color: '#bdbdbd' }}
-              />
+              {matches.mobile && (
+                <div className={styles.Header__logOut}>
+                  <ListItemButton
+                    className={styles.Header__logOutButton}
+                    onClick={() => dispatch(changeIsModalLogoutOpen())}
+                    sx={{ p: 0, m: 0 }}
+                  >
+                    <span className={styles.Header__logOutUserName}>Name</span>
+                    <LogoutIcon
+                      sx={{
+                        color: '#bdbdbd',
+                      }}
+                    />
+                  </ListItemButton>
+                </div>
+              )}
+              {(matches.desktop || matches.tablet) && (
+                <div className={styles.Header__logOut}>
+                  <span className={styles.Header__logOutUserName}>Name</span>
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    sx={{ color: '#bdbdbd' }}
+                  />
 
-              <ListItemButton
-                className={styles.Header__logOutButton}
-                onClick={() => dispatch(changeIsModalLogoutOpen())}
-              >
-                <LogoutIcon
-                  sx={{
-                    color: '#bdbdbd',
-                  }}
-                />
-                <span className={styles.Header__logOutButtonText}>Exit</span>
-              </ListItemButton>
+                  <ListItemButton
+                    className={styles.Header__logOutButton}
+                    onClick={() => dispatch(changeIsModalLogoutOpen())}
+                  >
+                    <LogoutIcon
+                      sx={{
+                        color: '#bdbdbd',
+                      }}
+                    />
+                    <span className={styles.Header__logOutButtonText}>
+                      Exit
+                    </span>
+                  </ListItemButton>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -56,7 +77,6 @@ const Header = () => {
         handleModalClose={() => dispatch(changeIsModalLogoutOpen())}
       />
     </>
-
   );
 };
 

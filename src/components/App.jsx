@@ -10,7 +10,7 @@ import PrivateRoute from 'pages/PrivateRoute.js';
 import RestrictedRoute from 'pages/RestrictedRoute.js';
 import { useAuth } from 'hooks/useAuth.js';
 //import { refreshUser } from 'redux/auth/operations';
-import TableDashboard from './TableDashboard/TableDashboard';
+import Table from './Table/Table';
 import DashboardPage from '../pages/DashboardPage/DashboardPage';
 import 'index.css';
 
@@ -29,56 +29,42 @@ export const App = () => {
       <Helmet titleTemplate="%s - Wallet" defaultTitle="Wallet">
         <meta name="description" content="Wallet" />
       </Helmet>
-
-      <Routes>
-        <Route path="/" element={<DashboardPage />}>
-          <Route
-            index
-            element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<TableDashboard />}
-              />
-            }
-          />
-
-          <Route
-            path="home"
-            element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<TableDashboard />}
-              />
-            }
-          />
-
-          <Route
-            path="statistics"
-            element={
-              <PrivateRoute redirectTo="/login" component={<Statistics />} />
-            }
-          />
-        </Route>
-
+    <Routes>
+      <Route path="/" element={<DashboardPage />}>
         <Route
-          path="/registration"
-          element={
-            <RestrictedRoute
-              redirectTo="/home"
-              component={<RegistrationPage />}
-            />
-          }
+          index
+          element={<PrivateRoute redirectTo="/login" component={<Table />} />}
+        />
+        
+        <Route
+          path="home"
+          element={<PrivateRoute redirectTo="/login" component={<Table />} />}
         />
 
         <Route
-          path="/login"
+          path="statistics"
           element={
-            <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
+            <PrivateRoute redirectTo="/login" component={<Statistics />} />
           }
         />
+      </Route>
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </div>
+      <Route
+        path="/registration"
+        element={
+          <RestrictedRoute
+            redirectTo="/home"
+            component={<RegistrationPage />}
+          />
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
+        }
+      />
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 };

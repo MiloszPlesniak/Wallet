@@ -40,7 +40,7 @@ const DropdownCategories = () => {
               : 'Select a category'
           }
           sx={{
-            padding: '0 20px',
+            padding: '0 0 0 10px',
             color: '#BDBDBD',
             ...(category && {
               color: '#000000',
@@ -51,7 +51,7 @@ const DropdownCategories = () => {
             disableAutoFocusItem: true,
             PaperProps: {
               style: {
-                borderRadius: '20px',
+                borderRadius: 20,
                 backgroundColor: 'rgba(255, 255, 255, 0.7)',
                 backdropFilter: 'blur(25px)',
                 boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',

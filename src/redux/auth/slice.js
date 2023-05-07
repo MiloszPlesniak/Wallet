@@ -3,9 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 // import { Navigate } from 'react-router-dom';
 import { registerUser, loginUser, logOutUser, refreshUser } from './thunk';
 const initialState = {
-  token: '',
-  user: { name: '', email: '' },
-  isAuth: false,
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+  isRefreshing: false,
   error: {},
 };
 

@@ -2,11 +2,12 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from './EditIcon/EditIcon';
+import EditIcon from '../../EditIcon/EditIcon';
 import { styled } from '@mui/material/styles';
-import css from './TableRow.module.scss';
+import styles from './TableDesktopRow.module.scss';
 
 const DeleteButton = styled(Button)(({ theme }) => ({
+  margin: 0,
   fontFamily: 'Circe',
   fontWeight: 400,
   fontSize: '14px',
@@ -17,22 +18,22 @@ const DeleteButton = styled(Button)(({ theme }) => ({
   padding: '4px 12px',
 }));
 
-export default function TableBodyRow({ data }) {
-  const dynamicCss = data.type === '-' ? css.expense : css.income;
+export default function TableDesktopRow({ data }) {
+  const dynamicCss = data.type === '-' ? styles.expense : styles.income;
 
   return (
     <tr>
-      <td>{data.date}</td>
+      <td data-type="date">{data.date}</td>
       <td data-type="type">{data.type}</td>
       <td>{data.category}</td>
-      <td>{data.comment}</td>
+      <td data-type="comment">{data.comment}</td>
       <td data-type="sum" className={dynamicCss}>
         {data.sum}
       </td>
       <td data-type="edit">
-        <div className={css.stack}>
+        <div className={styles.stack}>
           <IconButton aria-label="edit">
-            <EditIcon />
+            <EditIcon className={styles.icon} />
           </IconButton>
           <DeleteButton disableElevation variant="contained">
             Delete

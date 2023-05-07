@@ -1,4 +1,7 @@
+@import '../../styles/container.scss';
+
 .Header {
+  @extend .container;
   position: relative;
   z-index: 10;
   display: flex;
@@ -7,7 +10,10 @@
   align-items: center;
   padding: 15px 20px;
   height: 60px;
-  background-color: #fff;
+
+  &__container {
+    background-color: #fff;
+  }
 
   &__logOut {
     display: flex;
@@ -19,8 +25,6 @@
   &__logOutUserName {
     color: #bdbdbd;
     padding-top: 4px;
-    padding-right: 12px;
-    padding-left: 12px;
     font-family: 'Circe';
     font-weight: 400;
     font-size: 18px;
@@ -37,8 +41,6 @@
     gap: 8px;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: 12px;
-    padding-right: 12px;
     color: #bdbdbd;
   }
 
@@ -51,16 +53,22 @@
     line-height: 18px;
     text-align: left;
   }
-
-  &__logOutButtonIcon {
-    display: flex;
-    align-content: center;
-    width: 18px;
-    height: 30px;
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
+  .Header {
+    &__logOutUserName {
+      color: #bdbdbd;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-left: 12px;
+      font-family: 'Circe';
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.5em;
+      text-align: right;
+    }
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -73,7 +81,6 @@
     align-items: center;
     padding: 20px 16px;
     height: 80px;
-    background-color: #fff;
 
     &__logOut {
       display: flex;
@@ -116,13 +123,6 @@
       font-size: 18px;
       line-height: 18px;
       text-align: left;
-    }
-
-    &__logOutButtonIcon {
-      display: flex;
-      align-content: center;
-      width: 18px;
-      height: 30px;
     }
   }
 }

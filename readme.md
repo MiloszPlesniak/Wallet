@@ -1,29 +1,70 @@
-# Wallet
 
-### General info
+![wallet](https://i.ibb.co/gDbNZ7k/logo.png)
 
-<p>Wallet is an application that helps you manage your budget</p>
 
-### Technologies
 
-<ul>
-<li>JavaScript</li>
-<li>React</li>
-<li>SASS</li>
-<li>npm</li>
-<li>Redux</li>
-<li>Rest API</li>
-</ul>
+Here is the Wallet application, which is the final project of the full stack developer course. You can set up your account here and monitor your expenses. When creating it, we used the latest tools to create modern applications. Try it yourself and let us know if you like it.
 
-## Development team:
-<ul>
-<li>[Bolek](https://github.com/BoloMasta) (ScrumMaster)</li>
-<li>[Urszula Molska](https://github.com/Urszula-Molska) (developer)</li>
-<li>[Miłosz Pleśniak](https://github.com/MiloszPlesniak) (TeamLider)</li>
-<li>[Angelika Gralewska](https://github.com/AngelikaGralewska) (developer)</li>
-<li>[Jacek Pietrzak](https://github.com/jacekpietrzak) (developer)</li>
-<li>[Karolina Zinczuk](https://github.com/KarolinaZinczuk) (developer)</li>
-</ul>
+You can find the backend for this app in this [REPO](https://github.com/MiloszPlesniak/Wallet-RestApi)
+## Authors
+
+- [Miłosz Pleśniak](https://github.com/MiloszPlesniak) (TeamLider)
+- [Bolek](https://github.com/BoloMasta) (Scrum Master & Developer)
+- [Urszula Molska](https://github.com/Urszula-Molska) (Developer)
+- [Angelika Gralewska](https://github.com/AngelikaGralewska) (Developer)
+- [Jacek Pietrzak](https://github.com/jacekpietrzak) (Developer)
+- [Karolina Zinczuk](https://github.com/KarolinaZinczuk) (Developer)
+
+
+## Tech Stack
+
+**Client:** React, Redux, Material UI, Chart.js, Yup, Formik, Sass, Axios
+
+**Server:** Node, Express, MongoDB, JWT, Joi, Morgan
+
+
+## Demo
 
 [LIVE](https://miloszplesniak.github.io/Wallet/)
+
+## Run Locally
+
+Clone the project with backend
+
+```bash
+  git clone https://github.com/MiloszPlesniak/Wallet-RestApi
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`MONGO_SECRET`
+
+`JWT_TOKEN`
+
+`EMAIL`
+
+`PASS`
+
+
 

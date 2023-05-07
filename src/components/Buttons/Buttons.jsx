@@ -28,3 +28,4 @@ const Buttons = props => {
 };
 
 export default Buttons;
+//onClick={props.firstButtonHandler}

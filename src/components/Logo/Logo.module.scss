@@ -1,32 +1,23 @@
-.Logo {
+.LogoContainer {
   display: flex;
   align-items: center;
-  gap: 16.56px;
-
-  &__title {
-    margin: 0;
-    font-family: 'Poppins';
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 45px;
+  height: 30px;
+  &__img {
+    width: 100%;
+    height: 30px;
+    object-fit: contain;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-}
-
-@media screen and (min-width: 1280px) {
-  .Logo {
+@media screen and (min-width: 768px) {
+  .LogoContainer {
     display: flex;
     align-items: center;
-    gap: 20px;
-
-    &__title {
-      margin: 0;
-      font-family: 'Poppins';
-      font-weight: 700;
-      font-size: 30px;
-      line-height: 45px;
+    height: 40px;
+    &__img {
+      width: 100%;
+      height: 40px;
+      object-fit: contain;
     }
   }
 }

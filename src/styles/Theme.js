@@ -72,6 +72,23 @@ let theme = createTheme({
         },
       },
     },
+
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Circe',
+          position: 'absolute',
+          right: '0',
+          top: '15%',
+          opacity: '0.8',
+          transition: 'opacity .3s ease-in-out',
+
+          '&:hover': {
+            opacity: '1',
+          },
+        },
+      },
+    },
   },
 });
 

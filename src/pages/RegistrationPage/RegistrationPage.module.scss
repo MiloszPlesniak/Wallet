@@ -1,6 +1,7 @@
 .RegistrationPage {
   display: flex;
   width: 100%;
+
   &__leftSide {
     display: flex;
     align-items: center;
@@ -21,6 +22,7 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 45px;
+    font-family: 'Poppins';
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -62,39 +64,61 @@
   }
 
   @media screen and (min-width: 1280px) {
-    flex-direction: row;
     height: 720px;
-    width: 100%;
     max-width: 1280px;
+
+    &__pinkEllipse {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      z-index: -2;
+      filter: blur(50px);
+    }
+
+    &__pinkEllipseImg {
+      width: auto;
+    }
+
     &__leftSide {
       flex-direction: column;
       justify-content: center;
       width: 43%;
       flex: float;
-      background-color: #e7eaf2;
       background-image: url(/images/purple-ellipse.png);
       background-position: left 0% bottom 0px;
-    }
-    &__rightSide {
-      width: 57%;
-      flex: float;
-      background-color: rgba(255, 255, 255, 0.4);
-      background-image: url(/images/desktop/registration-page-right-background.png);
-      background-repeat: no-repeat;
-      background-position: left bottom;
-      background-size: cover;
     }
 
     &__img {
       width: 452px;
       height: 413px;
+      margin-top: 153px;
+      margin-bottom: 32px;
+      margin-left: 66px;
+      margin-right: 31px;
     }
+
+    &__title {
+      padding-bottom: 78px;
+    }
+
+    &__rightSide {
+      width: 57%;
+      display: flex;
+      align-content: center;
+    }
+
+    &__containerForEllipse {
+      background-image: url(/images/Ellipse2.png);
+      background-repeat: no-repeat;
+      background-position: top 0px right 0px;
+      background-size: auto;
+      width: 552px;
+      height: 383px;
+    }
+
     &__registrationForm {
       width: 533px;
       height: 616px;
-    }
-    &__title {
-      padding-bottom: 78px;
     }
   }
 }

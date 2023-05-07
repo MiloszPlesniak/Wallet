@@ -1,12 +1,21 @@
 .container {
   width: 100%;
   padding: 0 20px;
+  overflow: hidden;
 }
 
 .Table {
-  // width: var(--tableWidth);
   position: relative;
+  width: 100%;
+  height: 100%;
   border-collapse: collapse;
+
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
 
   &__container {
     position: relative;
@@ -42,9 +51,29 @@
       font-weight: 700;
       line-height: 1.47em;
       text-transform: capitalize;
+
+      &:last-child {
+        width: var(--scrollbarWidth);
+        padding: 0;
+      }
+
       &:not(:first-child, :last-child) {
         padding: 14px;
       }
+    }
+
+    th[data-type='date'] {
+      text-align: center;
+      width: 65px;
+    }
+
+    th[data-type='type'] {
+      text-align: center;
+      width: 75px;
+    }
+
+    th[data-type='comment'] {
+      width: calc(100% / 4);
     }
 
     th[data-type='sum'] {
@@ -58,8 +87,11 @@
     }
     th:last-of-type {
       // text-align: right;
-      padding-left: 14px;
+      // padding-left: 14px;
       // padding-right: 20px;
+      // padding: 0;
+      // margin: 0;
+      // width: 7px;
     }
   }
 
@@ -69,16 +101,27 @@
     font-weight: 400;
     line-height: 1.5em;
     color: #000;
+    height: calc(100vh - 178px - 40px);
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
 
     display: table-row-group;
+    display: block;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      height: calc(100vh - 60px - 214px - 58px - 20px - 32px);
+    }
 
     tr {
-      box-shadow: 0px 1px rgba(255, 255, 255, 0.6);
+      &:not(:last-child) {
+        box-shadow: 0px 1px rgba(255, 255, 255, 0.6);
+        border-bottom: 1px solid #dcdcdf;
+      }
     }
 
     td {
+      // border: 1px solid black;
       height: 50px;
-      border-bottom: 1px solid #dcdcdf;
       text-align: start;
       text-transform: capitalize;
       display: table-cell;
@@ -88,24 +131,47 @@
       }
     }
 
-    td[data-type='sum'] {
-      text-align: right;
+    td[data-type='date'] {
+      text-align: center;
+      width: 65px;
     }
 
     td[data-type='type'] {
       text-align: center;
+      width: 75px;
+    }
+
+    td[data-type='comment'] {
+      width: calc(100% / 4);
+    }
+
+    td[data-type='sum'] {
+      text-align: right;
     }
 
     td:first-of-type {
       text-align: left;
       padding-right: 14px;
-      // padding-left: 20px;
     }
 
     td:last-of-type {
-      // text-align: right;
       padding-left: 14px;
-      // padding-right: 20px;
+      padding-right: 14px;
+    }
+
+    &::-webkit-scrollbar {
+      width: var(--scrollbarWidth);
+      height: var(--scrollbarWidth);
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 2.5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2.5px;
+      background-color: rgb(250, 159, 141);
     }
   }
 }

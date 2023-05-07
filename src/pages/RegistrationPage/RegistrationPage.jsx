@@ -1,4 +1,5 @@
 import Media from 'react-media';
+import { Helmet } from 'react-helmet';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 import styles from './RegistrationPage.module.scss';
 import registrationImg from 'images/desktop/registration-page-image.png';
@@ -14,6 +15,10 @@ const RegistrationPage = () => {
   // };
 
   return (
+    <div className={styles.RegistrationPage}>
+      <Helmet title="Registration">
+        <meta name="description" content="Registration" />
+      </Helmet>
     <div className="container_for_reg_and_log_page">
       <div className={styles.RegistrationPage}>
         <Media
@@ -28,7 +33,6 @@ const RegistrationPage = () => {
                   width="452px"
                   height="413px"
                 />
-
                 <h1 className={styles.RegistrationPage__title}>Finance App</h1>
               </div>
             </>
@@ -45,7 +49,6 @@ const RegistrationPage = () => {
                   alt="pink ellipse"
                 />
               </div>
-
               <div className={styles.RegistrationPage__leftSide}>
                 <img
                   className={styles.RegistrationPage__img}
@@ -72,12 +75,4 @@ const RegistrationPage = () => {
 };
 
 export default RegistrationPage;
-/*<div className={styles.RegistrationPage__pinkEllipse}>
-            <img
-              className={styles.RegistrationPage__pinkEllipseImg}
-              src={ellipse2}
-              alt="pink ellipse"
-              //width="552px"
-              //height="383px"
-            />*/
-//<div className={styles.RegistrationPage__pinkEllipse}>
+

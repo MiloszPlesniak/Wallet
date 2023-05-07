@@ -1,5 +1,6 @@
 import React from 'react';
 import Media from 'react-media';
+import { Helmet } from 'react-helmet';
 import Header from 'components/Header/Header';
 
 import styles from './DashboardPage.module.scss';
@@ -10,6 +11,10 @@ import DashboardTabletDesktop from './DashboardTabletDesktop/DashboardTabletDesk
 const DashboardPage = () => {
   return (
     <>
+      <Helmet title="Home">
+        <meta name="description" content="Home" />
+      </Helmet>
+
       <Media
         queries={{
           mobile: '(max-width: 767px)',
@@ -23,7 +28,6 @@ const DashboardPage = () => {
 
             {matches.mobile && <DashboardMobile />}
             {(matches.desktop || matches.tablet) && <DashboardTabletDesktop />}
-
           </div>
         )}
       </Media>

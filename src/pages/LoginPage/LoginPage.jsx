@@ -1,4 +1,5 @@
 import Media from 'react-media';
+import { Helmet } from 'react-helmet';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import styles from './LoginPage.module.scss';
 import loginImg from 'images/desktop/login-page-image.png';
@@ -13,6 +14,10 @@ const LoginPage = () => {
 
   return (
     <div className={styles.LoginPage}>
+      <Helmet title="Login">
+        <meta name="description" content="Login" />
+      </Helmet>
+
       <Media
         query="(min-width:768px)"
         render={() => (

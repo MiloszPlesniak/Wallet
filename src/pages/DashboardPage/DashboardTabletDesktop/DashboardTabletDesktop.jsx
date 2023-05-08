@@ -6,6 +6,7 @@ import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
 import Divider from '@mui/material/Divider';
 import Navigation from 'components/Navigation/Navigation';
+import { CircularProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const DashboardDivider = styled(Divider)(({ theme }) => ({
@@ -46,7 +47,19 @@ export default function DashboardTabletDesktop() {
                 <DashboardDivider orientation="vertical" flexItem />
               )}
               <div className={styles.Dashboard__contentContainer}>
-                <Suspense fallback={<p>loading...</p>}>
+                <Suspense
+                  fallback={
+                    <CircularProgress
+                      style={{
+                        position: 'fixed',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        zIndex: 2,
+                      }}
+                    />
+                  }
+                >
                   <Outlet />
                 </Suspense>
               </div>

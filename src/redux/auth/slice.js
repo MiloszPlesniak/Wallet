@@ -6,7 +6,7 @@ import { registerUser, loginUser, logOutUser, refreshUser } from './operations';
 const initialState = {
   user: { firstName: null, email: null },
   token: null,
-  isLoggedIn: false,
+  isLoggedIn: true,
   isRefreshing: false,
   error: {},
 };
@@ -45,17 +45,5 @@ export const authSlice = createSlice({
     },
   },
 });
-/*[registerUser.fulfilled](state, { payload }) {},
-    [registerUser.pending](state, { payload }) {},
-    [registerUser.rejected](state, { payload }) {},
-    [loginUser.fulfilled](state, { payload }) {},
-    [loginUser.pending](state, { payload }) {},
-    [loginUser.rejected](state, { payload }) {},
-    [logOutUser.fulfilled](state, { payload }) {},
-    [logOutUser.pending](state, { payload }) {},
-    [logOutUser.rejected](state, { payload }) {},
-    [refreshUser.fulfilled](state, { payload }) {},
-    [refreshUser.pending](state, { payload }) {},
-    [refreshUser.rejected](state, { payload }) {},*/
 
 export default authSlice.reducer;

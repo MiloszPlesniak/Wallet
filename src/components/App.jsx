@@ -3,6 +3,7 @@ import React from 'react';
 //import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import Statistics from '../components/Statistics/Statistics';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
@@ -29,6 +30,9 @@ export const App = () => {
       <Helmet titleTemplate="%s - Wallet" defaultTitle="Wallet">
         <meta name="description" content="Wallet" />
       </Helmet>
+
+      {sessionStorage.getItem('welcomeScreenShown') ? null : <WelcomeScreen />}
+
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route

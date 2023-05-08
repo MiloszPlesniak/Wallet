@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import axios from 'axios';
-// import { Navigate } from 'react-router-dom';
 import { registerUser, loginUser, logOutUser, refreshUser } from './operations';
 
 const initialState = {

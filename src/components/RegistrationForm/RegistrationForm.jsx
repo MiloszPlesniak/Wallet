@@ -33,7 +33,7 @@ const RegistrationForm = props => {
       password: '',
       firstName: '',
     },
-
+    validationSchema: RegistrationSchema,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
       /*dispatch(

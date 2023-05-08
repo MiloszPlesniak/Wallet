@@ -31,7 +31,11 @@ const TransactionForm = ({
           onBlur={handleBlur}
           error={touched.amount && Boolean(errors.amount)}
           helperText={touched.amount ? errors.amount : ' '}
-
+          FormHelperTextProps={{
+            style: {
+              top: '100%',
+            },
+          }}
         />
         <Datetime
           timeFormat={false}

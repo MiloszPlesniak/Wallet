@@ -32,6 +32,7 @@ const RegistrationForm = props => {
       email: '',
       password: '',
       firstName: '',
+      confirmPassword: '',
     },
     validationSchema: RegistrationSchema,
     onSubmit: values => {
@@ -108,10 +109,11 @@ const RegistrationForm = props => {
           onChange={formik.handleChange}
           onBlur={handleBlur}
           helperText={
-            formik.confirmPassword ? formik.errors.confirmPassword : ''
+            formik.touched.confirmPassword ? formik.errors.confirmPassword : ''
           }
           error={
-            formik.confirmPassword && Boolean(formik.errors.confirmPassword)
+            formik.touched.confirmPassword &&
+            Boolean(formik.errors.confirmPassword)
           }
           sx={{ marginBottom: '2px' }}
           InputProps={{

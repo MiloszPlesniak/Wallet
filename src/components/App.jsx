@@ -31,7 +31,7 @@ export const App = () => {
         <meta name="description" content="Wallet" />
       </Helmet>
 
-      <WelcomeScreen />
+      {sessionStorage.getItem('welcomeScreenShown') ? null : <WelcomeScreen />}
 
       <Routes>
         <Route path="/" element={<DashboardPage />}>

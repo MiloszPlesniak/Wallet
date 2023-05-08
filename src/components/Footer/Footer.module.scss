@@ -109,6 +109,11 @@
     margin: 30px auto;
     text-align: justify;
     font-family: 'Circe';
+    line-height: normal;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
   }
 
   &__modalTeamList {

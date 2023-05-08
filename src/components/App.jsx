@@ -1,6 +1,6 @@
 import React from 'react';
-//import { useEffect, lazy, Suspense } from 'react';
-//import { useDispatch } from 'react-redux';
+import { useEffect, lazy, Suspense } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
@@ -10,18 +10,18 @@ import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import PrivateRoute from 'pages/PrivateRoute.js';
 import RestrictedRoute from 'pages/RestrictedRoute.js';
 import { useAuth } from 'hooks/useAuth.js';
-//import { refreshUser } from 'redux/auth/operations';
+import { refreshUser } from 'redux/auth/operations';
 import Table from './Table/Table';
 import DashboardPage from '../pages/DashboardPage/DashboardPage';
 import 'index.css';
 
 export const App = () => {
   const { isRefreshing } = useAuth();
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  /*useEffect(() => {
+  useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);*/
+  }, [dispatch]);
 
   return isRefreshing ? (
     <b>Refreshing user...</b>

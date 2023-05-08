@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+/*import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // import { Navigate } from 'react-router-dom';
@@ -10,4 +10,4 @@ export const logOutUser = createAsyncThunk('auth/logout', async token => {});
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkApi) => {}
-);
+);*/

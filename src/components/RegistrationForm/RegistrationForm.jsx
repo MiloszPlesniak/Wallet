@@ -14,7 +14,8 @@ import Logo from 'components/Logo/Logo';
 import Buttons from 'components/Buttons/Buttons';
 import styles from './RegistrationForm.module.scss';
 import RegistrationSchema from 'validations/RegistrationSchema';
-import { withFormik } from 'formik';
+//import { withFormik } from 'formik';
+import { useFormik } from 'formik';
 
 const RegistrationForm = props => {
   const dispatch = useDispatch();
@@ -23,9 +24,22 @@ const RegistrationForm = props => {
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
     props;
 
-  const handleRegistration = e => {
-    e.preventDefault();
-    const { email, password, firstName } = e.target.elements;
+  /*const handleRegistration = event => {
+    //console.log(event);
+    event.preventDefault();*/
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      firstName: '',
+    },
+
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  /*const { email, password, firstName } = event.target.elements;
     dispatch(
       registerUser({
         email: email.value,
@@ -33,10 +47,13 @@ const RegistrationForm = props => {
         firstName: firstName.value,
       })
     );
-  };
+  };*/
 
   return (
-    <form className={styles.RegistrationForm} onSubmit={handleSubmit}>
+    <form
+      className={styles.RegistrationForm}
+      onSubmit={/*handleSubmit*/ formik.handleSubmit}
+    >
       <Logo />
 
       {error.message && <Alert severity="error">{error.message}</Alert>}
@@ -46,8 +63,8 @@ const RegistrationForm = props => {
           name="email"
           type="email"
           placeholder="Email"
-          value={values.email}
-          onChange={handleChange}
+          value={formik.values.email}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
           helperText={touched.email ? errors.email : ' '}
           error={touched.email && Boolean(errors.email)}
@@ -63,8 +80,8 @@ const RegistrationForm = props => {
           name="password"
           type="password"
           placeholder="Password"
-          value={values.password}
-          onChange={handleChange}
+          value={formik.values.password}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
           helperText={touched.password ? errors.password : ' '}
           error={touched.password && Boolean(errors.password)}
@@ -81,7 +98,7 @@ const RegistrationForm = props => {
           type="password"
           placeholder="Confirm password"
           value={values.confirmPassword}
-          onChange={handleChange}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
           helperText={touched.confirmPassword ? errors.confirmPassword : ''}
           error={touched.confirmPassword && Boolean(errors.confirmPassword)}
@@ -105,8 +122,8 @@ const RegistrationForm = props => {
         <TextField
           name="firstName"
           placeholder="First name"
-          value={values.firstName}
-          onChange={handleChange}
+          value={formik.values.firstName}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
           helperText={touched.firstName ? errors.firstName : ' '}
           error={touched.firstName && Boolean(errors.firstName)}
@@ -121,11 +138,11 @@ const RegistrationForm = props => {
       </div>
 
       <Buttons
+        firstButtonType="submit"
         firstButtonText="Register"
         secondButtonText="Log in"
         firstButtonHandler={() => {
           handleSubmit();
-          handleRegistration();
         }}
         secondButtonHandler={() => navigate('/login')}
       />
@@ -133,7 +150,7 @@ const RegistrationForm = props => {
   );
 };
 
-const FormikRegistrationForm = withFormik({
+/*const FormikRegistrationForm = withFormik({
   mapPropsToValues: () => ({
     email: '',
     password: '',
@@ -146,6 +163,6 @@ const FormikRegistrationForm = withFormik({
       setSubmitting(false);
     }, 1000);
   },
-})(RegistrationForm);
+})(RegistrationForm);*/
 
-export default FormikRegistrationForm;
+export default RegistrationForm;

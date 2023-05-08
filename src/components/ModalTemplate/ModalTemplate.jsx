@@ -13,7 +13,7 @@ const ModalTemplate = ({ children, open, onClose, title }) => {
     >
       <div className={styles.ModalTemplate__container}>
         <div className={styles.ModalTemplate__header}>
-          <h2 id="modal-template">{title}</h2>
+          <p id="modal-template">{title}</p>
           <IconButton
             className={styles.ModalTemplate__close}
             aria-label="close"

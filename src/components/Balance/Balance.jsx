@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Balance.module.scss';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 
 export default function Balance() {
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
 
   return (

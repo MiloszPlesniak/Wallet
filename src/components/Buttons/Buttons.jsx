@@ -1,11 +1,18 @@
 import Button from '@mui/material/Button';
 import styles from './Buttons.module.scss';
 
-const Buttons = props => {
+const Buttons = ({
+  firstButtonType = 'button',
+  secondButtonType = 'button',
+  //firstButtonHandler = () => null,
+  //secondButtonHandler = () => null,
+  ...props
+}) => {
   return (
     <div className={styles.Buttons}>
       <Button
         variant="contained"
+        type={firstButtonType}
         className={styles.Buttons__button}
         onClick={props.firstButtonHandler}
       >
@@ -13,6 +20,7 @@ const Buttons = props => {
       </Button>
       <Button
         variant="outlined"
+        type={secondButtonType}
         className={styles.Buttons__button}
         onClick={props.secondButtonHandler}
         color="secondary"

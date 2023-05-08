@@ -1,14 +1,15 @@
+import React from 'react';
 import { useEffect, lazy, Suspense } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useAuth } from 'hooks/useAuth.js';
-//import { refreshUser } from 'redux/auth/thunk';
 import { CircularProgress } from '@mui/material';
 import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
 import PrivateRoute from 'pages/PrivateRoute.js';
 import RestrictedRoute from 'pages/RestrictedRoute.js';
-
+import { refreshUser } from 'redux/auth/operations';
+//import Table from './Table/Table';
 import 'index.css';
 
 const DashboardPage = lazy(() =>
@@ -25,11 +26,11 @@ const StatisticsPage = lazy(() =>
 
 export const App = () => {
   const { isRefreshing } = useAuth();
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  /*useEffect(() => {
+  useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);*/
+  }, [dispatch]);
 
   return isRefreshing ? (
     <CircularProgress

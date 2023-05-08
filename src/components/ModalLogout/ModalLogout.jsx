@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { logOutUser } from 'redux/auth/thunk';
+import { logOutUser } from 'redux/auth/operations';
 import ModalTemplate from 'components/ModalTemplate/ModalTemplate';
 import Buttons from 'components/Buttons/Buttons';
 import styles from './ModalLogout.module.scss';

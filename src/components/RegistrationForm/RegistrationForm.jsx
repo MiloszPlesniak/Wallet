@@ -1,4 +1,3 @@
-//import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
@@ -14,19 +13,14 @@ import Logo from 'components/Logo/Logo';
 import Buttons from 'components/Buttons/Buttons';
 import styles from './RegistrationForm.module.scss';
 import RegistrationSchema from 'validations/RegistrationSchema';
-//import { withFormik } from 'formik';
 import { useFormik } from 'formik';
 
 const RegistrationForm = props => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const navigate = useNavigate();
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    props;
+  const { handleBlur } = props;
 
-  /*const handleRegistration = event => {
-    //console.log(event);
-    event.preventDefault();*/
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -42,27 +36,14 @@ const RegistrationForm = props => {
         registerUser({
           email: formik.values.email,
           password: formik.values.password,
-          firstName: formik.values.value,
+          firstName: formik.values.firstName,
         })
       );
     },
   });
 
-  /*const { email, password, firstName } = event.target.elements;
-    dispatch(
-      registerUser({
-        email: email.value,
-        password: password.value,
-        firstName: firstName.value,
-      })
-    );
-  };*/
-
   return (
-    <form
-      className={styles.RegistrationForm}
-      onSubmit={/*handleSubmit*/ formik.handleSubmit}
-    >
+    <form className={styles.RegistrationForm} onSubmit={formik.handleSubmit}>
       <Logo />
 
       {error.message && <Alert severity="error">{error.message}</Alert>}
@@ -155,28 +136,10 @@ const RegistrationForm = props => {
         firstButtonType="submit"
         firstButtonText="Register"
         secondButtonText="Log in"
-        /*firstButtonHandler={() => {
-          handleSubmit();
-        }}*/
         secondButtonHandler={() => navigate('/login')}
       />
     </form>
   );
 };
-
-/*const FormikRegistrationForm = withFormik({
-  mapPropsToValues: () => ({
-    email: '',
-    password: '',
-    firstName: '',
-  }),
-  validationSchema: RegistrationSchema,
-  handleSubmit: (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 1000);
-  },
-})(RegistrationForm);*/
 
 export default RegistrationForm;

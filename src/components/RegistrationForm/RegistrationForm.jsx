@@ -1,7 +1,7 @@
 //import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from 'redux/auth/thunk';
+import { registerUser } from 'redux/auth/operations';
 import { selectError } from 'redux/auth/selectors';
 import Alert from '@mui/material/Alert';
 import PasswordStrengthBar from 'react-password-strength-bar';
@@ -34,16 +34,17 @@ const RegistrationForm = props => {
       firstName: '',
       confirmPassword: '',
     },
+
     validationSchema: RegistrationSchema,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
-      /*dispatch(
+      dispatch(
         registerUser({
           email: formik.values.email,
           password: formik.values.password,
           firstName: formik.values.value,
         })
-      );*/
+      );
     },
   });
 

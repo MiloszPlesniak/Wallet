@@ -152,9 +152,9 @@ const RegistrationForm = props => {
         firstButtonType="submit"
         firstButtonText="Register"
         secondButtonText="Log in"
-        firstButtonHandler={() => {
+        /*firstButtonHandler={() => {
           handleSubmit();
-        }}
+        }}*/
         secondButtonHandler={() => navigate('/login')}
       />
     </form>

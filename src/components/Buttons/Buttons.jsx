@@ -4,8 +4,8 @@ import styles from './Buttons.module.scss';
 const Buttons = ({
   firstButtonType = 'button',
   secondButtonType = 'button',
-  firstButtonHandler = () => null,
-  secondButtonHandler = () => null,
+  //firstButtonHandler = () => null,
+  //secondButtonHandler = () => null,
   ...props
 }) => {
   return (

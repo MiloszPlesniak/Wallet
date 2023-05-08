@@ -36,6 +36,13 @@ const RegistrationForm = props => {
 
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+      /*dispatch(
+        registerUser({
+          email: formik.values.email,
+          password: formik.values.password,
+          firstName: formik.values.value,
+        })
+      );*/
     },
   });
 
@@ -66,8 +73,8 @@ const RegistrationForm = props => {
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={handleBlur}
-          helperText={touched.email ? errors.email : ' '}
-          error={touched.email && Boolean(errors.email)}
+          helperText={formik.touched.email ? formik.errors.email : ' '}
+          error={formik.touched.email && Boolean(formik.errors.email)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -82,9 +89,9 @@ const RegistrationForm = props => {
           placeholder="Password"
           value={formik.values.password}
           onChange={formik.handleChange}
-          onBlur={handleBlur}
-          helperText={touched.password ? errors.password : ' '}
-          error={touched.password && Boolean(errors.password)}
+          onBlur={formik.handleBlur}
+          helperText={formik.touched.password ? formik.errors.password : ' '}
+          error={formik.touched.password && Boolean(formik.errors.password)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -97,11 +104,15 @@ const RegistrationForm = props => {
           name="confirmPassword"
           type="password"
           placeholder="Confirm password"
-          value={values.confirmPassword}
+          value={formik.values.confirmPassword}
           onChange={formik.handleChange}
           onBlur={handleBlur}
-          helperText={touched.confirmPassword ? errors.confirmPassword : ''}
-          error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+          helperText={
+            formik.confirmPassword ? formik.errors.confirmPassword : ''
+          }
+          error={
+            formik.confirmPassword && Boolean(formik.errors.confirmPassword)
+          }
           sx={{ marginBottom: '2px' }}
           InputProps={{
             startAdornment: (
@@ -112,7 +123,7 @@ const RegistrationForm = props => {
           }}
         />
         <PasswordStrengthBar
-          password={values.confirmPassword}
+          password={formik.values.confirmPassword}
           minLength={6}
           shortScoreWord={false}
           barColors={['#E5F1EF', '#24CCA7', '#24CCA7', '#24CCA7', '#24CCA7']}
@@ -125,8 +136,8 @@ const RegistrationForm = props => {
           value={formik.values.firstName}
           onChange={formik.handleChange}
           onBlur={handleBlur}
-          helperText={touched.firstName ? errors.firstName : ' '}
-          error={touched.firstName && Boolean(errors.firstName)}
+          helperText={formik.touched.firstName ? formik.errors.firstName : ' '}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

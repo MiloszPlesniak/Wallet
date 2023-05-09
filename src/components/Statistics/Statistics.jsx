@@ -5,7 +5,7 @@ import styles from './Statistics.module.scss';
 import Media from 'react-media';
 import db from 'db/db';
 
-import { all } from 'axios';
+// import { all } from 'axios';
 
 console.log({ db });
 

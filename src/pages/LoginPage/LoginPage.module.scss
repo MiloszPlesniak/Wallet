@@ -29,7 +29,7 @@
     flex-direction: column;
     width: 100%;
     align-content: center;
-    background-image: url(/images/purple-ellipse.png);
+    background-image: url(/assets/images/desktop/purple-ellipse.png);
     background-repeat: no-repeat;
     background-position: left bottom;
 
@@ -38,7 +38,7 @@
       flex-direction: row;
       align-items: center;
       padding-left: 114px;
-      background-image: url(/images/tablet/pink-ellipse-tablet.png);
+      background-image: url(/assets/images/tablet/pink-ellipse-tablet.png);
       background-position: right top;
       background-size: 383px 368px;
       width: 100%;
@@ -81,7 +81,7 @@
       justify-content: center;
       width: 43%;
       flex: float;
-      background-image: url(/images/purple-ellipse.png);
+      background-image: url(/assets/images/desktop/purple-ellipse.png);
       background-position: left bottom;
     }
 

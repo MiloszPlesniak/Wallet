@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './EditIcon.module.scss';
-import editIcon from '../../../assets/images/icons/edit.svg';
+import sprite from 'assets/svg/sprite.svg'
 
 export default function EditIcon() {
   return (
     <div className={styles.iconContainer}>
-      <img
-        className={styles.iconContainer__img}
-        src={editIcon}
-        alt="edit icon"
-      />
+      <svg className={styles.iconContainer__img}>
+        <use href={`${sprite}#icon-edit`}></use>
+      </svg>
     </div>
   );
 }

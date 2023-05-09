@@ -2,8 +2,7 @@ import { useState } from 'react';
 import ModalTemplate from 'components/ModalTemplate/ModalTemplate';
 import Buttons from 'components/Buttons/Buttons';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import logoSvg1 from 'assets/images/icons/logoIcon.svg';
-import logoSvg2 from 'assets/images/icons/logoName.svg';
+import sprite from '../../assets/svg/sprite.svg';
 import styles from './Footer.module.scss';
 
 const listOfAppCreators = [
@@ -45,16 +44,12 @@ const Footer = () => {
   return (
     <footer className={styles.Footer}>
       <div className={styles.Footer__logo}>
-        <img
-          className={styles.Footer__logo__svg1}
-          src={logoSvg1}
-          alt="logoIcon"
-        />
-        <img
-          className={styles.Footer__logo__svg2}
-          src={logoSvg2}
-          alt="logoName"
-        />
+        <svg className={styles.Footer__logo__svg1}>
+          <use href={`${sprite}#icon-logo-picture`}></use>
+        </svg>
+        <svg className={styles.Footer__logo__svg2}>
+          <use href={`${sprite}#icon-logo-title`}></use>
+        </svg>
       </div>
       <p className={styles.Footer__text__NoMobile}>
         {`© ${new Date().getFullYear()} All rights don't reserved`}

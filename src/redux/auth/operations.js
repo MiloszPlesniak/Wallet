@@ -6,7 +6,7 @@ axios.defaults.baseURL =
 
 // Utility to add JWT
 const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = token;
 };
 
 // Utility to remove JWT

@@ -39,6 +39,7 @@ export default function DashboardMobile() {
           ) : (
             <div className={styles.Dashboard__contentContainer}>
               {currentLocation === '/home' && <Balance />}
+
               <Suspense
                 fallback={
                   <CircularProgress sx={{ color: 'rgb(248, 122, 97)' }} />

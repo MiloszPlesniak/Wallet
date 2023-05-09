@@ -34,16 +34,16 @@
     font-size: 30px;
     line-height: 45px;
     margin-top: 40px;
-  }
 
-  @media screen and (max-width: 768px) {
-    font-size: 24px;
-    line-height: 36px;
-  }
-
-  &__close {
     @media screen and (max-width: 768px) {
-      display: none;
+      font-size: 24px;
+      line-height: 36px;
+    }
+
+    &__close {
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
   }
 }

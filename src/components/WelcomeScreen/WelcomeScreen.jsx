@@ -6,14 +6,7 @@ const WelcomeScreen = () => {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
-    const welcomeScreenShown = sessionStorage.getItem('welcomeScreenShown');
-
-    if (welcomeScreenShown) {
-      setShow(false);
-    } else {
-      sessionStorage.setItem('welcomeScreenShown', true);
-    }
-
+    sessionStorage.setItem('welcomeScreenShown', true);
     setTimeout(() => {
       setShow(false);
     }, 2500);

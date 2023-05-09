@@ -4,7 +4,7 @@ import { registerUser, loginUser, logOutUser, refreshUser } from './operations';
 const initialState = {
   user: { firstName: null, email: null },
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isRefreshing: false,
   error: {},
 };

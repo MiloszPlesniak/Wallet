@@ -56,9 +56,9 @@ const Footer = () => {
           alt="logoName"
         />
       </div>
-      <p
-        className={styles.Footer__text}
-      >{`© ${new Date().getFullYear()} All rights don't reserved`}</p>
+      <p className={styles.Footer__text__NoMobile}>
+        {`© ${new Date().getFullYear()} All rights don't reserved`}
+      </p>
 
       <p className={styles.Footer__text}>
         {'made with passion by'}
@@ -67,8 +67,9 @@ const Footer = () => {
           onClick={() => setIsModalOpen(true)}
         >
           {'Web squirrels '}
+
+          <span className={styles.Footer__link__icon}>{'🐿️'}</span>
         </span>
-        <span className={styles.Footer__link__icon}>{'🐿️'}</span>
       </p>
 
       <ModalTemplate

@@ -6,8 +6,8 @@ import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
 import Divider from '@mui/material/Divider';
 import Navigation from 'components/Navigation/Navigation';
+import Footer from 'components/Footer/Footer';
 import { CircularProgress } from '@mui/material';
-import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { styled } from '@mui/material/styles';
 
 const DashboardDivider = styled(Divider)(({ theme }) => ({
@@ -42,7 +42,6 @@ export default function DashboardTabletDesktop() {
                 </div>
                 <div className={styles.Dashboard__currencyContainer}>
                   <Currency />
-                  <ButtonAddTransactions/>
                 </div>
               </div>
               {matches.desktop && (
@@ -66,6 +65,7 @@ export default function DashboardTabletDesktop() {
                 </Suspense>
               </div>
             </div>
+            <Footer />
           </div>
         </div>
       )}

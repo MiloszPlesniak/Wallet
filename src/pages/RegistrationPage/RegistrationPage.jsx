@@ -4,6 +4,7 @@ import RegistrationForm from '../../components/RegistrationForm/RegistrationForm
 import styles from './RegistrationPage.module.scss';
 import registrationImg from 'images/desktop/registration-page-image.png';
 import ellipse2 from 'images/Ellipse2.png';
+import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
 const RegistrationPage = () => {
   // const error = useSelector(selectError);
@@ -76,6 +77,7 @@ const RegistrationPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

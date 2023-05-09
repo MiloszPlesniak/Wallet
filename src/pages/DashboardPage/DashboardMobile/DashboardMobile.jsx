@@ -5,6 +5,7 @@ import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import Navigation from 'components/Navigation/Navigation';
 import CircularProgress from '@mui/material/CircularProgress';
+import Footer from 'components/Footer/Footer';
 
 export default function DashboardMobile() {
   const location = useLocation();
@@ -33,22 +34,25 @@ export default function DashboardMobile() {
             handleCloseCurrency={handleCloseCurrency}
           />
         </div>
-        <div className={styles.Dashboard__contentContainer}>
-          {showCurrency ? (
+        {showCurrency ? (
+          <div className={styles.Dashboard__contentContainer}>
             <Currency />
-          ) : (
-            <div className={styles.Dashboard__contentContainer}>
-              {currentLocation === '/home' && <Balance />}
-              <Suspense
-                fallback={
-                  <CircularProgress sx={{ color: 'rgb(248, 122, 97)' }} />
-                }
-              >
-                <Outlet />
-              </Suspense>
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className={styles.Dashboard__contentContainer}>
+            {currentLocation === '/home' && <Balance />}
+            <Suspense
+              fallback={
+                <CircularProgress sx={{ color: 'rgb(248, 122, 97)' }} />
+              }
+            >
+              <Outlet />
+            </Suspense>
+          </div>
+        )}
+      </div>
+      <div className={styles.Dashboard__footerContainer}>
+        <Footer />
       </div>
     </div>
   );

@@ -90,7 +90,10 @@
     }
 
     &__balanceCurrency {
-      padding: 40px 0 40px 16px;
+      display: flex;
+      height: 100%;
+      width: 480px;
+      padding: 40px 69px 40px 16px;
       display: flex;
       flex-direction: column;
       gap: 32px;
@@ -114,10 +117,15 @@
     }
 
     &__contentContainer {
-      padding: 40px 16px 40px 0;
-      flex-basis: 800px;
+      display: flex;
+      padding: 40px 16px 40px 69px;
       flex-direction: column;
       gap: 32px;
+      flex-basis: 800px;
+    }
+
+    &__footerContainer {
+      height: 20px;
     }
   }
 }

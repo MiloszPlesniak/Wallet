@@ -1,122 +1,131 @@
-.DiagramTab{
+.DiagramTab {
+  width: 100%;
+  height: 100%;
 
-    &__titleBackground{
-        background-color: #FFFFFF;
-        border-radius: 30px;
-        width: 280px;
-        height: 58px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 135px;
+  &__titleBackground {
+    width: 100%;
+    height: 58px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    padding: 16px 20px;
+    background-color: #ffffff;
+  }
 
-        @media screen and (min-width: 768px) {
-            width: 336px;
-            gap:191px;
-        }
+  &__body {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      height: calc(100vh - 214px - 60px - 20px - 58px - 108px - 40px);
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
 
-        @media screen and (min-width: 1280px) {
-            width: 395px;
-            gap:250px;  
-        }
+      &::-webkit-scrollbar {
+        width: var(--scrollbarWidth);
+        height: var(--scrollbarWidth);
+      }
 
+      &::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 2.5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 2.5px;
+        background-color: rgb(250, 159, 141);
+      }
+    }
+  }
+
+  &__item {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    list-style: none;
+    border-bottom: 1px solid #dcdcdf;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    color: #000;
+  }
+
+  &__itemCategory {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 16px;
+  }
+
+  &__title {
+    font-family: 'Circe';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    list-style: none;
+  }
+
+  &__text {
+    font-family: 'Circe';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+  }
+
+  &__number {
+    font-family: 'Circe';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    justify-content: right;
+  }
+
+  &__itemStat {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 100%;
+    height: 54px;
+
+    @media screen and (min-width: 768px) {
+      width: 100%;
     }
 
-    &__item{
-        list-style: none;
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-right: 20px;
-        padding-left: 20px;
-        width: 280px;
-        height: 54px;
-        border-bottom: 1px solid #DCDCDF;
-        box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-
-
-        @media screen and (min-width: 768px) {
-            width: 336px;
-        }
-
-        @media screen and (min-width: 1280px) {
-            width: 395px;
-        }
+    @media screen and (min-width: 1280px) {
+      width: 100%;
     }
+  }
 
-    &__itemCategory{
-        display:flex;
-        justify-content: left;
-        gap: 16px;
-    }
+  &__numberRed {
+    font-family: 'Circe';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ff6596;
+  }
 
-    &__title{
-        font-family: Circe;
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 24px;
-        letter-spacing: 0em;
-        list-style: none;
-    }
+  &__numberGreen {
+    font-family: 'Circe';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #24cca7;
+  }
 
-    &__text{
-        font-family: Circe;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0em;
-    }
-
-    &__number{
-        font-family: Circe;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0em;
-        justify-content: right;
-    }
-
-    &__itemStat{
-        list-style: none;
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-right: 20px;
-        padding-left: 20px;
-        width: 280px;
-        height: 54px;
-        
-        @media screen and (min-width: 768px) {
-            width: 336px;
-        }
-
-        @media screen and (min-width: 1280px) {
-            width: 395px;
-        }
-    }
-
-    &__numberRed{
-        font-family: Circe;
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 24px;
-        letter-spacing: 0em;
-        color: #FF6596;
-    }
-
-    &__numberGreen{
-        font-family: Circe;
-        font-size: 16px;
-        font-weight:700;
-        line-height: 24px;
-        letter-spacing: 0em;
-        color: #24CCA7;
-    }
-
-    &__color{
-        width: 24px;
-        height: 24px;
-        border-radius: 2px;
-        display: flex;
-    }
+  &__categoryColor {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+    display: flex;
+  }
 }

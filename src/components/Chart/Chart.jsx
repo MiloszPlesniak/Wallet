@@ -1,17 +1,37 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-import style from './Chart.module.scss'
+import styles from './Chart.module.scss';
 
-const Chart = ({ categories, expenses }) => {
+const Chart = ({ filteredData }) => {
   ChartJS.register(ArcElement, Tooltip, Legend);
+  const { expenseCategories, expenseData } = filteredData;
+
+  const expensesOverall = () => {
+    let sum = 0;
+    for (const expense of expenseData) {
+      sum += expense;
+    }
+    return sum;
+  };
 
   const data = {
-    labels: categories || ['No trasactions'],
+    labels: expenseCategories || ['No trasactions'],
     datasets: [
       {
-        data: [1],
-        backgroundColor:['#DCDCDF','#FED057', '#FFD8D0', '#FD9498', '#C5BAFF','#6E78E8','#4A56E2','#81E1FF','#24CCA7','#00AD84'],
+        data: expenseData || [0],
+        backgroundColor: [
+          '#DCDCDF',
+          '#FED057',
+          '#FFD8D0',
+          '#FD9498',
+          '#C5BAFF',
+          '#6E78E8',
+          '#4A56E2',
+          '#81E1FF',
+          '#24CCA7',
+          '#00AD84',
+        ],
         borderWidth: 0,
       },
     ],
@@ -28,13 +48,16 @@ const Chart = ({ categories, expenses }) => {
     },
     responsive: true,
     devicePixelRatio: 2,
+    // maintainAspectRatio: false,
     cutout: '70%',
   };
 
   return (
     <div>
-        <Doughnut data={data} options={options}/>
-        <p className={style.Chart__exspense}> {expenses}</p>
+      <div className={styles.Chart__exspenseContainer}>
+        <Doughnut className={styles.Chart} data={data} options={options} />
+        <p className={styles.Chart__expenseOverall}> $ {expensesOverall()}</p>
+      </div>
     </div>
   );
 };

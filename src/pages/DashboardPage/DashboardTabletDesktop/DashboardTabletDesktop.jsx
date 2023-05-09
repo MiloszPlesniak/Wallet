@@ -6,13 +6,14 @@ import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
 import Divider from '@mui/material/Divider';
 import Navigation from 'components/Navigation/Navigation';
+import Footer from 'components/Footer/Footer';
 import { styled } from '@mui/material/styles';
 
 const DashboardDivider = styled(Divider)(({ theme }) => ({
   borderRightColor: 'e7e5F2',
   borderRightWidth: '1px',
   boxShadow: '1px 0px rgba(255, 255, 255, 0.6),-1px 0px rgba(0, 0, 0, 0.05)',
-  margin: '0 69px',
+  // margin: '0 69px',
 }));
 
 export default function DashboardTabletDesktop() {
@@ -49,6 +50,9 @@ export default function DashboardTabletDesktop() {
                 <Suspense fallback={<p>loading...</p>}>
                   <Outlet />
                 </Suspense>
+              </div>
+              <div className={styles.Dashboard__footerContainer}>
+                <Footer />
               </div>
             </div>
           </div>

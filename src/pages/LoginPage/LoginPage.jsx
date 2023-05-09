@@ -4,6 +4,7 @@ import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import styles from './LoginPage.module.scss';
 import loginImg from 'images/desktop/login-page-image.png';
 import ellipse2 from 'images/Ellipse2.png';
+import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
 const LoginPage = () => {
   // const error = useSelector(selectError);
@@ -69,6 +70,7 @@ const LoginPage = () => {
             <LoginForm className={styles.LoginPage__loginForm} />
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

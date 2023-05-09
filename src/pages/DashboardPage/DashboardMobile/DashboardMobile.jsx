@@ -37,6 +37,7 @@ export default function DashboardMobile() {
         {showCurrency ? (
           <div className={styles.Dashboard__contentContainer}>
             <Currency />
+
           </div>
         ) : (
           <div className={styles.Dashboard__contentContainer}>
@@ -53,6 +54,7 @@ export default function DashboardMobile() {
       </div>
       <div className={styles.Dashboard__footerContainer}>
         <Footer />
+
       </div>
     </div>
   );

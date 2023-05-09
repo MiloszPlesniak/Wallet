@@ -4,7 +4,7 @@ export const globalSlice = createSlice({
   name: 'global',
   initialState: {
     isLoading: false,
-    isModalAddTransactionOpen: true,
+    isModalAddTransactionOpen: false,
     isModalLogoutOpen: false,
     isModalEditTransactionOpen: false,
   },

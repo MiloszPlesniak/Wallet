@@ -1,27 +1,38 @@
-.ButtonAddTransactions{
-    height: 44px;
-    width: 44px;
-    border-radius: 50%;
-    border: none;
-    background: #24CCA7;
-    box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
-    position:fixed;
-    top:90%;
-    left:90%;
+.ButtonAddTransactions {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #24cca7;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5),
+    0px 2px 2px rgba(36, 204, 167, 0.25), 0px 0px 11px 8px #8a8a8a6e;
+  filter: drop-shadow(0px 6px 15px rgba(36, 204, 167, 0.5))
+    drop-shadow(0px 2px 2px rgba(36, 204, 167, 0.25));
+  position: fixed;
+  top: 90%;
+  left: 90%;
+  transform: translate(-70%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(25, 142, 116);
+  }
+
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    top: 90%;
+    left: 90%;
     transform: translate(-70%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  }
 
-    &:hover{
-        background-color: rgb(25, 142, 116);;
-    }
-
-    &__plus{
-        color: #fff ;
-        font-size: xx-large;
-        font-weight:lighter;
-        margin: 0;
-    }
+  &__plus {
+    color: #fff;
+    font-size: xx-large;
+    font-weight: lighter;
+    margin: 0;
+  }
 }

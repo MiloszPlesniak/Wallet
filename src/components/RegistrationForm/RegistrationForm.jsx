@@ -1,7 +1,6 @@
-//import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from 'redux/auth/thunk';
+import { registerUser } from 'redux/auth/operations';
 import { selectError } from 'redux/auth/selectors';
 import Alert from '@mui/material/Alert';
 import PasswordStrengthBar from 'react-password-strength-bar';
@@ -14,29 +13,37 @@ import Logo from 'components/Logo/Logo';
 import Buttons from 'components/Buttons/Buttons';
 import styles from './RegistrationForm.module.scss';
 import RegistrationSchema from 'validations/RegistrationSchema';
-import { withFormik } from 'formik';
+import { useFormik } from 'formik';
 
 const RegistrationForm = props => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const navigate = useNavigate();
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    props;
+  const { handleBlur } = props;
 
-  const handleRegistration = e => {
-    e.preventDefault();
-    const { email, password, firstName } = e.target.elements;
-    dispatch(
-      registerUser({
-        email: email.value,
-        password: password.value,
-        firstName: firstName.value,
-      })
-    );
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      firstName: '',
+      confirmPassword: '',
+    },
+
+    validationSchema: RegistrationSchema,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+      dispatch(
+        registerUser({
+          email: formik.values.email,
+          password: formik.values.password,
+          firstName: formik.values.firstName,
+        })
+      );
+    },
+  });
 
   return (
-    <form className={styles.RegistrationForm} onSubmit={handleSubmit}>
+    <form className={styles.RegistrationForm} onSubmit={formik.handleSubmit}>
       <Logo />
 
       {error.message && <Alert severity="error">{error.message}</Alert>}
@@ -46,11 +53,11 @@ const RegistrationForm = props => {
           name="email"
           type="email"
           placeholder="Email"
-          value={values.email}
-          onChange={handleChange}
+          value={formik.values.email}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
-          helperText={touched.email ? errors.email : ' '}
-          error={touched.email && Boolean(errors.email)}
+          helperText={formik.touched.email ? formik.errors.email : ' '}
+          error={formik.touched.email && Boolean(formik.errors.email)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -63,11 +70,11 @@ const RegistrationForm = props => {
           name="password"
           type="password"
           placeholder="Password"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          helperText={touched.password ? errors.password : ' '}
-          error={touched.password && Boolean(errors.password)}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          helperText={formik.touched.password ? formik.errors.password : ' '}
+          error={formik.touched.password && Boolean(formik.errors.password)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -80,11 +87,16 @@ const RegistrationForm = props => {
           name="confirmPassword"
           type="password"
           placeholder="Confirm password"
-          value={values.confirmPassword}
-          onChange={handleChange}
+          value={formik.values.confirmPassword}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
-          helperText={touched.confirmPassword ? errors.confirmPassword : ''}
-          error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+          helperText={
+            formik.touched.confirmPassword ? formik.errors.confirmPassword : ''
+          }
+          error={
+            formik.touched.confirmPassword &&
+            Boolean(formik.errors.confirmPassword)
+          }
           sx={{ marginBottom: '2px' }}
           InputProps={{
             startAdornment: (
@@ -95,7 +107,7 @@ const RegistrationForm = props => {
           }}
         />
         <PasswordStrengthBar
-          password={values.confirmPassword}
+          password={formik.values.confirmPassword}
           minLength={6}
           shortScoreWord={false}
           barColors={['#E5F1EF', '#24CCA7', '#24CCA7', '#24CCA7', '#24CCA7']}
@@ -105,11 +117,11 @@ const RegistrationForm = props => {
         <TextField
           name="firstName"
           placeholder="First name"
-          value={values.firstName}
-          onChange={handleChange}
+          value={formik.values.firstName}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
-          helperText={touched.firstName ? errors.firstName : ' '}
-          error={touched.firstName && Boolean(errors.firstName)}
+          helperText={formik.touched.firstName ? formik.errors.firstName : ' '}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -121,31 +133,13 @@ const RegistrationForm = props => {
       </div>
 
       <Buttons
+        firstButtonType="submit"
         firstButtonText="Register"
         secondButtonText="Log in"
-        firstButtonHandler={() => {
-          handleSubmit();
-          handleRegistration();
-        }}
         secondButtonHandler={() => navigate('/login')}
       />
     </form>
   );
 };
 
-const FormikRegistrationForm = withFormik({
-  mapPropsToValues: () => ({
-    email: '',
-    password: '',
-    firstName: '',
-  }),
-  validationSchema: RegistrationSchema,
-  handleSubmit: (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 1000);
-  },
-})(RegistrationForm);
-
-export default FormikRegistrationForm;
+export default RegistrationForm;

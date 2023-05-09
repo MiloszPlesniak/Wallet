@@ -4,7 +4,6 @@ import styles from '../DashboardMobile/DashboardMobile.module.scss';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import Navigation from 'components/Navigation/Navigation';
-import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function DashboardMobile() {
@@ -35,7 +34,6 @@ export default function DashboardMobile() {
           />
         </div>
         <div className={styles.Dashboard__contentContainer}>
-          <ButtonAddTransactions/>
           {showCurrency ? (
             <Currency />
           ) : (
@@ -51,7 +49,6 @@ export default function DashboardMobile() {
               </Suspense>
             </div>
           )}
-          
         </div>
       </div>
     </div>

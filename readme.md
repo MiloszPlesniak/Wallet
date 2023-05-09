@@ -25,7 +25,7 @@ You can find the backend for this app in this [REPO](https://github.com/MiloszPl
 
 ## Demo
 
-[LIVE](https://miloszplesniak.github.io/Wallet/)
+[LIVE](https://magenta-lokum-0cc512.netlify.app)
 
 ## Run Locally
 

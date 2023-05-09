@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TableDesktop.module.scss';
 import TableDesktopRow from './TableDesktopRow/TableDesktopRow';
-import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
+// import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
 function createData(date, type, category, comment, sum) {
   return { date, type, category, comment, sum };
@@ -31,6 +31,9 @@ const data = [
 ];
 
 export default function TransactionsTable() {
+
+
+  
   return (
     <div className={styles.container}>
       <div className={styles.Table__container}>

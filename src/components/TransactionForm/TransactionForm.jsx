@@ -5,7 +5,10 @@ import style from './TransactionForm.module.scss';
 import DropdownCategories from 'components/DropdownCategories/DropdownCategories';
 import Buttons from 'components/Buttons/Buttons';
 import TransactionSchema from 'validations/TransactionSchema';
-import { withFormik } from 'formik';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTransactions } from 'redux/transaction/thunk';
+import { selectUser } from 'redux/auth/selectors';
 
 const TransactionForm = ({
   typeOfTransaction,
@@ -14,11 +17,28 @@ const TransactionForm = ({
   firstButtonText,
   ...props
 }) => {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    props;
+  const { handleBlur } = props;
+
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const formik = useFormik({
+    initialValues: { amount: '', date: '', comment: '' },
+    validationSchema: TransactionSchema,
+    onSubmit: () => {
+      dispatch(
+        addTransactions({
+          amount: formik.amount,
+          date: formik.date,
+          comment: formik.comment,
+          type: typeOfTransaction ? '+' : '-',
+          owner: user.id,
+        })
+      );
+    },
+  });
 
   return (
-    <form className={style.form} onSubmit={handleSubmit}>
+    <form className={style.form} onSubmit={formik.handleSubmit}>
       {typeOfTransaction && <DropdownCategories />}
       <div>
         <TextField
@@ -26,11 +46,11 @@ const TransactionForm = ({
           name="amount"
           placeholder="0.00"
           inputProps={{ style: { textAlign: 'center', fontWeight: 700 } }}
-          value={values.amount}
-          onChange={handleChange}
+          value={formik.values.amount}
+          onChange={formik.handleChange}
           onBlur={handleBlur}
-          error={touched.amount && Boolean(errors.amount)}
-          helperText={touched.amount ? errors.amount : ' '}
+          error={formik.touched.amount && Boolean(formik.errors.amount)}
+          helperText={formik.touched.amount ? formik.errors.amount : ' '}
           FormHelperTextProps={{
             style: {
               top: '100%',
@@ -45,7 +65,7 @@ const TransactionForm = ({
             name: 'date',
           }}
           initialValue={new Date()}
-          value={values.date}
+          value={formik.values.date}
         />
       </div>
       <TextField
@@ -57,12 +77,11 @@ const TransactionForm = ({
             padding: 10,
           },
         }}
-        value={values.comment}
       />
       <div className={style.form__btn}>
         <Buttons
+          firstButtonType="submit"
           firstButtonText={firstButtonText}
-          firstButtonHandler={firstButtonHandler}
           secondButtonText="CANCEL"
           secondButtonHandler={secondButtonHandler}
         />
@@ -71,17 +90,4 @@ const TransactionForm = ({
   );
 };
 
-const FormikTransactionForm = withFormik({
-  mapPropsToValues: () => ({
-    amount: '',
-    date: '',
-    comment: '',
-  }),
-  validationSchema: TransactionSchema,
-
-  handleSubmit: (values, { props }) => {
-    props.firstButtonHandler(values);
-  },
-})(TransactionForm);
-
-export default FormikTransactionForm;
+export default TransactionForm;

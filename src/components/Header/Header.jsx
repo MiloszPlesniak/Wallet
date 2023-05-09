@@ -53,6 +53,7 @@ const Header = () => {
                   />
 
                   <ListItemButton
+                    sx={{ p: 0, pl: '12px' }}
                     className={styles.Header__logOutButton}
                     onClick={() => dispatch(changeIsModalLogoutOpen())}
                   >

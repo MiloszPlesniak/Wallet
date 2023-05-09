@@ -1,41 +1,88 @@
-.Chart{
-    width: 288px;
-    height: 288px;
-    margin: 0 auto;
-    padding-bottom: 32px;
+.Statistics {
+  &__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    gap: 32px;
 
     @media screen and (min-width: 768px) {
-        width: 336px;
-        height: 336px;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      padding-top: 0px;
     }
+    @media screen and (min-width: 1028px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 32px;
+      padding-top: 0px;
+    }
+  }
+
+  &__title {
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 45px;
+    letter-spacing: 0em;
+  }
+}
+
+.Chart__Container {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 288px;
+    height: 100%;
+    gap: 20px;
+    flex-basis: auto;
+  }
+}
+
+.DiagramTab {
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
 
     @media screen and (min-width: 1280px) {
-        width: 280px;
-        height: 280px; 
+      height: calc(100vh - 197px - 40px - 40px);
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+
+      &::-webkit-scrollbar {
+        width: var(--scrollbarWidth);
+        height: var(--scrollbarWidth);
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 2.5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 2.5px;
+        background-color: rgb(250, 159, 141);
+      }
     }
-}
-
-.Statistics{
-
-    &__container{
-        display: block;
-
-        @media screen and (min-width: 768px) {
-            display: flex;
-        }
-    }
-
-    &__title{
-        font-family: Poppins;
-        font-size: 30px;
-        font-weight: 400;
-        line-height: 45px;
-        letter-spacing: 0em;
-        padding-bottom: 8px;
-    }
-}
-
-.DiagramTab{
-    display: flex;
-    justify-content: center;
+  }
 }

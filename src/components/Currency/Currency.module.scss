@@ -1,6 +1,6 @@
 :root {
   --scrollbarWidth: 7px;
-  --tbodyHeight: calc(100vh - 188px - 15px);
+  --tbodyHeight: calc(100vh - 188px - 15px - 40px);
 }
 
 .Currency {
@@ -112,7 +112,6 @@
       &::-webkit-scrollbar {
         width: var(--scrollbarWidth);
         height: var(--scrollbarWidth);
-        // background-color: #4a56e2;
       }
 
       &::-webkit-scrollbar-track {
@@ -148,7 +147,7 @@
 
 @media screen and (min-width: 1280px) {
   :root {
-    --tbodyHeight: calc(331px - 60px);
+    --tbodyHeight: calc(100vh - 326px - 60px - 40px - 40px);
   }
   .Currency {
     &__table {
@@ -156,9 +155,21 @@
         & th {
           padding: 0 20px;
           height: 60px;
+          text-align: center;
+        }
+        & th[data-type='ask'] {
+          text-align: center;
         }
       }
       & tbody {
+        padding: 8px 0;
+        & td {
+          padding: 12px 20px;
+          text-align: center;
+        }
+        & td[data-type='ask'] {
+          text-align: center;
+        }
       }
     }
   }

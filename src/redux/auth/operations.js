@@ -59,7 +59,7 @@ export const logOutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
-      await axios.post('/users/logout');
+      await axios.get('/users/logout');
       // After a successful logout, remove the token from the HTTP header
       clearAuthHeader();
     } catch (error) {

@@ -68,7 +68,6 @@ export default function DashboardTabletDesktop() {
                 <Footer />
               </div>
             </div>
-            <Footer />
           </div>
         </div>
       )}

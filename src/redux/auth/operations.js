@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api';
+axios.defaults.baseURL =
+  'https://wallet-rest-api.herokuapp.com/api/transactions';
 
 // Utility to add JWT
 const setAuthHeader = token => {

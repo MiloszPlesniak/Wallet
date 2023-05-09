@@ -9,7 +9,6 @@ import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
 import PrivateRoute from 'pages/PrivateRoute.js';
 import RestrictedRoute from 'pages/RestrictedRoute.js';
 import { refreshUser } from 'redux/auth/operations';
-//import Table from './Table/Table';
 import 'index.css';
 
 const DashboardPage = lazy(() =>
@@ -47,8 +46,6 @@ export const App = () => {
         <meta name="description" content="Wallet" />
       </Helmet>
 
-      {sessionStorage.getItem('welcomeScreenShown') ? null : <WelcomeScreen />}
-
       <Suspense
         fallback={
           <CircularProgress
@@ -61,6 +58,10 @@ export const App = () => {
           />
         }
       >
+        {sessionStorage.getItem('welcomeScreenShown') ? null : (
+          <WelcomeScreen />
+        )}
+
         <Routes>
           <Route path="/" element={<DashboardPage />}>
             <Route

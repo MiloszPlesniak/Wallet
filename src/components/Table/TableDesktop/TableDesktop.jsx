@@ -54,7 +54,6 @@ export default function TransactionsTable() {
             ))}
           </tbody>
         </table>
-        <ButtonAddTransactions />
       </div>
     </div>
   );

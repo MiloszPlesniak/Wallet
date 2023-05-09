@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { Suspense, useState, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import styles from '../DashboardTabletDesktop/DashboardTabletDesktop.module.scss';
 import Media from 'react-media';
 import Currency from 'components/Currency/Currency';
@@ -9,6 +9,7 @@ import Navigation from 'components/Navigation/Navigation';
 import Footer from 'components/Footer/Footer';
 import { CircularProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
 const DashboardDivider = styled(Divider)(({ theme }) => ({
   borderRightColor: 'e7e5F2',
@@ -18,6 +19,12 @@ const DashboardDivider = styled(Divider)(({ theme }) => ({
 }));
 
 export default function DashboardTabletDesktop() {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const [currentLocation, setCurrentLocation] = useState('');
+  useEffect(() => {
+    setCurrentLocation(pathname);
+  }, [pathname]);
   return (
     <Media
       queries={{
@@ -64,6 +71,8 @@ export default function DashboardTabletDesktop() {
                   <Outlet />
                 </Suspense>
               </div>
+              {currentLocation === '/home' && <ButtonAddTransactions />}
+
               <div className={styles.Dashboard__footerContainer}>
                 <Footer />
               </div>

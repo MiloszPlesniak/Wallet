@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.6b31905b.css",
-    "main.js": "./static/js/main.ca4755ed.js",
+    "main.js": "./static/js/main.8b8de810.js",
     "static/css/358.4dfe8b54.chunk.css": "./static/css/358.4dfe8b54.chunk.css",
     "static/js/358.35c20827.chunk.js": "./static/js/358.35c20827.chunk.js",
     "static/css/419.b0df309a.chunk.css": "./static/css/419.b0df309a.chunk.css",
@@ -30,7 +30,7 @@
     "static/media/edit.svg": "./static/media/edit.921ada62de74e25ad1d76508f0f1888a.svg",
     "static/media/Vectorcalendar.svg": "./static/media/Vectorcalendar.0e51d38567419e5563c4.svg",
     "main.6b31905b.css.map": "./static/css/main.6b31905b.css.map",
-    "main.ca4755ed.js.map": "./static/js/main.ca4755ed.js.map",
+    "main.8b8de810.js.map": "./static/js/main.8b8de810.js.map",
     "358.4dfe8b54.chunk.css.map": "./static/css/358.4dfe8b54.chunk.css.map",
     "358.35c20827.chunk.js.map": "./static/js/358.35c20827.chunk.js.map",
     "419.b0df309a.chunk.css.map": "./static/css/419.b0df309a.chunk.css.map",
@@ -51,6 +51,6 @@
   },
   "entrypoints": [
     "static/css/main.6b31905b.css",
-    "static/js/main.ca4755ed.js"
+    "static/js/main.8b8de810.js"
   ]
 }

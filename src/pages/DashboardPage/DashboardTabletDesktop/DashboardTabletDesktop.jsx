@@ -14,7 +14,7 @@ const DashboardDivider = styled(Divider)(({ theme }) => ({
   borderRightColor: 'e7e5F2',
   borderRightWidth: '1px',
   boxShadow: '1px 0px rgba(255, 255, 255, 0.6),-1px 0px rgba(0, 0, 0, 0.05)',
-  margin: '0 69px',
+  // margin: '0 69px',
 }));
 
 export default function DashboardTabletDesktop() {
@@ -64,8 +64,10 @@ export default function DashboardTabletDesktop() {
                   <Outlet />
                 </Suspense>
               </div>
+              <div className={styles.Dashboard__footerContainer}>
+                <Footer />
+              </div>
             </div>
-            <Footer />
           </div>
         </div>
       )}

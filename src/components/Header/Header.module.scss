@@ -39,8 +39,6 @@
     align-items: center;
     align-content: center;
     gap: 8px;
-    padding-top: 0;
-    padding-bottom: 0;
     color: #bdbdbd;
   }
 
@@ -57,6 +55,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .Header {
+    padding: 20px 32px;
     &__logOutUserName {
       color: #bdbdbd;
       padding-top: 4px;
@@ -79,7 +78,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 16px;
+    padding: 20px 16px 20px 16px;
     height: 80px;
 
     &__logOut {
@@ -108,10 +107,6 @@
       align-items: center;
       align-content: center;
       gap: 8px;
-      padding-top: 0;
-      padding-bottom: 0;
-      padding-left: 12px;
-      padding-right: 12px;
       color: #bdbdbd;
     }
 

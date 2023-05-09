@@ -36,7 +36,7 @@ const RegistrationForm = props => {
         registerUser({
           email: formik.values.email,
           password: formik.values.password,
-          firstName: formik.values.firstName,
+          name: formik.values.firstName,
         })
       );
     },

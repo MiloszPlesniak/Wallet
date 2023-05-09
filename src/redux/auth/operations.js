@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api';
-
 // Utility to add JWT
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = token;
@@ -22,7 +20,8 @@ export const registerUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     console.log(credentials);
     try {
-      const res = await axios.post('/users/signup', credentials);
+      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
+      const res = await axios.post('users/signup', credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
@@ -40,6 +39,7 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
+      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
       const res = await axios.post('/users/login', credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
@@ -58,6 +58,7 @@ export const logOutUser = createAsyncThunk(
   'auth/logout',
   async (_, thunkAPI) => {
     try {
+      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
       await axios.post('/users/logout');
       // After a successful logout, remove the token from the HTTP header
       clearAuthHeader();
@@ -86,6 +87,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
+      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
       const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {

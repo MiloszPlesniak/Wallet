@@ -3,6 +3,7 @@ import Chart from 'components/Chart/Chart';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
 import styles from './Statistics.module.scss';
 import Media from 'react-media';
+import { breakpoints } from 'styles/breakpoints';
 import db from 'db/db';
 
 // import { all } from 'axios';
@@ -84,13 +85,7 @@ const Statistics = () => {
       <Helmet title="Statistics">
         <meta name="description" content="Statistics" />
       </Helmet>
-      <Media
-        queries={{
-          mobile: '(max-width: 767px)',
-          tablet: '(min-width: 768px) and (max-width: 1279px)',
-          desktop: '(min-width: 1280px)',
-        }}
-      >
+      <Media queries={breakpoints}>
         {matches => (
           <>
             <div>

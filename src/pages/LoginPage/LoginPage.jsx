@@ -1,4 +1,5 @@
 import Media from 'react-media';
+import { breakpoints } from 'styles/breakpoints';
 import { Helmet } from 'react-helmet';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import styles from './LoginPage.module.scss';
@@ -6,15 +7,8 @@ import loginImg from 'images/desktop/login-page-image.png';
 import ellipse2 from 'images/Ellipse2.png';
 import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
-const LoginPage = () => {
-  // const error = useSelector(selectError);
-  // const dispatch = useDispatch();
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const { email, password, firstName } = e.target.elements;
-  //   dispatch(login({ email: email.value, password: password.value, firstName: firstName.value }));
-  // };
 
+const LoginPage = () => {
   return (
     <>
       <Helmet title="Login">
@@ -23,7 +17,7 @@ const LoginPage = () => {
       <div className="container_for_reg_and_log_page">
         <div className={styles.LoginPage}>
           <Media
-            query="(min-width:768px)and (max-width:1279px)"
+            query={breakpoints.tablet}
             render={() => (
               <div className={styles.LoginPage__leftSide}>
                 <div className={styles.LoginPage__pictureBox}>
@@ -40,7 +34,7 @@ const LoginPage = () => {
             )}
           />
           <Media
-            query="(min-width:1280px)"
+            query={breakpoints.desktop}
             render={() => (
               <>
                 <div className={styles.LoginPage__pinkEllipse}>

@@ -1,4 +1,5 @@
 import Media from 'react-media';
+import { breakpoints } from 'styles/breakpoints.js';
 import { Helmet } from 'react-helmet';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 import styles from './RegistrationPage.module.scss';
@@ -6,15 +7,8 @@ import registrationImg from 'images/desktop/registration-page-image.png';
 import ellipse2 from 'images/Ellipse2.png';
 import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
-const RegistrationPage = () => {
-  // const error = useSelector(selectError);
-  // const dispatch = useDispatch();
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const { email, password, firstName } = e.target.elements;
-  //   dispatch(registration({ email: email.value, password: password.value, firstName: firstName.value }));
-  // };
 
+const RegistrationPage = () => {
   return (
     <>
       <Helmet title="Registration">
@@ -23,7 +17,7 @@ const RegistrationPage = () => {
       <div className="container_for_reg_and_log_page">
         <div className={styles.RegistrationPage}>
           <Media
-            query="(min-width:768px) and (max-width:1279px)"
+            query={breakpoints.tablet}
             render={() => (
               <>
                 <div className={styles.RegistrationPage__leftSide}>
@@ -43,7 +37,7 @@ const RegistrationPage = () => {
           />
 
           <Media
-            query="(min-width:1280px)"
+            query={breakpoints.desktop}
             render={() => (
               <>
                 <div className={styles.RegistrationPage__pinkEllipse}>

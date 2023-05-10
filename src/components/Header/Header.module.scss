@@ -1,7 +1,7 @@
-@import '../../styles/container.scss';
-
 .Header {
-  @extend .container;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
   position: relative;
   z-index: 10;
   display: flex;

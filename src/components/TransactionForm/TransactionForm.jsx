@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TextField } from '@mui/material';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
@@ -9,42 +10,54 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTransactions } from 'redux/transaction/thunk';
 import { selectUser } from 'redux/auth/selectors';
+//import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 
 const TransactionForm = ({
   typeOfTransaction,
-  firstButtonHandler,
   secondButtonHandler,
   firstButtonText,
   ...props
 }) => {
   const { handleBlur } = props;
-
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [category, setCategory] = useState('');
+
   const formik = useFormik({
-    initialValues: { amount: '', date: '', comment: '' },
+    initialValues: {
+      amount: 0,
+      date: '',
+      comment: '',
+      category: '',
+      owner: user.id,
+      type: '',
+    },
     validationSchema: TransactionSchema,
-    onSubmit: () => {
-      dispatch(
-        addTransactions({
-          amount: formik.amount,
-          date: formik.date,
-          comment: formik.comment,
-          type: typeOfTransaction ? '+' : '-',
-          owner: user.id,
-        })
-      );
+    onSubmit: values => {
+      typeOfTransaction
+        ? formik.setFieldValue('type', '+')
+        : formik.setFieldValue('type', '-');
+
+      typeOfTransaction
+        ? formik.setFieldValue('category', '')
+        : formik.setFieldValue('category', category);
+
+      alert(JSON.stringify(values, null, 2));
+      dispatch(addTransactions(values));
+      //dispatch(changeIsModalAddTransactionOpen());
     },
   });
 
   return (
     <form className={style.form} onSubmit={formik.handleSubmit}>
-      {typeOfTransaction && <DropdownCategories />}
+      {typeOfTransaction && (
+        <DropdownCategories handleSetCategory={setCategory} />
+      )}
       <div>
         <TextField
           className={style.form__amount}
           name="amount"
-          placeholder="0.00"
+          placeholder="0"
           inputProps={{ style: { textAlign: 'center', fontWeight: 700 } }}
           value={formik.values.amount}
           onChange={formik.handleChange}
@@ -66,11 +79,27 @@ const TransactionForm = ({
           }}
           initialValue={new Date()}
           value={formik.values.date}
+          onChange={value => {
+            formik.setFieldValue('date', value._d);
+          }}
+          onBlur={handleBlur}
+          error={formik.touched.date && Boolean(formik.errors.date)}
+          helperText={formik.touched.date ? formik.errors.date : ' '}
         />
+        {formik.touched.date && Boolean(formik.errors.date) && (
+          <p className={style.form__dateTime__error}>{formik.errors.date}</p>
+        )}
       </div>
       <TextField
         className={style.form__comment}
         name="Comment"
+        value={formik.values.comment}
+        onChange={value => {
+          formik.setFieldValue('comment', value.target.value);
+        }}
+        onBlur={handleBlur}
+        error={formik.touched.comment && Boolean(formik.errors.comment)}
+        helperText={formik.touched.comment ? formik.errors.comment : ' '}
         placeholder="Comment"
         inputProps={{
           style: {
@@ -82,7 +111,7 @@ const TransactionForm = ({
         <Buttons
           firstButtonType="submit"
           firstButtonText={firstButtonText}
-          secondButtonText="CANCEL"
+          secondButtonText="cancel"
           secondButtonHandler={secondButtonHandler}
         />
       </div>

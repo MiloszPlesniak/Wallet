@@ -21,7 +21,7 @@ export const financesSlice = createSlice({
   },
   extraReducers: {
     [fetchTransactions.fulfilled](state, { payload }) {
-      state.transactions = payload;
+      state.transactions.push(...payload);
       state.isLoading = false;
     },
     [fetchTransactions.pending](state) {
@@ -33,6 +33,7 @@ export const financesSlice = createSlice({
     },
     // /////////////////////
     [addTransactions.fulfilled](state, { payload }) {
+      console.log(payload);
       state.transactions.push(payload);
       state.isLoading = false;
     },

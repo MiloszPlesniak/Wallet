@@ -8,7 +8,7 @@ import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 
 const ModalAddTransaction = props => {
-  const [typeOfTransaction, setTypeOfTransaction] = useState(false);
+  const [typeOfTransaction, setTypeOfTransaction] = useState(true);
   const modalIsOpen = useSelector(selectIsModalAddTransactionOpen);
   const dispath = useDispatch();
 

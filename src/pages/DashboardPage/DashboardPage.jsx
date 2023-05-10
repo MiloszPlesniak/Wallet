@@ -10,7 +10,7 @@ const DashboardPage = () => {
   return (
     <>
       <Helmet title="Home">
-        <meta name="description" content="Home" />
+        <meta name="description" content="Wallet finance App" />
       </Helmet>
 
       <Media

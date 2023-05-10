@@ -18,7 +18,10 @@ const RegistrationPage = () => {
   return (
     <>
       <Helmet title="Registration">
-        <meta name="description" content="Registration" />
+        <meta
+          name="description"
+          content="Registration page of Wallet finance App"
+        />
       </Helmet>
       <div className="container_for_reg_and_log_page">
         <div className={styles.RegistrationPage}>

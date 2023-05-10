@@ -82,7 +82,10 @@ const Statistics = () => {
   return (
     <>
       <Helmet title="Statistics">
-        <meta name="description" content="Statistics" />
+        <meta
+          name="description"
+          content="Wallet finance App - Statistics page"
+        />
       </Helmet>
       <Media
         queries={{

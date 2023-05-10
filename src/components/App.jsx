@@ -43,7 +43,23 @@ export const App = () => {
   ) : (
     <>
       <Helmet titleTemplate="%s - Wallet" defaultTitle="Wallet">
-        <meta name="description" content="Wallet" />
+        <meta name="description" content="Wallet finance App" />
+        <meta
+          name="keywords"
+          content="wallet, finance, account, bank, balance, money, transaction, income, expense, statistics, chart, table, currency, amount, deposit, withdraw, credit, debit, profit"
+        />
+        <meta
+          name="author"
+          content="Web Squirrels: 
+          Miłosz Pleśniak (TeamLider)
+          Bolek (Scrum Master & Developer)
+          Urszula Molska (Developer)
+          Angelika Gralewska (Developer)
+          Jacek Pietrzak (Developer)
+          Karolina Zinczuk (Developer)
+        "
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
 
       <Suspense

@@ -18,7 +18,7 @@ const LoginPage = () => {
   return (
     <>
       <Helmet title="Login">
-        <meta name="description" content="Login" />
+        <meta name="description" content="Login page of Wallet finance App" />
       </Helmet>
       <div className="container_for_reg_and_log_page">
         <div className={styles.LoginPage}>

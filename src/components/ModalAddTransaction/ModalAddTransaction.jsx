@@ -23,12 +23,13 @@ const ModalAddTransaction = props => {
           handleToogle={() => {
             setTypeOfTransaction(!typeOfTransaction);
           }}
+          checked={typeOfTransaction}
         />
       </div>
       <TransactionForm
         typeOfTransaction={typeOfTransaction}
         firstButtonText="add"
-        firstButtonHandler={() => console.log('d')}
+        // firstButtonHandler={() => console.log('d')}
         secondButtonHandler={() => dispath(changeIsModalAddTransactionOpen())}
       />
     </ModalTemplate>

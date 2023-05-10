@@ -16,10 +16,11 @@ const listOfCategories = [
   'Leisure',
 ];
 
-const DropdownCategories = () => {
+const DropdownCategories = handleSetCategory => {
   const [category, setCategory] = useState('');
   const handleChange = event => {
     setCategory(event.target.value);
+    handleSetCategory.handleSetCategory(event.target.value);
   };
 
   return (

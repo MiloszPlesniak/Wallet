@@ -42,9 +42,11 @@ export const deleteTransactions = createAsyncThunk(
 );
 export const fetchTransacionsOfPeriot = createAsyncThunk(
   'finances/fetchTransactionsOfPeriot',
+  
   async (id, data) => {
     const res = axios.get(
-      'https://wallet-rest-api.herokuapp.com/api/transactions'
+      'https://wallet-rest-api.herokuapp.com/api/transactions', id, data
+
     );
     return res;
   }

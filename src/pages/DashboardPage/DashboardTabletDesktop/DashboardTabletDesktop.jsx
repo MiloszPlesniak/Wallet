@@ -70,8 +70,8 @@ export default function DashboardTabletDesktop() {
                 >
                   <Outlet />
                 </Suspense>
+                {currentLocation === '/home' && <ButtonAddTransactions />}
               </div>
-              {currentLocation === '/home' && <ButtonAddTransactions />}
 
               <div className={styles.Dashboard__footerContainer}>
                 <Footer />

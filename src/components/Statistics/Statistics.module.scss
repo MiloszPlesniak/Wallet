@@ -65,7 +65,7 @@
     flex-basis: auto;
 
     @media screen and (min-width: 1280px) {
-      height: calc(100vh - 197px - 40px - 40px);
+      height: calc(100vh - 197px - 40px - 40px - 30px);
       overflow-y: scroll;
       scrollbar-gutter: stable;
 

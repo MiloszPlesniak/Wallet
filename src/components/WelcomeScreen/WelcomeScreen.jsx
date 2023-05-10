@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import logo from '../../assets/images/icons/logoIcon.svg';
+import sprite from '../../assets/svg/sprite.svg';
 import styles from './WelcomeScreen.module.scss';
 
 const WelcomeScreen = () => {
@@ -17,7 +17,9 @@ const WelcomeScreen = () => {
       {show && (
         <div className={styles.WelcomeScreen__backdrop}>
           <div className={styles.WelcomeScreen__overlay}>
-            <img className={styles.WelcomeScreen__logo} src={logo} alt="Logo" />
+            <svg className={styles.WelcomeScreen__logo}>
+              <use href={`${sprite}#icon-logo`}></use>
+            </svg>
             <p className={styles.WelcomeScreen__title} data-text="Wallet">
               Wallet
             </p>

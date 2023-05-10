@@ -10,13 +10,18 @@ const TransactionSchema = yup.object().shape({
 
   date: yup.date().required('Date is required'),
 
-  typeOfTransaction: yup
-    .string()
-    .required('Type of transaction is required')
-    .oneOf(
-      ['income', 'expense'],
-      'Type of transaction must be income or expense'
-    ),
+  // typeOfTransaction: yup
+  //   .string()
+  //   .required('Type of transaction is required')
+  //   .oneOf(
+  //     ['income', 'expense'],
+  //     'Type of transaction must be income or expense'
+  //   ),
+
+  // type: yup
+  //   .string()
+  //   .required('Type of transaction is required')
+  //   .oneOf(['+', '-'], 'Type of transaction must be income or expense'),
 
   category: yup.string().optional(),
 

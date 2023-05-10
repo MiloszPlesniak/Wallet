@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import axios from 'axios';
 import {
   fetchTransactions,
   addTransactions,
   editTransactions,
   deleteTransactions,
+  fetchTransacionsOfPeriot
 } from './thunk';
 
 export const financesSlice = createSlice({
   name: 'finances',
   initialState: {
+    error: null,
+    isLoading: false,
     transactions: [],
     balance: 0,
   },
@@ -19,18 +21,80 @@ export const financesSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchTransactions.fulfilled](state, { payload }) {},
-    [fetchTransactions.pending](state, { payload }) {},
-    [fetchTransactions.rejected](state, { payload }) {},
-    [addTransactions.fulfilled](state, { payload }) {},
-    [addTransactions.pending](state, { payload }) {},
-    [addTransactions.rejected](state, { payload }) {},
-    [editTransactions.fulfilled](state, { payload }) {},
-    [editTransactions.pending](state, { payload }) {},
-    [editTransactions.rejected](state, { payload }) {},
-    [deleteTransactions.fulfilled](state, { payload }) {},
-    [deleteTransactions.pending](state, { payload }) {},
-    [deleteTransactions.rejected](state, { payload }) {},
+    [fetchTransactions.fulfilled](state, { payload }) {
+      state.transactions.push(...payload);
+      state.isLoading = false;
+    },
+    [fetchTransactions.pending](state) {
+      state.isLoading = true;
+    },
+    [fetchTransactions.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    // /////////////////////
+    [addTransactions.fulfilled](state, { payload }) {
+      console.log(payload);
+      state.transactions.push(payload);
+      state.isLoading = false;
+    },
+    [addTransactions.pending](state) {
+      state.isLoading = true;
+    },
+    [addTransactions.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    // /////////////////////////////
+    [editTransactions.fulfilled](state, { payload }) {
+      const index = state.transactions.findIndex(
+        item => item._id === payload._id
+      );
+      const editEdtransacions = state.transactions;
+      editEdtransacions.splice(index, 1, payload);
+      state.transactions = editEdtransacions;
+    },
+    [editTransactions.pending](state) {
+      state.isLoading = true;
+    },
+    [editTransactions.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    // ////////////////////////////////////
+    [deleteTransactions.fulfilled](state, { payload }) {
+      const editEdtransacions = state.transactions;
+      const index = editEdtransacions.findIndex(
+        item => item._id === payload._id
+      );
+      editEdtransacions.splice(index, 1);
+      state.transactions = editEdtransacions;
+    },
+    [deleteTransactions.pending](state) {
+      state.isLoading = true;
+    },
+    [deleteTransactions.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+  },
+  // ///////////////////////////
+
+  [fetchTransacionsOfPeriot.fulfilled](state, { payload }) {
+    const filtredArreyTransacionsByDate = state.transactions.filter(
+      item => item.data.start === payload.data.start && item.data.end === payload.data.end
+    );
+    state.transactions = filtredArreyTransacionsByDate;
+   //state.transactions = payload.sort((start, end) => {
+    //return new Date(start.date) && new Date(end.date)});
+    state.isLoading = false;
+  },
+  [fetchTransacionsOfPeriot.pending](state) {
+    state.isLoading = true;
+  },
+  [fetchTransacionsOfPeriot.rejected](state, { payload }) {
+    state.isLoading = false;
+    state.error = payload;
   },
 });
 

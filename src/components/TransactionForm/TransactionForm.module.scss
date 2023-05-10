@@ -32,6 +32,16 @@
     &:focus {
       border-bottom: 2px solid #24cca7;
     }
+
+    &__error {
+      position: absolute;
+      font-size: 12px;
+      color: #ff00009a;
+      border-bottom: 2px solid #ff00009a;
+      right: 13%;
+      bottom: 44%;
+      font-family: 'Circe';
+    }
   }
   &__amount {
     width: 18.1vw;

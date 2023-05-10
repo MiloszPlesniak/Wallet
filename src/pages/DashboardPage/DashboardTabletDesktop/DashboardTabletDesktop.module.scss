@@ -45,6 +45,7 @@
     }
 
     &__contentContainer {
+      position: relative;
       flex-direction: column;
       padding: 0 32px 32px 32px;
       gap: 32px;
@@ -81,6 +82,7 @@
     }
 
     &__main {
+      position: relative;
       margin: 0 auto;
       max-width: 1280px;
       height: calc(100vh - 80px);

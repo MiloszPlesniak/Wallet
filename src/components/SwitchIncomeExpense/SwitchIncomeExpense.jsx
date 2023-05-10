@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import clsx from 'clsx';
@@ -51,9 +50,7 @@ const ExpenseSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const SwitchIncomeExpense = ({ handleToogle }) => {
-  const [checked, setChecked] = useState(false);
-
+const SwitchIncomeExpense = ({ handleToogle, checked }) => {
   return (
     <div className={styles.toogleIncomeExpense}>
       <p
@@ -67,7 +64,6 @@ const SwitchIncomeExpense = ({ handleToogle }) => {
       <ExpenseSwitch
         checked={checked}
         onChange={() => {
-          setChecked(!checked);
           handleToogle();
         }}
         color="default"

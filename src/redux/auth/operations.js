@@ -23,6 +23,7 @@ export const registerUser = createAsyncThunk(
       axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
       const res = await axios.post('users/signup', credentials);
       // After successful registration, add the token to the HTTP header
+
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {

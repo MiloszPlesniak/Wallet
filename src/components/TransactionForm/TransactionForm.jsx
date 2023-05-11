@@ -43,13 +43,15 @@ const TransactionForm = ({
 
   useEffect(() => {
     formik.setFieldValue('category', category);
-  }, [category, formik]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category]);
 
   useEffect(() => {
     typeOfTransaction
       ? formik.setFieldValue('type', '+')
       : formik.setFieldValue('type', '-');
-  }, [typeOfTransaction, formik]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [typeOfTransaction]);
 
   return (
     <form className={style.form} onSubmit={formik.handleSubmit}>

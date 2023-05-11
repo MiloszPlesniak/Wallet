@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import Chart from 'components/Chart/Chart';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
+import DataFilter from 'components/DataFilter/DataFilter';
 import styles from './Statistics.module.scss';
 import Media from 'react-media';
 import { breakpoints } from 'styles/breakpoints';
@@ -103,8 +104,13 @@ const Statistics = () => {
                 )}
                 <Chart filteredData={filteredData} />
               </div>
-              <div className={styles.DiagramTab__container}>
-                <DiagramTab diagramData={diagramData} />
+              <div className={styles.DataFilter__container}>
+                <div>
+                  <DataFilter/>
+                </div>
+                <div className={styles.DiagramTab__container}>
+                  <DiagramTab diagramData={diagramData} />
+                </div>
               </div>
             </div>
           </>

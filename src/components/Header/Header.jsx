@@ -1,5 +1,8 @@
 import React from 'react';
 import Media from 'react-media';
+
+import { selectUser } from 'redux/auth/selectors';
+
 import { breakpoints } from 'styles/breakpoints';
 import Logo from 'components/Logo/Logo';
 import styles from './Header.module.scss';
@@ -13,6 +16,9 @@ import { changeIsModalLogoutOpen } from 'redux/global/slice';
 
 const Header = () => {
   const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
+  console.log(user);
 
   return (
     <>
@@ -29,7 +35,9 @@ const Header = () => {
                     onClick={() => dispatch(changeIsModalLogoutOpen())}
                     sx={{ p: 0, m: 0 }}
                   >
-                    <span className={styles.Header__logOutUserName}>Name</span>
+                    <span className={styles.Header__logOutUserName}>
+                      {`${user.name}`}
+                    </span>
                     <LogoutIcon
                       sx={{
                         color: '#bdbdbd',
@@ -40,7 +48,10 @@ const Header = () => {
               )}
               {(matches.desktop || matches.tablet) && (
                 <div className={styles.Header__logOut}>
-                  <span className={styles.Header__logOutUserName}>Name</span>
+                  <span className={styles.Header__logOutUserName}>
+                    {' '}
+                    {`${user.name}`}
+                  </span>
                   <Divider
                     orientation="vertical"
                     flexItem

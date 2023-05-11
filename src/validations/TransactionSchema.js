@@ -18,7 +18,7 @@ const TransactionSchema = yup.object().shape({
       }
     ),
 
-  date: yup.date().required('Date is required'),
+  //date: yup.date().required('Date is required'),
 
   category: yup.string().optional(),
 

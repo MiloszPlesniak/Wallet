@@ -26,7 +26,7 @@ const TransactionForm = ({
   const formik = useFormik({
     initialValues: {
       amount: 0,
-      date: '',
+      date: new Date().valueOf(),
       comment: '',
       category: '',
       owner: user.id,
@@ -50,6 +50,9 @@ const TransactionForm = ({
     typeOfTransaction
       ? formik.setFieldValue('type', '+')
       : formik.setFieldValue('type', '-');
+    if (typeOfTransaction === true) {
+      setCategory('Income');
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeOfTransaction]);
 
@@ -58,6 +61,7 @@ const TransactionForm = ({
       {!typeOfTransaction && (
         <DropdownCategories handleSetCategory={setCategory} />
       )}
+
       <div>
         <TextField
           className={style.form__amount}
@@ -85,11 +89,11 @@ const TransactionForm = ({
           initialValue={new Date()}
           value={formik.values.date}
           onChange={value => {
-            formik.setFieldValue('date', value._d);
+            formik.setFieldValue('date', value.valueOf() /*value._d*/);
           }}
           onBlur={handleBlur}
           error={formik.touched.date && Boolean(formik.errors.date)}
-          helperText={formik.touched.date ? formik.errors.date : ' '}
+          helperText={formik.touched.date ? formik.errors.date : ''}
         />
         {formik.touched.date && Boolean(formik.errors.date) && (
           <p className={style.form__dateTime__error}>{formik.errors.date}</p>

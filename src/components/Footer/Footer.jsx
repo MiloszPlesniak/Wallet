@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import ModalTemplate from 'components/ModalTemplate/ModalTemplate';
 import Buttons from 'components/Buttons/Buttons';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import sprite from '../../assets/svg/sprite.svg';
 import styles from './Footer.module.scss';
 

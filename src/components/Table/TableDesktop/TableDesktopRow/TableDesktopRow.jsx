@@ -1,4 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
+
+import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -19,27 +24,40 @@ const DeleteButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function TableDesktopRow({ data }) {
+  const dispatch = useDispatch();
+
+  const openModalEditTransaction = () => {
+    dispatch(changeIsModalEditTransactionOpen());
+  };
+
   const dynamicCss = data.type === '-' ? styles.expense : styles.income;
 
   return (
-    <tr>
-      <td data-type="date">{data.date}</td>
-      <td data-type="type">{data.type}</td>
-      <td>{data.category}</td>
-      <td data-type="comment">{data.comment}</td>
-      <td data-type="sum" className={dynamicCss}>
-        {data.sum}
-      </td>
-      <td data-type="edit">
-        <div className={styles.stack}>
-          <IconButton aria-label="edit">
-            <EditIcon className={styles.editIcon} />
-          </IconButton>
-          <DeleteButton disableElevation variant="contained">
-            Delete
-          </DeleteButton>
-        </div>
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td data-type="date">{data.date}</td>
+        <td data-type="type">{data.type}</td>
+        <td>{data.category}</td>
+        <td data-type="comment">{data.comment}</td>
+        <td data-type="sum" className={dynamicCss}>
+          {data.sum}
+        </td>
+        <td data-type="edit">
+          <div className={styles.stack}>
+            <IconButton
+              type="button"
+              aria-label="edit"
+              onClick={openModalEditTransaction}
+            >
+              <EditIcon className={styles.editIcon} />
+            </IconButton>
+            <DeleteButton disableElevation variant="contained">
+              Delete
+            </DeleteButton>
+          </div>
+        </td>
+      </tr>
+      <ModalEditTransaction />
+    </>
   );
 }

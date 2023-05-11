@@ -10,31 +10,37 @@ const listOfAppCreators = [
     name: 'Miłosz',
     role: 'Team Leader',
     github: 'https://github.com/MiloszPlesniak',
+    avatar: 'https://avatars.githubusercontent.com/u/105582642?v=4',
   },
   {
     name: 'Bolek',
     role: 'Developer & Scrum Master',
     github: 'https://github.com/BoloMasta',
+    avatar: 'https://avatars.githubusercontent.com/u/103572991?v=4',
   },
   {
     name: 'Ula',
     role: 'Developer',
     github: 'https://github.com/Urszula-Molska',
+    avatar: 'https://avatars.githubusercontent.com/u/105520935?v=4',
   },
   {
     name: 'Jacek',
     role: 'Developer',
     github: 'https://github.com/jacekpietrzak',
+    avatar: 'https://avatars.githubusercontent.com/u/5859748?v=4',
   },
   {
     name: 'Angelika',
     role: 'Developer',
     github: 'https://github.com/AngelikaGralewska',
+    avatar: 'https://avatars.githubusercontent.com/u/105511457?v=4',
   },
   {
     name: 'Karolina',
     role: 'Developer',
     github: 'https://github.com/KarolinaZinczuk',
+    avatar: 'https://avatars.githubusercontent.com/u/104589501?v=4',
   },
 ];
 
@@ -45,7 +51,7 @@ const Footer = () => {
     <footer className={styles.Footer}>
       <div className={styles.Footer__logo}>
         <svg className={styles.Footer__logo__svg1}>
-          <use href={`${sprite}#icon-logo-picture`}></use>
+          <use href={`${sprite}#icon-logo-img`}></use>
         </svg>
         <svg className={styles.Footer__logo__svg2}>
           <use href={`${sprite}#icon-logo-title`}></use>
@@ -79,13 +85,18 @@ const Footer = () => {
         </p>
 
         <ul className={styles.Footer__modalTeamList}>
-          {listOfAppCreators.map(({ name, role, github }) => (
+          {listOfAppCreators.map(({ name, role, github, avatar }) => (
             <li key={name} className={styles.Footer__modalTeamListItem}>
-              <p className={styles.Footer__modalTeamListItemName}>{name}</p>
-              <p className={styles.Footer__modalTeamListItemRole}>{role}</p>
               <a href={github} target="_blank" rel="noreferrer">
-                <GitHubIcon className={styles.Footer__modalTeamListItemIcon} />
+                <img
+                  src={avatar}
+                  className={styles.Footer__modalTeamListItemIcon}
+                />
               </a>
+              <a href={github} target="_blank" rel="noreferrer">
+                <p className={styles.Footer__modalTeamListItemName}>{name}</p>
+              </a>
+              <p className={styles.Footer__modalTeamListItemRole}>{role}</p>
             </li>
           ))}
         </ul>

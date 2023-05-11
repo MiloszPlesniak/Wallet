@@ -33,7 +33,7 @@ export default function TableDesktopRow({ data }) {
       <td data-type="edit">
         <div className={styles.stack}>
           <IconButton aria-label="edit">
-            <EditIcon className={styles.icon} />
+            <EditIcon className={styles.editIcon} />
           </IconButton>
           <DeleteButton disableElevation variant="contained">
             Delete

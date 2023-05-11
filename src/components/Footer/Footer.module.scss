@@ -31,11 +31,11 @@
     }
 
     & .Footer__logo__svg1 {
-      transform: translateX(-60px);
+      // transform: translateX(-60px);
     }
 
     & .Footer__logo__svg2 {
-      transform: translateX(50px);
+      transform: translateX(100px);
       opacity: 1;
     }
 
@@ -66,7 +66,7 @@
   &__logo {
     transform: scale(0.5);
     display: flex;
-  
+
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -74,13 +74,14 @@
 
     &__svg1 {
       position: absolute;
-
+      height: 40px;
       transition: all 0.3s ease-in-out;
       margin-right: -20px;
     }
 
     &__svg2 {
       transition: all 0.3s ease-in-out;
+      height: 40px;
       margin-left: -150px;
       opacity: 0;
     }
@@ -114,6 +115,7 @@
 
   &__modalText {
     margin: 30px auto;
+    padding: 0 20px;
     text-align: justify;
     font-family: 'Circe';
     line-height: normal;
@@ -127,11 +129,13 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    row-gap: 25px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding-bottom: 20px;
   }
 
   &__modalTeamListItem {
@@ -143,16 +147,52 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
     font-family: 'Circe';
+
+    & a {
+      text-decoration: none;
+    }
+  }
+
+  &__modalTeamListItemName {
+    color: #313131;
+    text-decoration: none;
+    border-bottom: 1px solid #ffffff00;
+    transition: color 0.1s ease-in-out, border-bottom 0.1s ease-in-out;
+    &:hover {
+      color: #24cca7;
+      border-bottom: 1px solid #24cca7;
+    }
+    &:active {
+      color: #24cca7;
+      border-bottom: 1px solid #24cca7;
+    }
   }
 
   &__modalTeamListItemRole {
+    font-family: 'Circe';
     font-size: 14px;
     font-weight: 400;
     color: #000;
     text-align: center;
     font-style: italic;
+  }
+
+  &__modalTeamListItemIcon {
+    border-radius: 50%;
+    width: 60px;
+    height: auto;
+    outline-style: solid;
+    outline-width: 0px;
+    outline-color: #24cca7;
+    transition: outline-width 0.1s ease-in-out;
+    &:hover {
+      outline-width: 5px;
+    }
+    &:active {
+      outline-width: 5px;
+    }
   }
 
   &__modalButton {

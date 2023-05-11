@@ -4,7 +4,7 @@ import {
   addTransactions,
   editTransactions,
   deleteTransactions,
-  fetchTransacionsOfPeriot
+  fetchTransacionsOfPeriot,
 } from './thunk';
 
 export const financesSlice = createSlice({
@@ -22,7 +22,7 @@ export const financesSlice = createSlice({
   },
   extraReducers: {
     [fetchTransactions.fulfilled](state, { payload }) {
-      state.transactions.push(...payload);
+      state.transactions = payload;
       state.isLoading = false;
     },
     [fetchTransactions.pending](state) {
@@ -82,10 +82,12 @@ export const financesSlice = createSlice({
 
   [fetchTransacionsOfPeriot.fulfilled](state, { payload }) {
     const filtredArreyTransacionsByDate = state.transactions.filter(
-      item => item.data.start === payload.data.start && item.data.end === payload.data.end
+      item =>
+        item.data.start === payload.data.start &&
+        item.data.end === payload.data.end
     );
     state.transactions = filtredArreyTransacionsByDate;
-   //state.transactions = payload.sort((start, end) => {
+    //state.transactions = payload.sort((start, end) => {
     //return new Date(start.date) && new Date(end.date)});
     state.isLoading = false;
   },

@@ -85,7 +85,9 @@ const TransactionForm = ({
   const formik = useFormik({
     initialValues: {
       amount: 0,
+
       transactionDate: new Date(),
+
       comment: '',
       categoryId: '',
       // owner: user.id,

@@ -8,7 +8,7 @@ export default function TableMobile({ transactions }) {
     <div className={styles.TableMobile}>
       {transactions.map(transaction => {
         return (
-          <TableMobileRow transaction={transaction} key={transaction._id} />
+          <TableMobileRow transaction={transaction} key={transaction.id} />
         );
       })}
       <ButtonAddTransactions />

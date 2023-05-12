@@ -5,46 +5,53 @@ import {
   editTransactions,
   deleteTransactions,
   fetchTransacionsOfPeriot,
+  fetchTransactionsCategories,
 } from './thunk';
+
+const initialState = {
+  error: null,
+  isLoading: false,
+  transactions: [],
+  balance: 0,
+  transactionsCategories: [],
+};
 
 export const financesSlice = createSlice({
   name: 'finances',
-  initialState: {
-    error: null,
-    isLoading: false,
-    transactions: [],
-    balance: 0,
-  },
+  initialState,
   reducers: {
     setBalance: (state, { payload }) => {
       state.balance = payload;
     },
   },
   extraReducers: {
+    [fetchTransactions.pending](state) {
+      state.isLoading = true;
+    },
     [fetchTransactions.fulfilled](state, { payload }) {
       state.transactions = payload;
       state.isLoading = false;
-    },
-    [fetchTransactions.pending](state) {
-      state.isLoading = true;
     },
     [fetchTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // /////////////////////
+    [addTransactions.pending](state) {
+      state.isLoading = true;
+    },
     [addTransactions.fulfilled](state, { payload }) {
       state.transactions.push(payload);
       state.isLoading = false;
-    },
-    [addTransactions.pending](state) {
-      state.isLoading = true;
     },
     [addTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // /////////////////////////////
+    [editTransactions.pending](state) {
+      state.isLoading = true;
+    },
     [editTransactions.fulfilled](state, { payload }) {
       const index = state.transactions.findIndex(
         item => item._id === payload._id
@@ -53,14 +60,14 @@ export const financesSlice = createSlice({
       editEditransacions.splice(index, 1, payload);
       state.transactions = editEditransacions;
     },
-    [editTransactions.pending](state) {
-      state.isLoading = true;
-    },
     [editTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // ////////////////////////////////////
+    [deleteTransactions.pending](state) {
+      state.isLoading = true;
+    },
     [deleteTransactions.fulfilled](state, { payload }) {
       const editEditransacions = state.transactions;
       const index = editEditransacions.findIndex(
@@ -69,9 +76,6 @@ export const financesSlice = createSlice({
       editEditransacions.splice(index, 1);
       state.transactions = editEditransacions;
     },
-    [deleteTransactions.pending](state) {
-      state.isLoading = true;
-    },
     [deleteTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
@@ -79,15 +83,29 @@ export const financesSlice = createSlice({
   },
   // ///////////////////////////
 
-  [fetchTransacionsOfPeriot.fulfilled](state) {
-    state.isLoading = false;
-  },
   [fetchTransacionsOfPeriot.pending](state) {
     state.isLoading = true;
+  },
+  [fetchTransacionsOfPeriot.fulfilled](state) {
+    state.isLoading = false;
   },
   [fetchTransacionsOfPeriot.rejected](state, { payload }) {
     state.isLoading = false;
     state.error = payload;
+  },
+
+  /////////////////////////
+  [fetchTransactionsCategories.pending]: state => {
+    state.isLoading = true;
+  },
+  [fetchTransactionsCategories.fulfilled]: (state, action) => {
+    state.isLoading = false;
+    state.error = null;
+    state.transactionsCategories = action.payload.data;
+  },
+  [fetchTransactionsCategories.rejected]: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
   },
 });
 

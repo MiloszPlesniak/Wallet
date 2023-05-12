@@ -2,18 +2,13 @@ import React from 'react';
 import styles from './TableDesktop.module.scss';
 import TableDesktopRow from './TableDesktopRow/TableDesktopRow';
 
-export default function TransactionsTable({ transactions, isLoading, error }) {
+export default function TransactionsTable({ transactions }) {
   return (
     <>
       <div className={styles.container}>
         <div className={styles.Table__container}>
           <div className={styles.Table__headerBackground}></div>
 
-          {isLoading && <div>Loading...</div>}
-          {error && <div>{error}</div>}
-          {transactions.length === 0 && !isLoading && (
-            <div>No contacts to show</div>
-          )}
           {transactions.length > 0 && (
             <table className={styles.Table}>
               <thead className={styles.Table__headContainer}>

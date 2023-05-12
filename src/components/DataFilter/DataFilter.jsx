@@ -12,29 +12,28 @@ import style from './DataFilter.module.scss'
 export default function DataFilter() {
   const dispatch = useDispatch()
 
-  const [dataStart, setDataStart] = React.useState(new Date().getMonth());
-  const [dataEnd, setDataEnd] = React.useState(new Date().getFullYear());
+  const [month, setMonth] = React.useState(new Date().getMonth());
+  const [year, setYear] = React.useState(new Date().getFullYear());
 
   const handleChangeStart = (event) => {
-    setDataStart(event.target.value);
+    setMonth(event.target.value);
   };
 
   const handleChangeEnd = (event) => {
-    setDataEnd(event.target.value);
+    setYear(event.target.value);
   };
 
   React.useEffect(() => {
-    dispatch(fetchTransacionsOfPeriot({ dataStart, dataEnd }))
-  }, [dispatch, dataStart, dataEnd])
+    dispatch(fetchTransacionsOfPeriot({ month, year }))
+  }, [dispatch, month, year])
 
   return (
     <div className={style.DataFilter }>
       <FormControl className={style.DataFilter__form }>
-        <InputLabel id="dataStart">Month</InputLabel>
+        <InputLabel id="month">Month</InputLabel>
         <Select
-          labelId=""
-          id="dataStart"
-          value={dataStart}
+          id="month"
+          value={month}
           onChange={handleChangeStart}
           label="Month"
         >
@@ -54,11 +53,11 @@ export default function DataFilter() {
         </FormControl>
 
         <FormControl className={style.DataFilter__form }>
-        <InputLabel id="dataEnd">Year</InputLabel>
+        <InputLabel id="year">Year</InputLabel>
         <Select
           labelId=""
-          id="dataEnd"
-          value={dataEnd}
+          id="year"
+          value={year}
           onChange={handleChangeEnd}
           label="Year"
         >

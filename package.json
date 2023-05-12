@@ -1,8 +1,8 @@
 {
-  "name": "walet",
+  "name": "wallet",
   "version": "0.1.0",
-  "private": true,
-  "homepage": ".",
+  "private": false,
+  "homepage": "https://jacekpietrzak.github.io/Wallet/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

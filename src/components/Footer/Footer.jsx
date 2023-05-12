@@ -88,6 +88,7 @@ const Footer = () => {
             <li key={name} className={styles.Footer__modalTeamListItem}>
               <a href={github} target="_blank" rel="noreferrer">
                 <img
+                  alt="avatar"
                   src={avatar}
                   className={styles.Footer__modalTeamListItemIcon}
                 />

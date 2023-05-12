@@ -6,8 +6,11 @@ import Header from 'components/Header/Header';
 import styles from './DashboardPage.module.scss';
 import DashboardMobile from './DashboardMobile/DashboardMobile';
 import DashboardTabletDesktop from './DashboardTabletDesktop/DashboardTabletDesktop';
-
+import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
+import { useSelector } from 'react-redux';
+import { selectModalEditTransactionType } from 'redux/global/selectors';
 const DashboardPage = () => {
+  const modalType = useSelector(selectModalEditTransactionType);
   return (
     <>
       <Helmet title="Home">
@@ -23,6 +26,7 @@ const DashboardPage = () => {
           </div>
         )}
       </Media>
+      <ModalEditTransaction typeOfTransaction={modalType} />
     </>
   );
 };

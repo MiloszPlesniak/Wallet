@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
 import styles from './Balance.module.scss';
@@ -11,7 +11,6 @@ export default function Balance() {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
 
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   return (

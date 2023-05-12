@@ -5,80 +5,107 @@ import DataFilter from 'components/DataFilter/DataFilter';
 import styles from './Statistics.module.scss';
 import Media from 'react-media';
 import { breakpoints } from 'styles/breakpoints';
-import db from 'db/db';
+// import db from 'db/db';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchTransacionsOfPeriot } from 'redux/transaction/thunk';
 
 // import { all } from 'axios';
 
-console.log({ db });
-
-const data = db.transactions;
-
-console.log({ data });
+// const data = db.transactions;
 
 const Statistics = () => {
-  const returnTransactionsByType = (arr, transactionType) => {
-    const TransactionsByType = arr.filter(
-      item => item.type === transactionType
-    );
-    return TransactionsByType;
+  const [catgory, setCategory] = useState([]);
+  const dispatch = useDispatch();
+  const date = {
+    month: new Date().getMonth() + 1,
+    year: new Date().getFullYear(),
   };
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
+    const getCagetory = async date => {
+      const category = await dispatch(fetchTransacionsOfPeriot(date));
+      if (!category.payload.lenght > 1) {
+        setCategory(category.payload);
+      }
+      setCategory([]);
+    };
+    getCagetory(date);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const returnUniqueCategories = arr => {
-    const allCategories = arr.map(item => item.category);
-    const uniqueCategories = allCategories.filter(
-      (category, index, array) => array.indexOf(category) === index
-    );
-    return uniqueCategories;
-  };
+  // const returnTransactionsByType = (arr, transactionType) => {
+  //   const TransactionsByType = arr.filter(
+  //     item => item.type === transactionType
+  //   );
+  //   return TransactionsByType;
+  // };
 
-  const returnOverallSumByCategory = (arr = [], category = '') =>
-    arr.reduce(
-      (prev, { sum, category: cat }) => (cat === category ? prev + sum : prev),
-      0
-    );
+  // const returnUniqueCategories = arr => {
+  //   const allCategories = arr.map(item => item.category);
+  //   const uniqueCategories = allCategories.filter(
+  //     (category, index, array) => array.indexOf(category) === index
+  //   );
+  //   return uniqueCategories;
+  // };
 
-  const createSum = (dataArr, categoryArr) => {
-    let dataTable = [];
-    for (const category of categoryArr) {
-      dataTable.push(returnOverallSumByCategory(dataArr, category));
-    }
-    return dataTable;
-  };
+  // const returnOverallSumByCategory = (arr = [], category = '') =>
+  //   arr.reduce(
+  //     (prev, { sum, category: cat }) => (cat === category ? prev + sum : prev),
+  //     0
+  //   );
 
-  const expenseCategories = returnUniqueCategories(
-    returnTransactionsByType(data, '-')
-  );
+  // const createSum = (dataArr, categoryArr) => {
+  //   let dataTable = [];
+  //   for (const category of categoryArr) {
+  //     dataTable.push(returnOverallSumByCategory(dataArr, category));
+  //   }
+  //   return dataTable;
+  // };
 
-  const returnSum = arr => {
-    let sum = 0;
-    for (const item of arr) {
-      sum += item.sum;
-    }
-    return sum;
-  };
+  // const expenseCategories = returnUniqueCategories(
+  //   returnTransactionsByType(data, '-')
+  // );
 
-  const expenseData = returnTransactionsByType(data, '-');
-  // console.log({ expenseData });
+  // const returnSum = arr => {
+  //   let sum = 0;
+  //   for (const item of arr) {
+  //     sum += item.sum;
+  //   }
+  //   return sum;
+  // };
 
-  const incomeData = returnTransactionsByType(data, '+');
-  // console.log({ incomeData });
+  // const expenseData = returnTransactionsByType(data, '-');
+  // // console.log({ expenseData });
 
-  const expenseOverall = returnSum(expenseData);
-  // console.log({ expenseOverall });
+  // const incomeData = returnTransactionsByType(data, '+');
+  // // console.log({ incomeData });
 
-  const incomeOverall = returnSum(incomeData);
-  // console.log({ expenseOverall });
+  // const expenseOverall = returnSum(expenseData);
+  // // console.log({ expenseOverall });
 
+  // const incomeOverall = returnSum(incomeData);
+  // // console.log({ expenseOverall });
+
+  // const filteredData = {
+  //   expenseCategories,
+  //   expenseData: createSum(data, expenseCategories),
+  // };
+
+  // // console.log({ filteredData });
+
+  // const diagramData = {
+  //   expenseData,
+  //   expenseOverall,
+  //   incomeOverall,
+  // };
+  // // const fdata = catgory.map(item => item.name);
+
+  // console.log(filteredData);
+  console.log(catgory);
   const filteredData = {
-    expenseCategories,
-    expenseData: createSum(data, expenseCategories),
-  };
-
-  // console.log({ filteredData });
-  const diagramData = {
-    expenseData,
-    expenseOverall,
-    incomeOverall,
+    expenseCategories: catgory.map(item => item.name),
+    expenseData: catgory.map(item => item.amount),
   };
 
   return (
@@ -106,10 +133,10 @@ const Statistics = () => {
               </div>
               <div className={styles.DataFilter__container}>
                 <div>
-                  <DataFilter/>
+                  <DataFilter />
                 </div>
                 <div className={styles.DiagramTab__container}>
-                  <DiagramTab diagramData={diagramData} />
+                  <DiagramTab diagramData={catgory} />
                 </div>
               </div>
             </div>

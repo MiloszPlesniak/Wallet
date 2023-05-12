@@ -34,7 +34,6 @@ export const financesSlice = createSlice({
     },
     // /////////////////////
     [addTransactions.fulfilled](state, { payload }) {
-      console.log(payload);
       state.transactions.push(payload);
       state.isLoading = false;
     },
@@ -80,15 +79,7 @@ export const financesSlice = createSlice({
   },
   // ///////////////////////////
 
-  [fetchTransacionsOfPeriot.fulfilled](state, { payload }) {
-    const filtredArreyTransacionsByDate = state.transactions.filter(
-      item =>
-        item.data.start === payload.data.start &&
-        item.data.end === payload.data.end
-    );
-    state.transactions = filtredArreyTransacionsByDate;
-    //state.transactions = payload.sort((start, end) => {
-    //return new Date(start.date) && new Date(end.date)});
+  [fetchTransacionsOfPeriot.fulfilled](state) {
     state.isLoading = false;
   },
   [fetchTransacionsOfPeriot.pending](state) {

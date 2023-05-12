@@ -58,7 +58,7 @@ const TransactionForm = ({
 
   return (
     <form className={style.form} onSubmit={formik.handleSubmit}>
-      {!typeOfTransaction && (
+      {typeOfTransaction === '-' && (
         <DropdownCategories handleSetCategory={setCategory} />
       )}
 

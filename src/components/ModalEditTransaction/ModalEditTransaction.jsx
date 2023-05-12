@@ -8,17 +8,17 @@ import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
 const ModalEditTransaction = ({ typeOfTransaction }) => {
   const modalIsOpen = useSelector(selectIsModalEditTransactionOpen);
   const dispatch = useDispatch();
-  typeOfTransaction = true;
+  
   return (
     <ModalTemplate
       title={'Edit transaction'}
       open={modalIsOpen}
-      onClose={() => dispatch(changeIsModalEditTransactionOpen)}
+      onClose={() => dispatch(changeIsModalEditTransactionOpen())}
     >
       <div className={style.switch}>
         <span
           className={clsx({
-            [style.switch__active_income]: typeOfTransaction,
+            [style.switch__active_income]: typeOfTransaction === '+',
           })}
         >
           Income
@@ -26,7 +26,7 @@ const ModalEditTransaction = ({ typeOfTransaction }) => {
         /
         <span
           className={clsx({
-            [style.switch__active_expense]: !typeOfTransaction,
+            [style.switch__active_expense]: typeOfTransaction === '-',
           })}
         >
           Expense
@@ -36,7 +36,7 @@ const ModalEditTransaction = ({ typeOfTransaction }) => {
         typeOfTransaction={typeOfTransaction}
         firstButtonText="save"
         firstButtonHandler={() => console.log('d')}
-        secondButtonHandler={() => dispatch(changeIsModalEditTransactionOpen)}
+        secondButtonHandler={() => dispatch(changeIsModalEditTransactionOpen())}
       />
     </ModalTemplate>
   );

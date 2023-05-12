@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import sprite from '../../assets/svg/sprite.svg';
 import styles from './WelcomeScreen.module.scss';
 import logoImg from '../../assets/svg/logo-img.svg';
 

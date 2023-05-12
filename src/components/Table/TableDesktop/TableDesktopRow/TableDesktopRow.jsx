@@ -5,8 +5,6 @@ import { deleteTransactions } from 'redux/transaction/thunk';
 
 import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
 
-import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
-
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '../../EditIcon/EditIcon';
@@ -28,8 +26,14 @@ const DeleteButton = styled(Button)(({ theme }) => ({
 export default function TableDesktopRow({ transaction }) {
   const dispatch = useDispatch();
 
-  const openModalEditTransaction = () => {
-    dispatch(changeIsModalEditTransactionOpen());
+  const data = {
+    day: new Date(transaction.date).getDate(),
+    month: new Date(transaction.date).getMonth() + 1,
+    year: new Date(transaction.date).getFullYear(),
+  };
+
+  const openModalEditTransaction = type => {
+    dispatch(changeIsModalEditTransactionOpen(type));
   };
 
   const handleDeleteContact = id => {
@@ -41,7 +45,7 @@ export default function TableDesktopRow({ transaction }) {
   return (
     <>
       <tr>
-        <td data-type="date">{transaction.date}</td>
+        <td data-type="date">{`${data.day}.${data.month}.${data.year}`}</td>
         <td data-type="type">{transaction.type}</td>
         <td>{transaction.category}</td>
         <td data-type="comment">{transaction.comment}</td>
@@ -53,7 +57,9 @@ export default function TableDesktopRow({ transaction }) {
             <IconButton
               type="button"
               aria-label="edit"
-              onClick={openModalEditTransaction}
+              onClick={() => {
+                openModalEditTransaction(transaction.type);
+              }}
             >
               <EditIcon className={styles.editIcon} />
             </IconButton>
@@ -68,7 +74,6 @@ export default function TableDesktopRow({ transaction }) {
           </div>
         </td>
       </tr>
-      <ModalEditTransaction />
     </>
   );
 }

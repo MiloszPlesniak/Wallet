@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { selectIsLoading } from 'redux/global/selectors';
 import { selectUser } from 'redux/auth/selectors';

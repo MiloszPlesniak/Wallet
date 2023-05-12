@@ -28,7 +28,6 @@ export const editTransactions = createAsyncThunk(
       `https://wallet.goit.ua/api/transactions/${id}`,
       data.data
     );
-    console.log('response from edit thunk:', res);
     return res;
   }
 );
@@ -66,8 +65,8 @@ export const fetchTransactionsCategories = createAsyncThunk(
       const res = await axios.get(
         'https://wallet.goit.ua/api/transaction-categories'
       );
-      // console.log(res);
-      return res;
+      console.log(res.data);
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

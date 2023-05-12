@@ -49,9 +49,9 @@ export const financesSlice = createSlice({
       const index = state.transactions.findIndex(
         item => item._id === payload._id
       );
-      const editEdtransacions = state.transactions;
-      editEdtransacions.splice(index, 1, payload);
-      state.transactions = editEdtransacions;
+      const editEditransacions = state.transactions;
+      editEditransacions.splice(index, 1, payload);
+      state.transactions = editEditransacions;
     },
     [editTransactions.pending](state) {
       state.isLoading = true;
@@ -62,12 +62,12 @@ export const financesSlice = createSlice({
     },
     // ////////////////////////////////////
     [deleteTransactions.fulfilled](state, { payload }) {
-      const editEdtransacions = state.transactions;
-      const index = editEdtransacions.findIndex(
+      const editEditransacions = state.transactions;
+      const index = editEditransacions.findIndex(
         item => item._id === payload._id
       );
-      editEdtransacions.splice(index, 1);
-      state.transactions = editEdtransacions;
+      editEditransacions.splice(index, 1);
+      state.transactions = editEditransacions;
     },
     [deleteTransactions.pending](state) {
       state.isLoading = true;

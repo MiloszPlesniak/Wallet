@@ -26,7 +26,7 @@ const TransactionForm = ({
   const formik = useFormik({
     initialValues: {
       amount: 0,
-      date: new Date().valueOf(),
+      transactionDate: new Date().valueOf(),
       comment: '',
       category: '',
       owner: user.id,
@@ -48,8 +48,8 @@ const TransactionForm = ({
 
   useEffect(() => {
     typeOfTransaction
-      ? formik.setFieldValue('type', '+')
-      : formik.setFieldValue('type', '-');
+      ? formik.setFieldValue('type', 'INCOME')
+      : formik.setFieldValue('type', 'EXPENSE');
     if (typeOfTransaction === true) {
       setCategory('Income');
     }

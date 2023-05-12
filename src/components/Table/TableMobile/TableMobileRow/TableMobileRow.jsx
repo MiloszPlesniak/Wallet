@@ -1,4 +1,11 @@
 import React from 'react';
+
+import { useDispatch } from 'react-redux';
+
+import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
+
+import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
+
 import Button from '@mui/material/Button';
 import EditIcon from '../../EditIcon/EditIcon';
 import { styled } from '@mui/material/styles';
@@ -29,46 +36,71 @@ const DeleteButton = styled(Button)(({ theme }) => ({
   padding: '4px 12px',
 }));
 
-export default function TableMobileRow({ data }) {
-  const dynamicValueCss = data.type === '-' ? styles.expense : styles.income;
+export default function TableMobileRow({ transaction }) {
+  const dispatch = useDispatch();
+
+  const openModalEditTransaction = () => {
+    dispatch(changeIsModalEditTransactionOpen());
+  };
+
+  const dynamicValueCss =
+    transaction.type === '-' ? styles.expense : styles.income;
+
   const dynamicStripeCss =
-    data.type === '-'
+    transaction.type === '-'
       ? styles.TableRowMobile__stripeExpense
       : styles.TableRowMobile__stripeIncome;
+
   return (
-    <div className={styles.TableRowMobile}>
-      <div className={styles.TableRowMobile__element}>
-        <span className={styles.TableRowMobile__key}>Date</span>
-        <span className={styles.TableRowMobile__value}>{data.date}</span>
+    <>
+      <div className={styles.TableRowMobile}>
+        <div className={styles.TableRowMobile__element}>
+          <span className={styles.TableRowMobile__key}>Date</span>
+          <span className={styles.TableRowMobile__value}>
+            {transaction.date}
+          </span>
+        </div>
+        <div className={styles.TableRowMobile__element}>
+          <span className={styles.TableRowMobile__key}>Type</span>
+          <span className={styles.TableRowMobile__value}>
+            {' '}
+            {transaction.type}
+          </span>
+        </div>
+        <div className={styles.TableRowMobile__element}>
+          <span className={styles.TableRowMobile__key}>Category</span>
+          <span className={styles.TableRowMobile__value}>
+            {transaction.category}
+          </span>
+        </div>
+        <div className={styles.TableRowMobile__element}>
+          <span className={styles.TableRowMobile__key}> Comment</span>
+          <span className={styles.TableRowMobile__value}>
+            {transaction.comment}
+          </span>
+        </div>
+        <div className={styles.TableRowMobile__element}>
+          <span className={styles.TableRowMobile__key}>Sum</span>
+          <span className={(styles.TableRowMobile__value, dynamicValueCss)}>
+            {transaction.amount}
+          </span>
+        </div>
+        <div className={styles.TableRowMobile__element}>
+          <DeleteButton disableElevation variant="contained">
+            <span className={styles.DeleteButton__Text}>Delete</span>
+          </DeleteButton>
+          <EditButton
+            type="button"
+            aria-label="edit"
+            onClick={openModalEditTransaction}
+          >
+            <EditIcon />
+            <span className={styles.EditButton__Text}>Edit</span>
+          </EditButton>
+        </div>
+        <div className={dynamicStripeCss} />
       </div>
-      <div className={styles.TableRowMobile__element}>
-        <span className={styles.TableRowMobile__key}>Type</span>
-        <span className={styles.TableRowMobile__value}> {data.type}</span>
-      </div>
-      <div className={styles.TableRowMobile__element}>
-        <span className={styles.TableRowMobile__key}>Category</span>
-        <span className={styles.TableRowMobile__value}>{data.category}</span>
-      </div>
-      <div className={styles.TableRowMobile__element}>
-        <span className={styles.TableRowMobile__key}> Comment</span>
-        <span className={styles.TableRowMobile__value}>{data.comment}</span>
-      </div>
-      <div className={styles.TableRowMobile__element}>
-        <span className={styles.TableRowMobile__key}>Sum</span>
-        <span className={(styles.TableRowMobile__value, dynamicValueCss)}>
-          {data.sum}
-        </span>
-      </div>
-      <div className={styles.TableRowMobile__element}>
-        <DeleteButton disableElevation variant="contained">
-          <span className={styles.DeleteButton__Text}>Delete</span>
-        </DeleteButton>
-        <EditButton>
-          <EditIcon />
-          <span className={styles.EditButton__Text}>Edit</span>
-        </EditButton>
-      </div>
-      <div className={dynamicStripeCss} />
-    </div>
+      <ModalEditTransaction />
+    </>
   );
 }

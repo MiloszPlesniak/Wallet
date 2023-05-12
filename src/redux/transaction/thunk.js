@@ -7,7 +7,7 @@ export const fetchTransactions = createAsyncThunk(
     const res = await axios.get(
       'https://wallet-rest-api.herokuapp.com/api/transactions'
     );
-    return res;
+    return res.data;
   }
 );
 export const addTransactions = createAsyncThunk(
@@ -42,12 +42,13 @@ export const deleteTransactions = createAsyncThunk(
 );
 export const fetchTransacionsOfPeriot = createAsyncThunk(
   'finances/fetchTransactionsOfPeriot',
-  
-  async (id, data) => {
-    const res = axios.get(
-      'https://wallet-rest-api.herokuapp.com/api/transactions', id, data
 
+  async data => {
+    const res = await axios.get(
+      'https://wallet-rest-api.herokuapp.com/api/transactions/periodicTransactions',
+      data
     );
-    return res;
+    
+    return res.data;
   }
 );

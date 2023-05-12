@@ -5,7 +5,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // gap: 12px;
     padding: 8px 40px 11px 40px;
     border-radius: 30px;
     background-color: #fff;
@@ -20,12 +19,18 @@
     color: #a6a6a6;
   }
 
+  &__textContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
   &__currency {
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 30px;
     line-height: 1.5em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: #000;
   }
   &__number {

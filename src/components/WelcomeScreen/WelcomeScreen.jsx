@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import logo from '../../assets/images/icons/logoIcon.svg';
 import styles from './WelcomeScreen.module.scss';
+import logoImg from '../../assets/svg/logo-img.svg';
 
 const WelcomeScreen = () => {
   const [show, setShow] = useState(true);
@@ -17,7 +17,11 @@ const WelcomeScreen = () => {
       {show && (
         <div className={styles.WelcomeScreen__backdrop}>
           <div className={styles.WelcomeScreen__overlay}>
-            <img className={styles.WelcomeScreen__logo} src={logo} alt="Logo" />
+            <img
+              src={logoImg}
+              alt="logo"
+              className={styles.WelcomeScreen__logo}
+            />
             <p className={styles.WelcomeScreen__title} data-text="Wallet">
               Wallet
             </p>

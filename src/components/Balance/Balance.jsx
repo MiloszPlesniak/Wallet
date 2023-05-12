@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+
 import styles from './Balance.module.scss';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
@@ -7,10 +11,12 @@ export default function Balance() {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
 
+  const user = useSelector(selectUser);
+
   return (
     <div className={styles.Balance__container}>
       <p className={styles.Balance__title}>Your Balance</p>
-      <p>
+      <div>
         {isLoading ? (
           <Box
             component="span"
@@ -19,12 +25,12 @@ export default function Balance() {
             <LinearProgress sx={{ backgroundColor: '#f87a61' }} />
           </Box>
         ) : (
-          <>
-            <span className={styles.Balance__currency}>$</span>
-            <span className={styles.Balance__number}>24 000.00</span>
-          </>
+          <div className={styles.Balance__textContainer}>
+            <span className={styles.Balance__currency}>zł</span>
+            <span className={styles.Balance__number}>{user.balance}</span>
+          </div>
         )}
-      </p>
+      </div>
     </div>
   );
 }

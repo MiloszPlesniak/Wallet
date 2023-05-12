@@ -56,13 +56,13 @@ const SwitchIncomeExpense = ({ handleToogle, checked }) => {
       <p
         className={clsx(
           styles.toogleIncomeExpense__text,
-          !checked && styles.toogleIncomeExpense__text__income
+          checked && styles.toogleIncomeExpense__text__income
         )}
       >
         Income
       </p>
       <ExpenseSwitch
-        checked={checked}
+        checked={!checked}
         onChange={() => {
           handleToogle();
         }}
@@ -95,7 +95,7 @@ const SwitchIncomeExpense = ({ handleToogle, checked }) => {
       <p
         className={clsx(
           styles.toogleIncomeExpense__text,
-          checked && styles.toogleIncomeExpense__text__expense
+          !checked && styles.toogleIncomeExpense__text__expense
         )}
       >
         Expense

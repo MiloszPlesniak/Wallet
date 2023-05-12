@@ -3,8 +3,6 @@ import styles from './TableDesktop.module.scss';
 import TableDesktopRow from './TableDesktopRow/TableDesktopRow';
 
 export default function TransactionsTable({ transactions, isLoading, error }) {
-
-
   return (
     <>
       <div className={styles.container}>

@@ -49,3 +49,19 @@ export const fetchTransacionsOfPeriot = createAsyncThunk(
     return res.data;
   }
 );
+
+export const fetchTransactionsCategories = createAsyncThunk(
+  'finances/fetchTransactionsCategories',
+
+  async thunkAPI => {
+    try {
+      const res = await axios.get(
+        'https://wallet.goit.ua/api/transaction-categories'
+      );
+      console.log(res);
+      return res;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

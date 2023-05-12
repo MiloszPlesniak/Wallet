@@ -60,7 +60,7 @@ export const logOutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
-      await axios.get('/auth/sign-out');
+      await axios.delete('/auth/sign-out');
       // After a successful logout, remove the token from the HTTP header
       clearAuthHeader();
     } catch (error) {

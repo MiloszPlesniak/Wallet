@@ -7,9 +7,10 @@ import DropdownCategories from 'components/DropdownCategories/DropdownCategories
 import Buttons from 'components/Buttons/Buttons';
 import TransactionSchema from 'validations/TransactionSchema';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTransactions } from 'redux/transaction/thunk';
-// import { selectUser } from 'redux/auth/selectors';
+import { refreshUser } from 'redux/auth/operations';
+import { selectTransactions } from 'redux/transaction/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 import { date } from 'yup';
 
@@ -82,6 +83,7 @@ const TransactionForm = ({
   // const user = useSelector(selectUser);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('INCOME');
+  const transactions = useSelector(selectTransactions);
 
   const formik = useFormik({
     initialValues: {
@@ -94,14 +96,14 @@ const TransactionForm = ({
     validationSchema: TransactionSchema,
     onSubmit: values => {
       const expense = {
-        amount: `-${values.amount}`,
+        amount: -Math.abs(values.amount),
         transactionDate: values.transactionDate,
         comment: values.comment,
         categoryId: values.categoryId,
         type: values.type,
       };
       const income = {
-        amount: `${values.amount}`,
+        amount: Math.abs(values.amount),
         transactionDate: values.transactionDate,
         comment: values.comment,
         categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
@@ -112,14 +114,13 @@ const TransactionForm = ({
 
       if (type === 'INCOME') {
         dispatch(addTransactions(income));
-        alert(JSON.stringify(income, null, 2));
       } else {
-        alert(JSON.stringify(expense, null, 2));
         dispatch(addTransactions(expense));
       }
 
       formik.resetForm();
       dispatch(changeIsModalAddTransactionOpen());
+      dispatch(refreshUser);
     },
   });
 

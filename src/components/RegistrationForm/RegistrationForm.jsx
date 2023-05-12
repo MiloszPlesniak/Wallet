@@ -36,7 +36,7 @@ const RegistrationForm = props => {
         registerUser({
           email: formik.values.email,
           password: formik.values.password,
-          username: formik.values.firstName,
+          username: formik.values.username,
         })
       );
     },
@@ -115,13 +115,13 @@ const RegistrationForm = props => {
           scoreWords={false}
         />
         <TextField
-          name="firstName"
-          placeholder="First name"
-          value={formik.values.firstName}
+          name="username"
+          placeholder="username"
+          value={formik.values.username}
           onChange={formik.handleChange}
           onBlur={handleBlur}
-          helperText={formik.touched.firstName ? formik.errors.firstName : ' '}
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+          helperText={formik.touched.username ? formik.errors.username : ' '}
+          error={formik.touched.username && Boolean(formik.errors.username)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

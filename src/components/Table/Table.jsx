@@ -19,6 +19,8 @@ export default function TransactionsTable() {
   // const error = useSelector(selectError);
   const transactions = transactionsData || [];
 
+  // console.log({ transactions });
+
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);

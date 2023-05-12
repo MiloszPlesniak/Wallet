@@ -20,8 +20,8 @@ export const registerUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     console.log(credentials);
     try {
-      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
-      const res = await axios.post('users/signup', credentials);
+      axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
+      const res = await axios.post('auth/sign-up', credentials);
       // After successful registration, add the token to the HTTP header
 
       setAuthHeader(res.data.token);
@@ -40,8 +40,8 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
-      const res = await axios.post('/users/login', credentials);
+      axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
+      const res = await axios.post('/auth/sign-in', credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
@@ -59,8 +59,8 @@ export const logOutUser = createAsyncThunk(
   'auth/logout',
   async (_, thunkAPI) => {
     try {
-      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
-      await axios.get('/users/logout');
+      axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
+      await axios.get('/auth/sign-out');
       // After a successful logout, remove the token from the HTTP header
       clearAuthHeader();
     } catch (error) {
@@ -88,7 +88,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      axios.defaults.baseURL = 'https://wallet-rest-api.herokuapp.com/api/';
+      axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
       const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {

@@ -36,17 +36,18 @@ const DeleteButton = styled(Button)(({ theme }) => ({
   padding: '4px 12px',
 }));
 
-export default function TableMobileRow({ data }) {
+export default function TableMobileRow({ transaction }) {
   const dispatch = useDispatch();
 
   const openModalEditTransaction = () => {
     dispatch(changeIsModalEditTransactionOpen());
   };
 
-  const dynamicValueCss = data.type === '-' ? styles.expense : styles.income;
+  const dynamicValueCss =
+    transaction.type === '-' ? styles.expense : styles.income;
 
   const dynamicStripeCss =
-    data.type === '-'
+    transaction.type === '-'
       ? styles.TableRowMobile__stripeExpense
       : styles.TableRowMobile__stripeIncome;
 
@@ -55,24 +56,33 @@ export default function TableMobileRow({ data }) {
       <div className={styles.TableRowMobile}>
         <div className={styles.TableRowMobile__element}>
           <span className={styles.TableRowMobile__key}>Date</span>
-          <span className={styles.TableRowMobile__value}>{data.date}</span>
+          <span className={styles.TableRowMobile__value}>
+            {transaction.date}
+          </span>
         </div>
         <div className={styles.TableRowMobile__element}>
           <span className={styles.TableRowMobile__key}>Type</span>
-          <span className={styles.TableRowMobile__value}> {data.type}</span>
+          <span className={styles.TableRowMobile__value}>
+            {' '}
+            {transaction.type}
+          </span>
         </div>
         <div className={styles.TableRowMobile__element}>
           <span className={styles.TableRowMobile__key}>Category</span>
-          <span className={styles.TableRowMobile__value}>{data.category}</span>
+          <span className={styles.TableRowMobile__value}>
+            {transaction.category}
+          </span>
         </div>
         <div className={styles.TableRowMobile__element}>
           <span className={styles.TableRowMobile__key}> Comment</span>
-          <span className={styles.TableRowMobile__value}>{data.comment}</span>
+          <span className={styles.TableRowMobile__value}>
+            {transaction.comment}
+          </span>
         </div>
         <div className={styles.TableRowMobile__element}>
           <span className={styles.TableRowMobile__key}>Sum</span>
           <span className={(styles.TableRowMobile__value, dynamicValueCss)}>
-            {data.sum}
+            {transaction.amount}
           </span>
         </div>
         <div className={styles.TableRowMobile__element}>

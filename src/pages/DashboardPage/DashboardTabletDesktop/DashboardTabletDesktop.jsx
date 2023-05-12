@@ -72,7 +72,6 @@ export default function DashboardTabletDesktop() {
                 </Suspense>
                 {currentLocation === '/home' && <ButtonAddTransactions />}
               </div>
-
               <div className={styles.Dashboard__footerContainer}>
                 <Footer />
               </div>

@@ -11,6 +11,65 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTransactions } from 'redux/transaction/thunk';
 import { selectUser } from 'redux/auth/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
+import { date } from 'yup';
+
+const CategoriesId = [
+  {
+    id: 'c9d9e447-1b83-4238-8712-edc77b18b739',
+    name: 'Main expenses',
+    type: 'EXPENSE',
+  },
+  {
+    id: '27eb4b75-9a42-4991-a802-4aefe21ac3ce',
+    name: 'Products',
+    type: 'EXPENSE',
+  },
+  {
+    id: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
+    name: 'Car',
+    type: 'EXPENSE',
+  },
+  {
+    id: 'bbdd58b8-e804-4ab9-bf4f-695da5ef64f4',
+    name: 'Self care',
+    type: 'EXPENSE',
+  },
+  {
+    id: '76cc875a-3b43-4eae-8fdb-f76633821a34',
+    name: 'Child care',
+    type: 'EXPENSE',
+  },
+  {
+    id: '128673b5-2f9a-46ae-a428-ec48cf1effa1',
+    name: 'Household products',
+    type: 'EXPENSE',
+  },
+  {
+    id: '1272fcc4-d59f-462d-ad33-a85a075e5581',
+    name: 'Education',
+    type: 'EXPENSE',
+  },
+  {
+    id: 'c143130f-7d1e-4011-90a4-54766d4e308e',
+    name: 'Leisure',
+    type: 'EXPENSE',
+  },
+  {
+    id: '719626f1-9d23-4e99-84f5-289024e437a8',
+    name: 'Other expenses',
+    type: 'EXPENSE',
+  },
+  {
+    id: '3acd0ecd-5295-4d54-8e7c-d3908f4d0402',
+    name: 'Entertainment',
+    type: 'EXPENSE',
+  },
+  {
+    id: '063f1132-ba5d-42b4-951d-44011ca46262',
+    name: 'Income',
+    type: 'INCOME',
+  },
+];
 
 const TransactionForm = ({
   typeOfTransaction,
@@ -20,20 +79,21 @@ const TransactionForm = ({
 }) => {
   const { handleBlur } = props;
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
   const [category, setCategory] = useState('');
 
   const formik = useFormik({
     initialValues: {
       amount: 0,
-      date: new Date().valueOf(),
+      transactionDate: new Date(),
       comment: '',
-      category: '',
-      owner: user.id,
+      categoryId: '',
+      // owner: user.id,
       type: '',
     },
     validationSchema: TransactionSchema,
     onSubmit: values => {
+      formik.setFieldValue('date', values.transactionDate.valueOf());
       alert(JSON.stringify(values, null, 2));
       dispatch(addTransactions(values));
       formik.resetForm();
@@ -42,14 +102,18 @@ const TransactionForm = ({
   });
 
   useEffect(() => {
-    formik.setFieldValue('category', category);
+    formik.setFieldValue(
+      'categoryId',
+      CategoriesId.find(item => item.name === category)?.id
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
   useEffect(() => {
     typeOfTransaction
-      ? formik.setFieldValue('type', '+')
-      : formik.setFieldValue('type', '-');
+      ? formik.setFieldValue('type', 'INCOME')
+      : formik.setFieldValue('type', 'EXPENSE');
+
     if (typeOfTransaction === true) {
       setCategory('Income');
     }
@@ -66,6 +130,7 @@ const TransactionForm = ({
         <TextField
           className={style.form__amount}
           name="amount"
+          type="number"
           placeholder="0"
           inputProps={{ style: { textAlign: 'center', fontWeight: 700 } }}
           value={formik.values.amount}
@@ -79,25 +144,36 @@ const TransactionForm = ({
             },
           }}
         />
+
         <Datetime
+          controls={date}
+          dateFormat="YYYY-MM-DD"
           timeFormat={false}
           closeOnSelect={true}
           inputProps={{
             className: style.form__dateTime,
-            name: 'date',
+            name: 'transactionDate',
           }}
           initialValue={new Date()}
-          value={formik.values.date}
+          value={formik.values.transactionDate}
           onChange={value => {
-            formik.setFieldValue('date', value.valueOf() /*value._d*/);
+            formik.setFieldValue('transactionDate', value);
           }}
           onBlur={handleBlur}
-          error={formik.touched.date && Boolean(formik.errors.date)}
-          helperText={formik.touched.date ? formik.errors.date : ''}
+          error={
+            formik.touched.transactionDate &&
+            Boolean(formik.errors.transactionDate)
+          }
+          helperText={
+            formik.touched.transactionDate ? formik.errors.transactionDate : ''
+          }
         />
-        {formik.touched.date && Boolean(formik.errors.date) && (
-          <p className={style.form__dateTime__error}>{formik.errors.date}</p>
-        )}
+        {formik.touched.transactionDate &&
+          Boolean(formik.errors.transactionDate) && (
+            <p className={style.form__dateTime__error}>
+              {formik.errors.transactionDate}
+            </p>
+          )}
       </div>
       <TextField
         className={style.form__comment}

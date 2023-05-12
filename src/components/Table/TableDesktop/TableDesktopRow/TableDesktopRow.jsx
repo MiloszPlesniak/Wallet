@@ -36,7 +36,7 @@ export default function TableDesktopRow({ transaction }) {
     dispatch(changeIsModalEditTransactionOpen(type));
   };
 
-  const handleDeleteContact = id => {
+  const handleDeleteTransaction = id => {
     dispatch(deleteTransactions(id));
   };
 
@@ -67,7 +67,7 @@ export default function TableDesktopRow({ transaction }) {
               disableElevation
               variant="contained"
               type="button"
-              onClick={handleDeleteContact}
+              onClick={handleDeleteTransaction}
             >
               Delete
             </DeleteButton>

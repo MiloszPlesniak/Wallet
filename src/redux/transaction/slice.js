@@ -45,7 +45,6 @@ export const financesSlice = createSlice({
       state.isLoading = true;
     },
     [addTransactions.fulfilled](state, { payload }) {
-      console.log('payload from addTransaction:', payload);
       state.transactions.push(payload);
       state.isLoading = false;
     },
@@ -72,28 +71,19 @@ export const financesSlice = createSlice({
       state.error = payload;
     },
     // ////////////////////////////////////
-    [deleteTransactions.pending]: state => {
+    [deleteTransactions.pending](state) {
       state.isLoading = true;
     },
-    [deleteTransactions.fulfilled]: (state, action) => {
+    [deleteTransactions.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
 
-      // const editEditransacions = state.transactions;
-      // const index = editEditransacions.findIndex(
-      //   item => item._id === payload._id
-      // );
-      // editEditransacions.splice(index, 1);
-      // state.transactions = editEditransacions;
-
-      console.log('payload from slice', action);
-
       const index = state.transactions.findIndex(
-        transaction => transaction.id === action.payload.id
+        transaction => transaction.id === action.meta.arg
       );
       state.transactions.splice(index, 1);
     },
-    [deleteTransactions.rejected]: (state, { payload }) => {
+    [deleteTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },

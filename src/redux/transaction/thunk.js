@@ -48,10 +48,10 @@ export const deleteTransactions = createAsyncThunk(
 export const fetchTransacionsOfPeriot = createAsyncThunk(
   'finances/fetchTransactionsOfPeriot',
 
-  async ({ month, year}) => {
+  async ({ month, year }) => {
     try {
       const { data } = await axios.get(
-        `https://wallet.goit.ua/api/transactions-summary?month=${month}&year=${year}`,
+        `https://wallet.goit.ua/api/transactions-summary?month=${month}&year=${year}`
       );
       return data;
     } catch (error) {

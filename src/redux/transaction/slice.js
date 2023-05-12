@@ -14,6 +14,7 @@ const initialState = {
   transactions: [],
   balance: 0,
   transactionsCategories: [],
+  selectedTransaction: {},
 };
 
 export const financesSlice = createSlice({
@@ -22,6 +23,9 @@ export const financesSlice = createSlice({
   reducers: {
     setBalance: (state, { payload }) => {
       state.balance = payload;
+    },
+    setSelectedTransaction: (state, { payload }) => {
+      state.selectedTransaction = payload;
     },
   },
   extraReducers: {
@@ -54,11 +58,13 @@ export const financesSlice = createSlice({
       state.isLoading = true;
     },
     [editTransactions.fulfilled](state, { payload }) {
+      console.log('payload from edit:', payload.data);
       const index = state.transactions.findIndex(
-        item => item._id === payload._id
+        item => item.id === payload.data.id
       );
+      console.log('index from edit thunk:', index);
       const editEditransacions = state.transactions;
-      editEditransacions.splice(index, 1, payload);
+      editEditransacions.splice(index, 1, payload.data);
       state.transactions = editEditransacions;
     },
     [editTransactions.rejected](state, { payload }) {
@@ -118,7 +124,8 @@ export const financesSlice = createSlice({
     state.isLoading = false;
     state.error = action.payload;
   },
+  ////////////
 });
 
-export const { setBalance } = financesSlice.actions;
+export const { setBalance, setSelectedTransaction } = financesSlice.actions;
 export default financesSlice.reducer;

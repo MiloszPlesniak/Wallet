@@ -15,7 +15,7 @@ export const addTransactions = createAsyncThunk(
       'https://wallet.goit.ua/api/transactions',
       data
     );
-    return res;
+    return res.data;
   }
 );
 export const editTransactions = createAsyncThunk(
@@ -30,11 +30,15 @@ export const editTransactions = createAsyncThunk(
 );
 export const deleteTransactions = createAsyncThunk(
   'finances/deleteTransactions',
-  async id => {
-    const res = await axios.delete(
-      `https://wallet.goit.ua/api/transactions/${id}`
-    );
-    return res;
+  async transactionId => {
+    try {
+      const res = await axios.delete(
+        `https://wallet.goit.ua/api/transactions/${transactionId}`
+      );
+      return res.data;
+    } catch (error) {
+      // return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 export const fetchTransacionsOfPeriot = createAsyncThunk(

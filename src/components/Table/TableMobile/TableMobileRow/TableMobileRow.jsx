@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
 
+import { deleteTransactions } from 'redux/transaction/thunk';
+
 import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 
 import Button from '@mui/material/Button';
@@ -41,6 +43,10 @@ export default function TableMobileRow({ transaction }) {
 
   const openModalEditTransaction = () => {
     dispatch(changeIsModalEditTransactionOpen());
+  };
+
+  const handleDeleteTransaction = id => {
+    dispatch(deleteTransactions(id));
   };
 
   const dynamicValueCss =
@@ -161,13 +167,18 @@ export default function TableMobileRow({ transaction }) {
           </span>
         </div>
         <div className={styles.TableRowMobile__element}>
-          <DeleteButton disableElevation variant="contained">
+          <DeleteButton
+            disableElevation
+            variant="contained"
+            type="button"
+            onClick={() => handleDeleteTransaction(transaction.id)}
+          >
             <span className={styles.DeleteButton__Text}>Delete</span>
           </DeleteButton>
           <EditButton
             type="button"
             aria-label="edit"
-            onClick={openModalEditTransaction}
+            onClick={() => openModalEditTransaction}
           >
             <EditIcon />
             <span className={styles.EditButton__Text}>Edit</span>

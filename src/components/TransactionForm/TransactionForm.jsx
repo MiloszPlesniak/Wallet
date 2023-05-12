@@ -7,10 +7,11 @@ import DropdownCategories from 'components/DropdownCategories/DropdownCategories
 import Buttons from 'components/Buttons/Buttons';
 import TransactionSchema from 'validations/TransactionSchema';
 import { useFormik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { addTransactions } from 'redux/transaction/thunk';
 import { refreshUser } from 'redux/auth/operations';
-import { selectTransactions } from 'redux/transaction/selectors';
+// import { selectTransactions } from 'redux/transaction/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 import { date } from 'yup';
 
@@ -83,7 +84,7 @@ const TransactionForm = ({
   // const user = useSelector(selectUser);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('INCOME');
-  const transactions = useSelector(selectTransactions);
+  // const transactions = useSelector(selectTransactions);
 
   const formik = useFormik({
     initialValues: {

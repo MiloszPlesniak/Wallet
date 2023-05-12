@@ -5,6 +5,8 @@ import { deleteTransactions } from 'redux/transaction/thunk';
 
 import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
 
+import { setBalance } from 'redux/transaction/slice';
+
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '../../EditIcon/EditIcon';
@@ -37,17 +39,6 @@ export default function TableDesktopRow({ transaction }) {
     month: monthIn2digit,
     year: yearIn2Digit,
   };
-
-  const openModalEditTransaction = type => {
-    dispatch(changeIsModalEditTransactionOpen(type));
-  };
-
-  const handleDeleteContact = id => {
-    dispatch(deleteTransactions(id));
-  };
-
-  const dynamicCss =
-    transaction.type === 'EXPENSE' ? styles.expense : styles.income;
 
   const transactionsCategories = [
     {
@@ -107,6 +98,17 @@ export default function TableDesktopRow({ transaction }) {
     },
   ];
 
+  const openModalEditTransaction = type => {
+    dispatch(changeIsModalEditTransactionOpen(type));
+  };
+
+  const handleDeleteTransaction = id => {
+    dispatch(deleteTransactions(id));
+  };
+
+  const dynamicCss =
+    transaction.type === 'EXPENSE' ? styles.expense : styles.income;
+
   const getCategoryName = () => {
     const categoryData = transactionsCategories.filter(
       item => item.id === transaction.categoryId
@@ -142,7 +144,7 @@ export default function TableDesktopRow({ transaction }) {
               disableElevation
               variant="contained"
               type="button"
-              onClick={handleDeleteContact}
+              onClick={() => handleDeleteTransaction(transaction.id)}
             >
               Delete
             </DeleteButton>

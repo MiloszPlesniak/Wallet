@@ -17,8 +17,8 @@ import { fetchTransacionsOfPeriot } from 'redux/transaction/thunk';
 const Statistics = () => {
   const [catgory, setCategory] = useState([]);
   const dispatch = useDispatch();
-  const date = {
-    month: new Date().getMonth() + 1,
+  const { date } = {
+    month: new Date().getMonth(),
     year: new Date().getFullYear(),
   };
   useEffect(() => {

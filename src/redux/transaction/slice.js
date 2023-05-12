@@ -5,118 +5,97 @@ import {
   editTransactions,
   deleteTransactions,
   fetchTransacionsOfPeriot,
-  fetchTransactionsCategories,
 } from './thunk';
-
-const initialState = {
-  error: null,
-  isLoading: false,
-  transactions: [],
-  balance: 0,
-  transactionsCategories: [],
-};
 
 export const financesSlice = createSlice({
   name: 'finances',
-  initialState,
+  initialState: {
+    error: null,
+    isLoading: false,
+    transactions: [],
+    balance: 0,
+  },
   reducers: {
     setBalance: (state, { payload }) => {
       state.balance = payload;
     },
   },
   extraReducers: {
+    [fetchTransactions.fulfilled](state, { payload }) {
+      state.transactions=payload;
+      state.isLoading = false;
+    },
     [fetchTransactions.pending](state) {
       state.isLoading = true;
-    },
-    [fetchTransactions.fulfilled](state, { payload }) {
-      state.transactions = payload;
-      state.isLoading = false;
     },
     [fetchTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // /////////////////////
-    [addTransactions.pending](state) {
-      state.isLoading = true;
-    },
     [addTransactions.fulfilled](state, { payload }) {
-      console.log('payload from addTransaction:', payload);
+      console.log(payload);
       state.transactions.push(payload);
       state.isLoading = false;
+    },
+    [addTransactions.pending](state) {
+      state.isLoading = true;
     },
     [addTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // /////////////////////////////
-    [editTransactions.pending](state) {
-      state.isLoading = true;
-    },
     [editTransactions.fulfilled](state, { payload }) {
       const index = state.transactions.findIndex(
         item => item._id === payload._id
       );
-      const editEditransacions = state.transactions;
-      editEditransacions.splice(index, 1, payload);
-      state.transactions = editEditransacions;
+      const editEdtransacions = state.transactions;
+      editEdtransacions.splice(index, 1, payload);
+      state.transactions = editEdtransacions;
+    },
+    [editTransactions.pending](state) {
+      state.isLoading = true;
     },
     [editTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // ////////////////////////////////////
-    [deleteTransactions.pending]: state => {
+    [deleteTransactions.fulfilled](state, action) {
+      // console.log(action.meta.arg === '95d9c296-860a-49ea-8d60-9085258ebc28');
+      const editedTransaction = state.transactions.filter(
+        item => action.meta.arg!==item.id
+      );
+        state.transactions=editedTransaction
+    },
+    [deleteTransactions.pending](state) {
       state.isLoading = true;
     },
-    [deleteTransactions.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.error = null;
-
-      // const editEditransacions = state.transactions;
-      // const index = editEditransacions.findIndex(
-      //   item => item._id === payload._id
-      // );
-      // editEditransacions.splice(index, 1);
-      // state.transactions = editEditransacions;
-
-      console.log('payload from slice', action);
-
-      const index = state.transactions.findIndex(
-        transaction => transaction.id === action.payload.id
-      );
-      state.transactions.splice(index, 1);
-    },
-    [deleteTransactions.rejected]: (state, { payload }) => {
+    [deleteTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
   },
   // ///////////////////////////
 
+  [fetchTransacionsOfPeriot.fulfilled](state, { payload }) {
+    const filtredArreyTransacionsByDate = state.transactions.filter(
+      item =>
+        item.data.start === payload.data.start &&
+        item.data.end === payload.data.end
+    );
+    state.transactions = filtredArreyTransacionsByDate;
+    //state.transactions = payload.sort((start, end) => {
+    //return new Date(start.date) && new Date(end.date)});
+    state.isLoading = false;
+  },
   [fetchTransacionsOfPeriot.pending](state) {
     state.isLoading = true;
-  },
-  [fetchTransacionsOfPeriot.fulfilled](state) {
-    state.isLoading = false;
   },
   [fetchTransacionsOfPeriot.rejected](state, { payload }) {
     state.isLoading = false;
     state.error = payload;
-  },
-
-  /////////////////////////
-  [fetchTransactionsCategories.pending]: state => {
-    state.isLoading = true;
-  },
-  [fetchTransactionsCategories.fulfilled]: (state, action) => {
-    state.isLoading = false;
-    state.error = null;
-    state.transactionsCategories = action.payload.data;
-  },
-  [fetchTransactionsCategories.rejected]: (state, action) => {
-    state.isLoading = false;
-    state.error = action.payload;
   },
 });
 

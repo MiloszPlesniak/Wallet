@@ -136,8 +136,6 @@ const TransactionForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
-  console.log(type);
-
   useEffect(() => {
     typeOfTransaction
       ? formik.setFieldValue('type', 'INCOME')

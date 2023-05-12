@@ -27,7 +27,8 @@ const EditTransactionForm = ({
 
   useEffect(() => {
     setType(transaction.type);
-  }, []);
+    // eslint-disable-next-line no-unused-vars
+  }, [transaction]);
 
   const formik = useFormik({
     initialValues: {

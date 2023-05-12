@@ -137,6 +137,7 @@ const TransactionForm = ({
       : formik.setFieldValue('type', 'EXPENSE');
 
     typeOfTransaction ? setType('INCOME') : setType('EXPENSE');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeOfTransaction]);
 
   return (

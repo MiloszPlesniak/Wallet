@@ -5,7 +5,7 @@ import { deleteTransactions } from 'redux/transaction/thunk';
 
 import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
 
-import { setBalance } from 'redux/transaction/slice';
+import { setSelectedTransaction } from 'redux/transaction/slice';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -99,6 +99,7 @@ export default function TableDesktopRow({ transaction }) {
   ];
 
   const openModalEditTransaction = type => {
+    dispatch(setSelectedTransaction(transaction));
     dispatch(changeIsModalEditTransactionOpen(type));
   };
 
@@ -127,7 +128,7 @@ export default function TableDesktopRow({ transaction }) {
         <td>{categoryName}</td>
         <td data-type="comment">{transaction.comment}</td>
         <td data-type="sum" className={dynamicCss}>
-          {transaction.amount}
+          {Math.abs(transaction.amount)}
         </td>
         <td data-type="edit">
           <div className={styles.stack}>

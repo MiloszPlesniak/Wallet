@@ -96,3 +96,16 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/current',
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get('https://wallet.goit.ua/api/users/current');
+      console.log('response from fetch current user:', res.data);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -33,7 +33,7 @@ export default function TransactionsTable({ transactions, isLoading, error }) {
                   return (
                     <TableDesktopRow
                       transaction={transaction}
-                      key={transaction._id}
+                      key={transaction.id}
                     />
                   );
                 })}

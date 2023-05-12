@@ -19,6 +19,8 @@ const Header = () => {
 
   const user = useSelector(selectUser);
 
+  console.log(user);
+
   return (
     <>
       <Media queries={breakpoints}>
@@ -35,7 +37,7 @@ const Header = () => {
                     sx={{ p: 0, m: 0 }}
                   >
                     <span className={styles.Header__logOutUserName}>
-                      {`${user.name}`}
+                      {`${user.username}`}
                     </span>
                     <LogoutIcon
                       sx={{
@@ -49,7 +51,7 @@ const Header = () => {
                 <div className={styles.Header__logOut}>
                   <span className={styles.Header__logOutUserName}>
                     {' '}
-                    {`${user.name}`}
+                    {`${user.username}`}
                   </span>
                   <Divider
                     orientation="vertical"

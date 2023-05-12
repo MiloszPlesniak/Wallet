@@ -25,7 +25,7 @@ const RegistrationForm = props => {
     initialValues: {
       email: '',
       password: '',
-      firstName: '',
+      username: '',
       confirmPassword: '',
     },
 
@@ -36,7 +36,7 @@ const RegistrationForm = props => {
         registerUser({
           email: formik.values.email,
           password: formik.values.password,
-          name: formik.values.firstName,
+          username: formik.values.firstName,
         })
       );
     },

@@ -44,16 +44,19 @@ export const deleteTransactions = createAsyncThunk(
     }
   }
 );
+
 export const fetchTransacionsOfPeriot = createAsyncThunk(
   'finances/fetchTransactionsOfPeriot',
 
-  async data => {
-    const res = await axios.get(
-      'https://wallet-rest-api.herokuapp.com/api/transactions/periodicTransactions',
-      data
-    );
-
-    return res.data;
+  async ({ month, year}) => {
+    try {
+      const { data } = await axios.get(
+        `https://wallet.goit.ua/api/transactions-summary?month=${month}&year=${year}`,
+      );
+      return data;
+    } catch (error) {
+      //return rejectWithValue(error.message);
+    }
   }
 );
 

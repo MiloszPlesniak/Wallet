@@ -55,9 +55,7 @@ export const fetchTransacionsOfPeriot = createAsyncThunk(
       );
 
       return data.data;
-    } catch (error) {
-      //return rejectWithValue(error.message);
-    }
+    } catch (error) {}
   }
 );
 

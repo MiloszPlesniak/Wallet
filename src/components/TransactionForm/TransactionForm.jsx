@@ -8,6 +8,7 @@ import Buttons from 'components/Buttons/Buttons';
 import TransactionSchema from 'validations/TransactionSchema';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+
 import { addTransactions } from 'redux/transaction/thunk';
 import { refreshUser } from 'redux/auth/operations';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';

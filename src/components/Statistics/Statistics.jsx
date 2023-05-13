@@ -5,14 +5,10 @@ import DataFilter from 'components/DataFilter/DataFilter';
 import styles from './Statistics.module.scss';
 import Media from 'react-media';
 import { breakpoints } from 'styles/breakpoints';
-// import db from 'db/db';
+
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchTransacionsOfPeriot } from 'redux/transaction/thunk';
-
-// import { all } from 'axios';
-
-// const data = db.transactions;
 
 const Statistics = () => {
   const [category, setCategory] = useState({
@@ -46,10 +42,6 @@ const Statistics = () => {
     expenseCategories: category.categoriesSummary.map(item => item.name),
     expenseData: category.categoriesSummary.map(item => item.total),
   };
-  // const filteredData = {
-  //   expenseCategories: [],
-  //   expenseData: [],
-  // };
 
   return (
     <>

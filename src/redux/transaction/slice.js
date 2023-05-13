@@ -27,6 +27,9 @@ export const financesSlice = createSlice({
     setSelectedTransaction: (state, { payload }) => {
       state.selectedTransaction = payload;
     },
+    clearTransaction: state => {
+      state.transactions = [];
+    },
   },
   extraReducers: {
     [fetchTransactions.fulfilled](state, { payload }) {
@@ -40,7 +43,7 @@ export const financesSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // /////////////////////
+
     [addTransactions.fulfilled](state, { payload }) {
       state.transactions.push(payload);
       state.isLoading = false;
@@ -52,7 +55,7 @@ export const financesSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // /////////////////////////////
+
     [editTransactions.pending](state) {
       state.isLoading = true;
     },
@@ -70,7 +73,7 @@ export const financesSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // ////////////////////////////////////
+
     [deleteTransactions.pending](state) {
       state.isLoading = true;
     },
@@ -88,7 +91,6 @@ export const financesSlice = createSlice({
       state.error = payload;
     },
   },
-  // ///////////////////////////
 
   [fetchTransacionsOfPeriot.fulfilled](state, { payload }) {
     const filtredArreyTransacionsByDate = state.transactions.filter(
@@ -97,8 +99,7 @@ export const financesSlice = createSlice({
         item.data.end === payload.data.end
     );
     state.transactions = filtredArreyTransacionsByDate;
-    //state.transactions = payload.sort((start, end) => {
-    //return new Date(start.date) && new Date(end.date)});
+
     state.isLoading = false;
   },
   [fetchTransacionsOfPeriot.pending](state) {
@@ -109,7 +110,6 @@ export const financesSlice = createSlice({
     state.error = payload;
   },
 
-  /////////////////////////
   [fetchTransactionsCategories.pending]: state => {
     state.isLoading = true;
   },
@@ -124,5 +124,6 @@ export const financesSlice = createSlice({
   },
 });
 
-export const { setBalance, setSelectedTransaction } = financesSlice.actions;
+export const { setBalance, setSelectedTransaction, clearTransaction } =
+  financesSlice.actions;
 export default financesSlice.reducer;

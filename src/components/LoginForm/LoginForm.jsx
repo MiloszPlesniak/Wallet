@@ -26,7 +26,6 @@ const LoginForm = props => {
     },
     validationSchema: LoginSchema,
     onSubmit: values => {
-      // alert(JSON.stringify(values, null, 2)); chyba nie potrzebne
       dispatch(
         loginUser({
           email: formik.values.email,
@@ -38,9 +37,13 @@ const LoginForm = props => {
 
   return (
     <form className={styles.LoginForm} onSubmit={formik.handleSubmit}>
-      {error.message && <Alert severity="error">{error.message}</Alert>}
-
       <Logo style={{ marginBottom: '20px' }} />
+
+      {error.length > 0 && (
+        <Alert severity="error" className={styles.LoginForm__alert}>
+          {error}
+        </Alert>
+      )}
 
       <div style={{ marginTop: '40px' }}>
         <TextField

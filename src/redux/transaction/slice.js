@@ -7,17 +7,24 @@ import {
   fetchTransacionsOfPeriot,
 } from './thunk';
 
+const initialState = {
+  error: null,
+  isLoading: false,
+  transactions: [],
+  balance: 0,
+  transactionsCategories: [],
+  selectedTransaction: {},
+};
+
 export const financesSlice = createSlice({
   name: 'finances',
-  initialState: {
-    error: null,
-    isLoading: false,
-    transactions: [],
-    balance: 0,
-  },
+  initialState,
   reducers: {
     setBalance: (state, { payload }) => {
       state.balance = payload;
+    },
+    setSelectedTransaction: (state, { payload }) => {
+      state.selectedTransaction = payload;
     },
   },
   extraReducers: {
@@ -34,7 +41,6 @@ export const financesSlice = createSlice({
     },
     // /////////////////////
     [addTransactions.fulfilled](state, { payload }) {
-      console.log(payload);
       state.transactions.push(payload);
       state.isLoading = false;
     },
@@ -46,31 +52,35 @@ export const financesSlice = createSlice({
       state.error = payload;
     },
     // /////////////////////////////
-    [editTransactions.fulfilled](state, { payload }) {
-      const index = state.transactions.findIndex(
-        item => item._id === payload._id
-      );
-      const editEdtransacions = state.transactions;
-      editEdtransacions.splice(index, 1, payload);
-      state.transactions = editEdtransacions;
-    },
-    [editTransactions.pending](state) {
+[editTransactions.pending](state) {
       state.isLoading = true;
+    },
+    [editTransactions.fulfilled](state, { payload }) {
+      console.log('payload from edit:', payload.data);
+      const index = state.transactions.findIndex(
+        item => item.id === payload.data.id
+      );
+      console.log('index from edit thunk:', index);
+      const editEditransacions = state.transactions;
+      editEditransacions.splice(index, 1, payload.data);
+      state.transactions = editEditransacions;
     },
     [editTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // ////////////////////////////////////
-    [deleteTransactions.fulfilled](state, action) {
-      // console.log(action.meta.arg === '95d9c296-860a-49ea-8d60-9085258ebc28');
-      const editedTransaction = state.transactions.filter(
-        item => action.meta.arg!==item.id
-      );
-        state.transactions=editedTransaction
-    },
-    [deleteTransactions.pending](state) {
+[deleteTransactions.pending](state) {
       state.isLoading = true;
+    },
+    [deleteTransactions.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+
+      const index = state.transactions.findIndex(
+        transaction => transaction.id === action.meta.arg
+      );
+      state.transactions.splice(index, 1);
     },
     [deleteTransactions.rejected](state, { payload }) {
       state.isLoading = false;
@@ -97,7 +107,22 @@ export const financesSlice = createSlice({
     state.isLoading = false;
     state.error = payload;
   },
+
+
+  /////////////////////////
+  [fetchTransactionsCategories.pending]: state => {
+    state.isLoading = true;
+  },
+  [fetchTransactionsCategories.fulfilled]: (state, action) => {
+    state.isLoading = false;
+    state.error = null;
+    state.transactionsCategories = action.payload.data;
+  },
+  [fetchTransactionsCategories.rejected]: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
 });
 
-export const { setBalance } = financesSlice.actions;
+export const { setBalance, setSelectedTransaction } = financesSlice.actions;
 export default financesSlice.reducer;

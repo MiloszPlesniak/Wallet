@@ -20,10 +20,13 @@ export const addTransactions = createAsyncThunk(
 );
 export const editTransactions = createAsyncThunk(
   'finances/editTransactions',
-  async (id, data) => {
+  async data => {
+    console.log('data from thunk:', data);
+
+    const id = data.id;
     const res = await axios.patch(
-      `https://wallet.goit.ua/api/transactions${id}`,
-      data
+      `https://wallet.goit.ua/api/transactions/${id}`,
+      data.data
     );
     return res;
   }
@@ -37,20 +40,23 @@ export const deleteTransactions = createAsyncThunk(
       );
       return res.data;
     } catch (error) {
-      // return thunkAPI.rejectWithValue(error.message);
+      return console.error(error.message);
     }
   }
 );
+
 export const fetchTransacionsOfPeriot = createAsyncThunk(
   'finances/fetchTransactionsOfPeriot',
 
-  async data => {
-    const res = await axios.get(
-      'https://wallet-rest-api.herokuapp.com/api/transactions/periodicTransactions',
-      data
-    );
-
-    return res.data;
+  async ({ month, year }) => {
+    try {
+      const { data } = await axios.get(
+        `https://wallet.goit.ua/api/transactions-summary?month=${month}&year=${year}`
+      );
+      return data;
+    } catch (error) {
+      //return rejectWithValue(error.message);
+    }
   }
 );
 
@@ -63,8 +69,8 @@ export const fetchTransactionsCategories = createAsyncThunk(
       const res = await axios.get(
         `https://wallet.goit.ua/api/transactions-summary?month=${data.month}&year=${data.year}`
       );
-      console.log(res);
-      return res;
+      console.log(res.data);
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

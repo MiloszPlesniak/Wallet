@@ -26,7 +26,7 @@ const LoginForm = props => {
     },
     validationSchema: LoginSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2)); chyba nie potrzebne
       dispatch(
         loginUser({
           email: formik.values.email,

@@ -50,10 +50,11 @@ export const fetchTransacionsOfPeriot = createAsyncThunk(
 
   async ({ month, year }) => {
     try {
-      const { data } = await axios.get(
+      const data = await axios.get(
         `https://wallet.goit.ua/api/transactions-summary?month=${month}&year=${year}`
       );
-      return data;
+
+      return data.data;
     } catch (error) {
       //return rejectWithValue(error.message);
     }
@@ -64,7 +65,6 @@ export const fetchTransactionsCategories = createAsyncThunk(
   'finances/fetchTransactionsCategories',
 
   async (data, thunkAPI) => {
-    console.log(data);
     try {
       const res = await axios.get(
         `https://wallet.goit.ua/api/transactions-summary?month=${data.month}&year=${data.year}`

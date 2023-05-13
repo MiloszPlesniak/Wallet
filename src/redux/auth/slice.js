@@ -45,7 +45,7 @@ export const authSlice = createSlice({
       state.isLoading = true;
     },
     [fetchCurrentUser.fulfilled](state, { payload }) {
-      state.transactions = payload;
+      state.user = payload;
       state.isLoading = false;
     },
     [fetchCurrentUser.rejected](state, { payload }) {

@@ -8,10 +8,8 @@ import Buttons from 'components/Buttons/Buttons';
 import TransactionSchema from 'validations/TransactionSchema';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
 import { addTransactions } from 'redux/transaction/thunk';
 import { refreshUser } from 'redux/auth/operations';
-// import { selectTransactions } from 'redux/transaction/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 import { date } from 'yup';
 
@@ -81,10 +79,8 @@ const TransactionForm = ({
 }) => {
   const { handleBlur } = props;
   const dispatch = useDispatch();
-  // const user = useSelector(selectUser);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('INCOME');
-  // const transactions = useSelector(selectTransactions);
 
   const formik = useFormik({
     initialValues: {
@@ -111,7 +107,6 @@ const TransactionForm = ({
         type: values.type,
       };
       formik.setFieldValue('date', values.transactionDate.valueOf());
-      // dispatch(addTransactions(values));
 
       if (type === 'INCOME') {
         dispatch(addTransactions(income));

@@ -1,12 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
 import { deleteTransactions } from 'redux/transaction/thunk';
-
 import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
-
 import { setSelectedTransaction } from 'redux/transaction/slice';
-
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '../../EditIcon/EditIcon';
@@ -27,7 +23,6 @@ const DeleteButton = styled(Button)(({ theme }) => ({
 
 export default function TableDesktopRow({ transaction }) {
   const dispatch = useDispatch();
-
   const date = new Date(transaction.transactionDate);
   const dayIn2Digit = String(date.getDate()).padStart(2, '0');
   const monthIn2digit = String(date.getMonth() + 1).padStart(2, '0');

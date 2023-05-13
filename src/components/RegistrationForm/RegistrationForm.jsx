@@ -45,7 +45,11 @@ const RegistrationForm = props => {
     <form className={styles.RegistrationForm} onSubmit={formik.handleSubmit}>
       <Logo />
 
-      {error.message && <Alert severity="error">{error.message}</Alert>}
+      {error.length > 0 && (
+        <Alert severity="error" className={styles.RegistrationForm__alert}>
+          {error}
+        </Alert>
+      )}
 
       <div style={{ marginTop: '30px' }}>
         <TextField

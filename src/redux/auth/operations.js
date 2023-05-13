@@ -19,6 +19,9 @@ export const registerUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.response.status === 409) {
+        return thunkAPI.rejectWithValue('Email is already in use');
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -34,6 +37,15 @@ export const loginUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.response.status === 400) {
+        return thunkAPI.rejectWithValue('Validation error');
+      }
+      if (error.response.status === 403) {
+        return thunkAPI.rejectWithValue('Incorrect email or password');
+      }
+      if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue('User with such email not found');
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }

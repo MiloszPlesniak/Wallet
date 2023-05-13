@@ -80,10 +80,8 @@ const TransactionForm = ({
 }) => {
   const { handleBlur } = props;
   const dispatch = useDispatch();
-  // const user = useSelector(selectUser);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('INCOME');
-  // const transactions = useSelector(selectTransactions);
 
   const formik = useFormik({
     initialValues: {
@@ -110,7 +108,6 @@ const TransactionForm = ({
         type: values.type,
       };
       formik.setFieldValue('date', values.transactionDate.valueOf());
-      // dispatch(addTransactions(values));
 
       if (type === 'INCOME') {
         dispatch(addTransactions(income));

@@ -1,22 +1,29 @@
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import style from './ModalAddTransaction.module.scss';
 import ModalTemplate from 'components/ModalTemplate/ModalTemplate';
 import SwitchIncomeExpense from 'components/SwitchIncomeExpense/SwitchIncomeExpense';
 import TransactionForm from 'components/TransactionForm/TransactionForm';
+
+import { fetchTransactionsCategories } from 'redux/transaction/thunk';
 import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 
 const ModalAddTransaction = props => {
-  const [typeOfTransaction, setTypeOfTransaction] = useState(false);
+  const [typeOfTransaction, setTypeOfTransaction] = useState(true);
   const modalIsOpen = useSelector(selectIsModalAddTransactionOpen);
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTransactionsCategories());
+  }, [dispatch]);
 
   return (
     <ModalTemplate
       title={'Add transaction'}
       open={modalIsOpen}
-      onClose={() => dispath(changeIsModalAddTransactionOpen())}
+      onClose={() => dispatch(changeIsModalAddTransactionOpen())}
     >
       <div className={style.switchBtn}>
         <SwitchIncomeExpense
@@ -30,7 +37,7 @@ const ModalAddTransaction = props => {
         typeOfTransaction={typeOfTransaction}
         firstButtonText="add"
         // firstButtonHandler={() => console.log('d')}
-        secondButtonHandler={() => dispath(changeIsModalAddTransactionOpen())}
+        secondButtonHandler={() => dispatch(changeIsModalAddTransactionOpen())}
       />
     </ModalTemplate>
   );

@@ -3,8 +3,8 @@ import { breakpoints } from 'styles/breakpoints.js';
 import { Helmet } from 'react-helmet';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 import styles from './RegistrationPage.module.scss';
-import registrationImg from 'images/desktop/registration-page-image.png';
-import ellipse2 from 'images/Ellipse2.png';
+import registrationImg from 'assets/images/desktop/registration-page-image.png';
+import ellipse2 from 'assets/images/desktop/Ellipse2.png';
 import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
 

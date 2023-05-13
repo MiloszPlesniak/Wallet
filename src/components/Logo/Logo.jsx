@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './Logo.module.scss';
-import logo from '../../assets/images/icons/logo.svg';
+import sprite from '../../assets/svg/sprite.svg';
 import { NavLink } from 'react-router-dom';
 
 const Logo = () => {
   return (
     <NavLink to="/home" className={styles.LogoContainer}>
-      <img className={styles.LogoContainer__img} src={logo} alt="Logo" />
+      <svg className={styles.LogoContainer__img}>
+        <use href={`${sprite}#icon-logo`}></use>
+      </svg>
     </NavLink>
   );
 };

@@ -6,7 +6,10 @@ export const globalSlice = createSlice({
     isLoading: false,
     isModalAddTransactionOpen: false,
     isModalLogoutOpen: false,
-    isModalEditTransactionOpen: false,
+    isModalEditTransactionOpen: {
+      open: false,
+      type: '-',
+    },
   },
   reducers: {
     changeIsLoading: state => {
@@ -18,8 +21,10 @@ export const globalSlice = createSlice({
     changeIsModalLogoutOpen: state => {
       state.isModalLogoutOpen = !state.isModalLogoutOpen;
     },
-    changeIsModalEditTransactionOpen: state => {
-      state.isModalEditTransactionOpen = !state.isModalEditTransactionOpen;
+    changeIsModalEditTransactionOpen: (state, { payload }) => {
+      state.isModalEditTransactionOpen.open =
+        !state.isModalEditTransactionOpen.open;
+      state.isModalEditTransactionOpen.type = payload;
     },
   },
 });

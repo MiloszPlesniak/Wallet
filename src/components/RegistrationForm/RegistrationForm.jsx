@@ -25,18 +25,18 @@ const RegistrationForm = props => {
     initialValues: {
       email: '',
       password: '',
-      firstName: '',
+      username: '',
       confirmPassword: '',
     },
 
     validationSchema: RegistrationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2)); chyba nie potrzebne
       dispatch(
         registerUser({
           email: formik.values.email,
           password: formik.values.password,
-          name: formik.values.firstName,
+          username: formik.values.firstName,
         })
       );
     },

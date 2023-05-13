@@ -3,8 +3,8 @@ import { breakpoints } from 'styles/breakpoints';
 import { Helmet } from 'react-helmet';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import styles from './LoginPage.module.scss';
-import loginImg from 'images/desktop/login-page-image.png';
-import ellipse2 from 'images/Ellipse2.png';
+import loginImg from 'assets/images/desktop/login-page-image.png';
+import ellipse2 from 'assets/images/desktop/Ellipse2.png';
 import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
 

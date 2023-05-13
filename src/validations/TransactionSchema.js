@@ -1,31 +1,29 @@
 import * as yup from 'yup';
 
+// let patternTwoDigisAfterComma = /^\d+(\.\d{0,2})?$/;
+
 const TransactionSchema = yup.object().shape({
-  amount: yup
-    .number()
-    .required('Amount is required')
-    .positive('Amount must be positive')
-    .integer('Amount must be an integer')
-    .min(1, 'Amount must be at least 1'),
+  amount: yup.number('Amount must be a number').required('Amount is required'),
+  // .test(
+  //   'two-digits-after-comma',
+  //   'Amount must have at most two digits after comma',
+  //   value => {
+  //     if (value) {
+  //       return patternTwoDigisAfterComma.test(value.toString());
+  //     }
+  //     return true;
+  //   }
+  // ),
 
-  date: yup.date().required('Date is required'),
-
-  // typeOfTransaction: yup
-  //   .string()
-  //   .required('Type of transaction is required')
-  //   .oneOf(
-  //     ['income', 'expense'],
-  //     'Type of transaction must be income or expense'
-  //   ),
-
-  // type: yup
-  //   .string()
-  //   .required('Type of transaction is required')
-  //   .oneOf(['+', '-'], 'Type of transaction must be income or expense'),
+  //date: yup.date().required('Date is required'),
 
   category: yup.string().optional(),
 
   comment: yup.string().optional(),
+
+  // owner: yup.string().required(),
+
+  type: yup.string().required('Type is required').oneOf(['INCOME', 'EXPENSE']),
 });
 
 export default TransactionSchema;

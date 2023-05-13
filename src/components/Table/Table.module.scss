@@ -1,0 +1,11 @@
+.Table {
+  &__text {
+    padding: 60px 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Circe';
+    font-weight: 400;
+  }
+}

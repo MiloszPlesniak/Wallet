@@ -6,6 +6,8 @@ import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
 
 import { deleteTransactions } from 'redux/transaction/thunk';
 
+import { setSelectedTransaction } from 'redux/transaction/slice';
+
 import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 
 import Button from '@mui/material/Button';
@@ -41,8 +43,9 @@ const DeleteButton = styled(Button)(({ theme }) => ({
 export default function TableMobileRow({ transaction }) {
   const dispatch = useDispatch();
 
-  const openModalEditTransaction = () => {
-    dispatch(changeIsModalEditTransactionOpen());
+  const openModalEditTransaction = type => {
+    dispatch(setSelectedTransaction(transaction));
+    dispatch(changeIsModalEditTransactionOpen(type));
   };
 
   const handleDeleteTransaction = id => {
@@ -178,7 +181,7 @@ export default function TableMobileRow({ transaction }) {
           <EditButton
             type="button"
             aria-label="edit"
-            onClick={() => openModalEditTransaction}
+            onClick={() => openModalEditTransaction(transaction.type)}
           >
             <EditIcon />
             <span className={styles.EditButton__Text}>Edit</span>

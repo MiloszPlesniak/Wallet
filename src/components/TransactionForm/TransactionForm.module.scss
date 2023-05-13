@@ -3,6 +3,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+  font-family: 'Circe';
   & > div {
     display: flex;
     gap: 32px;
@@ -12,6 +13,7 @@
   }
 
   &__dateTime {
+    font-family: 'Circe';
     width: 18.1vw;
     max-width: 181px;
     border: none;

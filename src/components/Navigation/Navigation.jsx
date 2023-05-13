@@ -35,11 +35,6 @@ const Navigation = ({ handleShowCurrency, handleCloseCurrency }) => {
           <AttachMoneyRoundedIcon fontSize="inherit" />
         </div>
       </div>
-      {/* <NavLink className={style.Navigation__linkMobile} to="/currency">
-        <div className={style.Navigation__iconMobile}>
-          <AttachMoneyRoundedIcon fontSize="inherit" />
-        </div>
-      </NavLink> */}
     </div>
   );
 };

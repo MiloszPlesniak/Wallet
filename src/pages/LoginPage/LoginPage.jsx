@@ -1,6 +1,9 @@
 import Media from 'react-media';
 import { breakpoints } from 'styles/breakpoints';
 import { Helmet } from 'react-helmet';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { clearTransaction } from 'redux/transaction/slice.js';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import styles from './LoginPage.module.scss';
 import loginImg from 'assets/images/desktop/login-page-image.png';
@@ -9,6 +12,10 @@ import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(clearTransaction());
+  });
   return (
     <>
       <Helmet title="Login">

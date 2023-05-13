@@ -36,7 +36,6 @@ const ModalAddTransaction = props => {
       <TransactionForm
         typeOfTransaction={typeOfTransaction}
         firstButtonText="add"
-        // firstButtonHandler={() => console.log('d')}
         secondButtonHandler={() => dispatch(changeIsModalAddTransactionOpen())}
       />
     </ModalTemplate>

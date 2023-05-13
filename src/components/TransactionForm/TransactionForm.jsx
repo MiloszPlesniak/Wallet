@@ -8,10 +8,9 @@ import Buttons from 'components/Buttons/Buttons';
 import TransactionSchema from 'validations/TransactionSchema';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
+
 import { addTransactions } from 'redux/transaction/thunk';
 import { refreshUser } from 'redux/auth/operations';
-// import { selectTransactions } from 'redux/transaction/selectors';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 import { date } from 'yup';
 

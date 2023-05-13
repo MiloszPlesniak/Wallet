@@ -31,7 +31,6 @@ const RegistrationForm = props => {
 
     validationSchema: RegistrationSchema,
     onSubmit: values => {
-      // alert(JSON.stringify(values, null, 2)); chyba nie potrzebne
       dispatch(
         registerUser({
           email: formik.values.email,

@@ -1,6 +1,9 @@
 import Media from 'react-media';
 import { breakpoints } from 'styles/breakpoints.js';
 import { Helmet } from 'react-helmet';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { clearTransaction } from 'redux/transaction/slice.js';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 import styles from './RegistrationPage.module.scss';
 import registrationImg from 'assets/images/desktop/registration-page-image.png';
@@ -9,6 +12,10 @@ import Footer from 'components/Footer/Footer.jsx';
 import 'index.css';
 
 const RegistrationPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(clearTransaction());
+  });
   return (
     <>
       <Helmet title="Registration">

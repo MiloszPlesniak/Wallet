@@ -3,6 +3,8 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+  font-family: 'Circe';
+
   & > div {
     display: flex;
     gap: 32px;
@@ -17,6 +19,7 @@
     border: none;
     outline: none;
     border-bottom: 1px solid #e0e0e0;
+    font-family: 'Circe';
     font-size: 18px;
     text-align: center;
     height: 27px;

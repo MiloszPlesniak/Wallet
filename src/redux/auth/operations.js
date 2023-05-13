@@ -18,7 +18,6 @@ const clearAuthHeader = () => {
 export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
-    console.log(credentials);
     try {
       axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
       const res = await axios.post('auth/sign-up', credentials);
@@ -102,7 +101,7 @@ export const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axios.get('https://wallet.goit.ua/api/users/current');
-      console.log('response from fetch current user:', res.data);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

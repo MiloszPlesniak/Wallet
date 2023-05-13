@@ -1,9 +1,13 @@
 //import { useSelector } from 'react-redux';
 
 import style from './DiagramTab.module.scss';
-
+import db from 'db/db';
 const DiagramTab = ({ diagramData }) => {
   const { categoriesSummary, expenseSummary, incomeSummary } = diagramData;
+  const colorsData = db.categories[1].category;
+  categoriesSummary.map(
+    (item, index) => (item.color = colorsData[index].color)
+  );
 
   return (
     <div className={style.DiagramTab}>
@@ -16,10 +20,10 @@ const DiagramTab = ({ diagramData }) => {
           <li key={index} className={style.DiagramTab__item}>
             <div className={style.DiagramTab__itemCategory}>
               <div
-                className={style.DiagramTab__categoryColor}
                 style={{
                   backgroundColor: `${item.color}`,
                 }}
+                className={style.DiagramTab__categoryColor}
               />
               <span className={style.DiagramTab__text}>{item.name}</span>
             </div>

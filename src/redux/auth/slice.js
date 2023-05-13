@@ -45,7 +45,6 @@ export const authSlice = createSlice({
       state.isLoading = true;
     },
     [fetchCurrentUser.fulfilled](state, { payload }) {
-      console.log(payload);
       state.user = payload;
       state.isLoading = false;
     },

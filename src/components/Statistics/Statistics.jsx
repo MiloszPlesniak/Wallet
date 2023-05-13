@@ -15,98 +15,41 @@ import { fetchTransacionsOfPeriot } from 'redux/transaction/thunk';
 // const data = db.transactions;
 
 const Statistics = () => {
-  const [catgory, setCategory] = useState([]);
-  const dispatch = useDispatch();
-  const date = {
+  const [category, setCategory] = useState({
+    categoriesSummary: [],
+    expenseSummary: 0,
+    incomeSummary: 0,
+    month: 0,
+    periodTotal: 0,
+    year: 0,
+  });
+  const initDate = {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear(),
   };
+  const [month, setMonth] = useState(initDate.month);
+  const [year, setYear] = useState(initDate.year);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
-    const getCagetory = async date => {
-      const category = await dispatch(fetchTransacionsOfPeriot(date));
-      if (!category.payload.lenght > 1) {
-        setCategory(category.payload);
-      }
-      setCategory([]);
+    const getCagetory = async (month, year) => {
+      const category = await dispatch(
+        fetchTransacionsOfPeriot({ month, year })
+      );
+      setCategory(category.payload);
     };
-    getCagetory(date);
+    getCagetory(month, year);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // const returnTransactionsByType = (arr, transactionType) => {
-  //   const TransactionsByType = arr.filter(
-  //     item => item.type === transactionType
-  //   );
-  //   return TransactionsByType;
-  // };
-
-  // const returnUniqueCategories = arr => {
-  //   const allCategories = arr.map(item => item.category);
-  //   const uniqueCategories = allCategories.filter(
-  //     (category, index, array) => array.indexOf(category) === index
-  //   );
-  //   return uniqueCategories;
-  // };
-
-  // const returnOverallSumByCategory = (arr = [], category = '') =>
-  //   arr.reduce(
-  //     (prev, { sum, category: cat }) => (cat === category ? prev + sum : prev),
-  //     0
-  //   );
-
-  // const createSum = (dataArr, categoryArr) => {
-  //   let dataTable = [];
-  //   for (const category of categoryArr) {
-  //     dataTable.push(returnOverallSumByCategory(dataArr, category));
-  //   }
-  //   return dataTable;
-  // };
-
-  // const expenseCategories = returnUniqueCategories(
-  //   returnTransactionsByType(data, '-')
-  // );
-
-  // const returnSum = arr => {
-  //   let sum = 0;
-  //   for (const item of arr) {
-  //     sum += item.sum;
-  //   }
-  //   return sum;
-  // };
-
-  // const expenseData = returnTransactionsByType(data, '-');
-  // // console.log({ expenseData });
-
-  // const incomeData = returnTransactionsByType(data, '+');
-  // // console.log({ incomeData });
-
-  // const expenseOverall = returnSum(expenseData);
-  // // console.log({ expenseOverall });
-
-  // const incomeOverall = returnSum(incomeData);
-  // // console.log({ expenseOverall });
-
-  // const filteredData = {
-  //   expenseCategories,
-  //   expenseData: createSum(data, expenseCategories),
-  // };
-
-  // // console.log({ filteredData });
-
-  // const diagramData = {
-  //   expenseData,
-  //   expenseOverall,
-  //   incomeOverall,
-  // };
-  // // const fdata = catgory.map(item => item.name);
-
-  // console.log(filteredData);
-  console.log(catgory);
+  }, [month, year]);
   const filteredData = {
-    expenseCategories: catgory.map(item => item.name),
-    expenseData: catgory.map(item => item.amount),
+    expenseCategories: category.categoriesSummary.map(item => item.name),
+    expenseData: category.categoriesSummary.map(item => item.total),
   };
+  // const filteredData = {
+  //   expenseCategories: [],
+  //   expenseData: [],
+  // };
 
   return (
     <>
@@ -133,10 +76,15 @@ const Statistics = () => {
               </div>
               <div className={styles.DataFilter__container}>
                 <div>
-                  <DataFilter />
+                  <DataFilter
+                    month={month}
+                    year={year}
+                    setMonth={setMonth}
+                    setYear={setYear}
+                  />
                 </div>
                 <div className={styles.DiagramTab__container}>
-                  <DiagramTab diagramData={catgory} />
+                  <DiagramTab diagramData={category} />
                 </div>
               </div>
             </div>

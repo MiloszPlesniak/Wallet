@@ -29,24 +29,24 @@ export const financesSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchTransactions.pending](state) {
-      state.isLoading = true;
-    },
     [fetchTransactions.fulfilled](state, { payload }) {
       state.transactions = payload;
       state.isLoading = false;
+    },
+    [fetchTransactions.pending](state) {
+      state.isLoading = true;
     },
     [fetchTransactions.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
     // /////////////////////
-    [addTransactions.pending](state) {
-      state.isLoading = true;
-    },
     [addTransactions.fulfilled](state, { payload }) {
       state.transactions.push(payload);
       state.isLoading = false;
+    },
+    [addTransactions.pending](state) {
+      state.isLoading = true;
     },
     [addTransactions.rejected](state, { payload }) {
       state.isLoading = false;
@@ -90,11 +90,19 @@ export const financesSlice = createSlice({
   },
   // ///////////////////////////
 
+  [fetchTransacionsOfPeriot.fulfilled](state, { payload }) {
+    const filtredArreyTransacionsByDate = state.transactions.filter(
+      item =>
+        item.data.start === payload.data.start &&
+        item.data.end === payload.data.end
+    );
+    state.transactions = filtredArreyTransacionsByDate;
+    //state.transactions = payload.sort((start, end) => {
+    //return new Date(start.date) && new Date(end.date)});
+    state.isLoading = false;
+  },
   [fetchTransacionsOfPeriot.pending](state) {
     state.isLoading = true;
-  },
-  [fetchTransacionsOfPeriot.fulfilled](state) {
-    state.isLoading = false;
   },
   [fetchTransacionsOfPeriot.rejected](state, { payload }) {
     state.isLoading = false;
@@ -114,7 +122,6 @@ export const financesSlice = createSlice({
     state.isLoading = false;
     state.error = action.payload;
   },
-  ////////////
 });
 
 export const { setBalance, setSelectedTransaction } = financesSlice.actions;

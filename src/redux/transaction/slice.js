@@ -5,6 +5,7 @@ import {
   editTransactions,
   deleteTransactions,
   fetchTransacionsOfPeriot,
+  fetchTransactionsCategories,
 } from './thunk';
 
 const initialState = {
@@ -29,7 +30,7 @@ export const financesSlice = createSlice({
   },
   extraReducers: {
     [fetchTransactions.fulfilled](state, { payload }) {
-      state.transactions=payload;
+      state.transactions = payload;
       state.isLoading = false;
     },
     [fetchTransactions.pending](state) {
@@ -52,7 +53,7 @@ export const financesSlice = createSlice({
       state.error = payload;
     },
     // /////////////////////////////
-[editTransactions.pending](state) {
+    [editTransactions.pending](state) {
       state.isLoading = true;
     },
     [editTransactions.fulfilled](state, { payload }) {
@@ -70,7 +71,7 @@ export const financesSlice = createSlice({
       state.error = payload;
     },
     // ////////////////////////////////////
-[deleteTransactions.pending](state) {
+    [deleteTransactions.pending](state) {
       state.isLoading = true;
     },
     [deleteTransactions.fulfilled](state, action) {
@@ -107,7 +108,6 @@ export const financesSlice = createSlice({
     state.isLoading = false;
     state.error = payload;
   },
-
 
   /////////////////////////
   [fetchTransactionsCategories.pending]: state => {

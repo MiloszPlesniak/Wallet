@@ -1,40 +1,24 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { fetchTransacionsOfPeriot } from 'redux/transaction/thunk';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-import style from './DataFilter.module.scss'
+import style from './DataFilter.module.scss';
 
-
-export default function DataFilter() {
-  const dispatch = useDispatch()
-
-  const [month, setMonth] = React.useState(new Date().getMonth());
-  const [year, setYear] = React.useState(new Date().getFullYear());
-
-  const handleChangeStart = (event) => {
-    setMonth(event.target.value);
-  };
-
-  const handleChangeEnd = (event) => {
-    setYear(event.target.value);
-  };
-
-  React.useEffect(() => {
-    dispatch(fetchTransacionsOfPeriot({ month, year }))
-  }, [dispatch, month, year])
-
+export default function DataFilter({ month, setMonth, year, setYear }) {
   return (
-    <div className={style.DataFilter }>
-      <FormControl className={style.DataFilter__form }>
+    <div className={style.DataFilter}>
+      <FormControl className={style.DataFilter__form}>
         <InputLabel id="month">Month</InputLabel>
         <Select
           id="month"
           value={month}
-          onChange={handleChangeStart}
+          onChange={e => {
+            setMonth(e.target.value);
+          }}
           label="Month"
         >
           <MenuItem value={1}>January</MenuItem>
@@ -50,15 +34,17 @@ export default function DataFilter() {
           <MenuItem value={11}>November</MenuItem>
           <MenuItem value={12}>December</MenuItem>
         </Select>
-        </FormControl>
+      </FormControl>
 
-        <FormControl className={style.DataFilter__form }>
+      <FormControl className={style.DataFilter__form}>
         <InputLabel id="year">Year</InputLabel>
         <Select
           labelId=""
           id="year"
           value={year}
-          onChange={handleChangeEnd}
+          onChange={e => {
+            setYear(e.target.value);
+          }}
           label="Year"
         >
           <MenuItem value={2013}>2013</MenuItem>

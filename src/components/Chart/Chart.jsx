@@ -56,7 +56,9 @@ const Chart = ({ filteredData }) => {
     <div>
       <div className={styles.Chart__exspenseContainer}>
         <Doughnut className={styles.Chart} data={data} options={options} />
-        <p className={styles.Chart__expenseOverall}> $ {expensesOverall()}</p>
+        <p className={styles.Chart__expenseOverall}>
+          {expensesOverall() === 0 ? '' : '$' + expensesOverall()}
+        </p>
       </div>
     </div>
   );

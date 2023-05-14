@@ -5,7 +5,11 @@ import colors from 'assets/colors/colors';
 const DiagramTab = ({ diagramData }) => {
   const { categoriesSummary, expenseSummary, incomeSummary } = diagramData;
 
-  categoriesSummary.map((item, index) => (item.color = colors[index].color));
+  const expensesCategories = categoriesSummary.filter(
+    object => object.type === 'EXPENSE'
+  );
+
+  expensesCategories.map((item, index) => (item.color = colors[index].color));
 
   return (
     <div className={style.DiagramTab}>

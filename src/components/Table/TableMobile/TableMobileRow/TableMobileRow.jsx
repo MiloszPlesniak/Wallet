@@ -160,7 +160,7 @@ export default function TableMobileRow({ transaction }) {
         <div className={styles.TableRowMobile__element}>
           <span className={styles.TableRowMobile__key}>Sum</span>
           <span className={(styles.TableRowMobile__value, dynamicValueCss)}>
-            {transaction.amount}
+            {Math.abs(transaction.amount)}
           </span>
         </div>
         <div className={styles.TableRowMobile__element}>

@@ -27,7 +27,6 @@ const RegistrationForm = props => {
       password: '',
       username: '',
       confirmPassword: '',
-      username: '',
     },
 
     validationSchema: RegistrationSchema,

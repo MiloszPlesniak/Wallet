@@ -1,13 +1,8 @@
 import React from 'react';
-
 import { useDispatch } from 'react-redux';
-
-import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
-
 import { deleteTransactions } from 'redux/transaction/thunk';
-
-import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
-
+import { changeIsModalEditTransactionOpen } from 'redux/global/slice';
+import { setSelectedTransaction } from 'redux/transaction/slice';
 import Button from '@mui/material/Button';
 import EditIcon from '../../EditIcon/EditIcon';
 import { styled } from '@mui/material/styles';
@@ -40,23 +35,6 @@ const DeleteButton = styled(Button)(({ theme }) => ({
 
 export default function TableMobileRow({ transaction }) {
   const dispatch = useDispatch();
-
-  const openModalEditTransaction = () => {
-    dispatch(changeIsModalEditTransactionOpen());
-  };
-
-  const handleDeleteTransaction = id => {
-    dispatch(deleteTransactions(id));
-  };
-
-  const dynamicValueCss =
-    transaction.type === 'EXPENSE' ? styles.expense : styles.income;
-
-  const dynamicStripeCss =
-    transaction.type === 'EXPENSE'
-      ? styles.TableRowMobile__stripeExpense
-      : styles.TableRowMobile__stripeIncome;
-
   const date = new Date(transaction.transactionDate);
   const dayIn2Digit = String(date.getDate()).padStart(2, '0');
   const monthIn2digit = String(date.getMonth() + 1).padStart(2, '0');
@@ -69,13 +47,6 @@ export default function TableMobileRow({ transaction }) {
     year: yearIn2Digit,
   };
 
-  const getCategoryName = () => {
-    const categoryData = transactionsCategories.filter(
-      item => item.id === transaction.categoryId
-    );
-
-    return categoryData[0].name;
-  };
   const transactionsCategories = [
     {
       id: 'c9d9e447-1b83-4238-8712-edc77b18b739',
@@ -133,6 +104,32 @@ export default function TableMobileRow({ transaction }) {
       type: 'INCOME',
     },
   ];
+
+  const openModalEditTransaction = type => {
+    dispatch(setSelectedTransaction(transaction));
+    dispatch(changeIsModalEditTransactionOpen(type));
+  };
+
+  const handleDeleteTransaction = id => {
+    dispatch(deleteTransactions(id));
+  };
+
+  const dynamicValueCss =
+    transaction.type === 'EXPENSE' ? styles.expense : styles.income;
+
+  const dynamicStripeCss =
+    transaction.type === 'EXPENSE'
+      ? styles.TableRowMobile__stripeExpense
+      : styles.TableRowMobile__stripeIncome;
+
+  const getCategoryName = () => {
+    const categoryData = transactionsCategories.filter(
+      item => item.id === transaction.categoryId
+    );
+
+    return categoryData[0].name;
+  };
+
   const categoryName = getCategoryName();
 
   return (
@@ -178,7 +175,9 @@ export default function TableMobileRow({ transaction }) {
           <EditButton
             type="button"
             aria-label="edit"
-            onClick={() => openModalEditTransaction}
+            onClick={() => {
+              openModalEditTransaction(transaction.type);
+            }}
           >
             <EditIcon />
             <span className={styles.EditButton__Text}>Edit</span>
@@ -186,7 +185,6 @@ export default function TableMobileRow({ transaction }) {
         </div>
         <div className={dynamicStripeCss} />
       </div>
-      <ModalEditTransaction />
     </>
   );
 }

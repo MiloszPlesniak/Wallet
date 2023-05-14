@@ -67,14 +67,13 @@ const Statistics = () => {
                 <Chart filteredData={filteredData} />
               </div>
               <div className={styles.DataFilter__container}>
-                <div>
-                  <DataFilter
-                    month={month}
-                    year={year}
-                    setMonth={setMonth}
-                    setYear={setYear}
-                  />
-                </div>
+                <DataFilter
+                  month={month}
+                  year={year}
+                  setMonth={setMonth}
+                  setYear={setYear}
+                />
+
                 <div className={styles.DiagramTab__container}>
                   <DiagramTab diagramData={category} />
                 </div>

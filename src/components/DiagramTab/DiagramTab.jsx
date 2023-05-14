@@ -29,18 +29,24 @@ const DiagramTab = ({ diagramData }) => {
               />
               <span className={style.DiagramTab__text}>{item.name}</span>
             </div>
-            <span className={style.DiagramTab__number}>{item.total}</span>
+            <span className={style.DiagramTab__number}>
+              {Math.abs(item.total)}
+            </span>
           </li>
         ))}
       </ul>
       <ul>
         <li className={style.DiagramTab__itemStat}>
           <div className={style.DiagramTab__title}>Expenses:</div>
-          <div className={style.DiagramTab__numberRed}>{expenseSummary}</div>
+          <div className={style.DiagramTab__numberRed}>
+            {Math.abs(expenseSummary)}
+          </div>
         </li>
         <li className={style.DiagramTab__itemStat}>
           <div className={style.DiagramTab__title}>Income: </div>
-          <div className={style.DiagramTab__numberGreen}>{incomeSummary}</div>
+          <div className={style.DiagramTab__numberGreen}>
+            {Math.abs(incomeSummary)}
+          </div>
         </li>
       </ul>
     </div>

@@ -19,6 +19,8 @@ const Statistics = () => {
     periodTotal: 0,
     year: 0,
   });
+  const [expenses, setExpenses] = useState([]);
+
   const initDate = {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear(),
@@ -33,14 +35,26 @@ const Statistics = () => {
       const category = await dispatch(
         fetchTransacionsOfPeriot({ month, year })
       );
+      //
       setCategory(category.payload);
+      console.log('category', category);
+      console.log('category.payload', category.payload);
     };
+
     getCagetory(month, year);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month, year]);
+
+  const allCategoriesSummary = category.categoriesSummary;
+  console.log(allCategoriesSummary);
+
+  const expensesCategories = allCategoriesSummary.filter(
+    object => object.type === 'EXPENSE'
+  );
+
   const filteredData = {
-    expenseCategories: category.categoriesSummary.map(item => item.name),
-    expenseData: category.categoriesSummary.map(item => item.total),
+    expenseCategories: expensesCategories.map(item => item.name),
+    expenseData: expensesCategories.map(item => item.total),
   };
 
   return (

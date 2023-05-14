@@ -21,7 +21,6 @@ const Chart = ({ filteredData }) => {
       {
         data: expenseData || [0],
         backgroundColor: [
-          '#DCDCDF',
           '#FED057',
           '#FFD8D0',
           '#FD9498',
@@ -31,6 +30,7 @@ const Chart = ({ filteredData }) => {
           '#81E1FF',
           '#24CCA7',
           '#00AD84',
+          '#DCDCDF',
         ],
         borderWidth: 0,
       },
@@ -57,7 +57,7 @@ const Chart = ({ filteredData }) => {
       <div className={styles.Chart__exspenseContainer}>
         <Doughnut className={styles.Chart} data={data} options={options} />
         <p className={styles.Chart__expenseOverall}>
-          {expensesOverall() === 0 ? '' : '$' + expensesOverall()}
+          {expensesOverall() === 0 ? '' : expensesOverall() + ' zł'}
         </p>
       </div>
     </div>

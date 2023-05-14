@@ -19,7 +19,6 @@ const Statistics = () => {
     periodTotal: 0,
     year: 0,
   });
-  const [expenses, setExpenses] = useState([]);
 
   const initDate = {
     month: new Date().getMonth() + 1,
@@ -35,10 +34,7 @@ const Statistics = () => {
       const category = await dispatch(
         fetchTransacionsOfPeriot({ month, year })
       );
-      //
       setCategory(category.payload);
-      console.log('category', category);
-      console.log('category.payload', category.payload);
     };
 
     getCagetory(month, year);
@@ -46,7 +42,6 @@ const Statistics = () => {
   }, [month, year]);
 
   const allCategoriesSummary = category.categoriesSummary;
-  console.log(allCategoriesSummary);
 
   const expensesCategories = allCategoriesSummary.filter(
     object => object.type === 'EXPENSE'

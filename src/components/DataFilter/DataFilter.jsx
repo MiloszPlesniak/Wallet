@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
 import style from './DataFilter.module.scss';
 
@@ -12,6 +13,35 @@ export default function DataFilter({ month, setMonth, year, setYear }) {
       <FormControl className={style.DataFilter__form}>
         <InputLabel id="month">Month</InputLabel>
         <Select
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                bgcolor: '#ffffff70',
+                borderRadius: '20px',
+                backdropFilter: 'blur(25px)',
+                boxShadow: '0px 6px 15px rgba(0,0,0,0.1)',
+                '& .MuiMenuItem-root': {
+                  padding: '2px 20px',
+                  '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                  '&.Mui-selected': {
+                    backgroundColor: '#fff',
+                  },
+                },
+              },
+            },
+          }}
+          sx={{
+            borderRadius: '25px',
+            pl: '6px',
+            height: 50,
+            '& .css-i4bv87-MuiSvgIcon-root': {
+              position: 'absolute',
+              right: '20px',
+            },
+          }}
+          IconComponent={() => <KeyboardArrowDownOutlinedIcon />}
           id="month"
           value={month}
           onChange={e => {
@@ -37,6 +67,45 @@ export default function DataFilter({ month, setMonth, year, setYear }) {
       <FormControl className={style.DataFilter__form}>
         <InputLabel id="year">Year</InputLabel>
         <Select
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                bgcolor: '#ffffff70',
+                borderRadius: '20px',
+                backdropFilter: 'blur(25px)',
+                boxShadow: '0px 6px 15px rgba(0,0,0,0.1)',
+                '& .MuiMenuItem-root': {
+                  padding: '2px 20px',
+                  '&:checked': { backgroundColor: '#fff' },
+                  '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                  '&:active': {
+                    backgroundColor: '#fff',
+                  },
+                  '&:focus': {
+                    backgroundColor: '#fff',
+                  },
+                  '&.Mui-selected': {
+                    backgroundColor: '#fff',
+                  },
+                  '&.Mui-checked': {
+                    backgroundColor: '#fff',
+                  },
+                },
+              },
+            },
+          }}
+          sx={{
+            borderRadius: '25px',
+            pl: '6px',
+            height: 50,
+            '& .css-i4bv87-MuiSvgIcon-root': {
+              position: 'absolute',
+              right: '20px',
+            },
+          }}
+          IconComponent={() => <KeyboardArrowDownOutlinedIcon />}
           labelId=""
           id="year"
           value={year}

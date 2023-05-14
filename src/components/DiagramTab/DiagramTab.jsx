@@ -18,7 +18,7 @@ const DiagramTab = ({ diagramData }) => {
         <li className={style.DiagramTab__title}>Sum</li>
       </ul>
       <ul className={style.DiagramTab__body}>
-        {categoriesSummary.map((item, index) => (
+        {expensesCategories.map((item, index) => (
           <li key={index} className={style.DiagramTab__item}>
             <div className={style.DiagramTab__itemCategory}>
               <div

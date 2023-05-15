@@ -3,7 +3,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
 import style from './DataFilter.module.scss';
 
@@ -41,7 +40,6 @@ export default function DataFilter({ month, setMonth, year, setYear }) {
               right: '20px',
             },
           }}
-          IconComponent={() => <KeyboardArrowDownOutlinedIcon />}
           id="month"
           value={month}
           onChange={e => {
@@ -105,7 +103,6 @@ export default function DataFilter({ month, setMonth, year, setYear }) {
               right: '20px',
             },
           }}
-          IconComponent={() => <KeyboardArrowDownOutlinedIcon />}
           labelId=""
           id="year"
           value={year}
@@ -123,6 +120,7 @@ export default function DataFilter({ month, setMonth, year, setYear }) {
           <MenuItem value={2019}>2019</MenuItem>
           <MenuItem value={2020}>2020</MenuItem>
           <MenuItem value={2021}>2021</MenuItem>
+          <MenuItem value={2022}>2022</MenuItem>
           <MenuItem value={2023}>2023</MenuItem>
         </Select>
       </FormControl>

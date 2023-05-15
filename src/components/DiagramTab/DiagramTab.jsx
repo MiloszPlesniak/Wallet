@@ -39,7 +39,7 @@ const DiagramTab = ({ diagramData }) => {
         <li className={style.DiagramTab__itemStat}>
           <div className={style.DiagramTab__title}>Expenses:</div>
           <div className={style.DiagramTab__numberRed}>
-            {Math.abs(expenseSummary)}
+            {(Math.round(Math.abs(expenseSummary) * 100) / 100).toFixed(2)}
           </div>
         </li>
         <li className={style.DiagramTab__itemStat}>

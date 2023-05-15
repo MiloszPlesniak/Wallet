@@ -34,7 +34,10 @@ export default function Balance() {
           </Box>
         ) : (
           <div className={styles.Balance__textContainer}>
-            <span className={styles.Balance__number}>{user.balance}</span>
+            <span className={styles.Balance__number}>
+              {(Math.round(user.balance * 100) / 100).toFixed(2)}
+              {/* {user.balance} */}
+            </span>
             <span className={styles.Balance__currency}>zł</span>
           </div>
         )}

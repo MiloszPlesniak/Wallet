@@ -12,7 +12,10 @@ const Chart = ({ filteredData }) => {
     for (const expense of expenseData) {
       sum += expense;
     }
-    return sum;
+
+    const roundSum = Math.abs(Math.round(sum * 100) / 100).toFixed(2);
+
+    return roundSum;
   };
 
   const data = {

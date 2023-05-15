@@ -1,18 +1,17 @@
 import React from 'react';
 import Media from 'react-media';
-
-import { selectUser } from 'redux/auth/selectors';
-
-import { breakpoints } from 'styles/breakpoints';
 import Logo from 'components/Logo/Logo';
-import styles from './Header.module.scss';
 import Divider from '@mui/material/Divider';
 import ListItemButton from '@mui/material/ListItemButton';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 import { selectIsModalLogoutOpen } from 'redux/global/selectors';
 import { changeIsModalLogoutOpen } from 'redux/global/slice';
+import { breakpoints } from 'styles/breakpoints';
+import styles from './Header.module.scss';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,9 @@ const Header = () => {
         {matches => (
           <div className={styles.Header__container}>
             <div className={styles.Header}>
-              <Logo />
+              <NavLink to="/home">
+                <Logo />
+              </NavLink>
 
               {matches.mobile && (
                 <div className={styles.Header__logOut}>

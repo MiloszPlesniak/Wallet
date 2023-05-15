@@ -11,6 +11,10 @@ const Navigation = ({ handleShowCurrency, handleCloseCurrency }) => {
         className={style.Navigation__link}
         onClick={handleCloseCurrency}
         to="/home"
+        style={({ isActive }) => ({
+          fontWeight: isActive ? '700' : '400',
+          textShadow: isActive ? '0 0 8px #6e78e8be' : 'none',
+        })}
       >
         <div className={style.Navigation__icon}>
           <HomeRoundedIcon fontSize="inherit" />
@@ -21,6 +25,10 @@ const Navigation = ({ handleShowCurrency, handleCloseCurrency }) => {
         className={style.Navigation__link}
         onClick={handleCloseCurrency}
         to="/statistics"
+        style={({ isActive }) => ({
+          fontWeight: isActive ? '700' : '400',
+          textShadow: isActive ? '0 0 8px #6e78e8be' : 'none',
+        })}
       >
         <div className={style.Navigation__icon}>
           <ShowChartRoundedIcon fontSize="inherit" />

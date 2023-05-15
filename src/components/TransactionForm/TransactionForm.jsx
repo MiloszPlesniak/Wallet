@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { TextField } from '@mui/material';
 import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
-import style from './TransactionForm.module.scss';
 import DropdownCategories from 'components/DropdownCategories/DropdownCategories';
 import Buttons from 'components/Buttons/Buttons';
 import TransactionSchema from 'validations/TransactionSchema';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-
 import { addTransactions } from 'redux/transaction/thunk';
 import { refreshUser } from 'redux/auth/operations';
 import { changeIsModalAddTransactionOpen } from 'redux/global/slice';
 import { date } from 'yup';
+import style from './TransactionForm.module.scss';
+import 'react-datetime/css/react-datetime.css';
 
 const CategoriesId = [
   {
@@ -97,7 +96,7 @@ const TransactionForm = ({
         amount: -Math.abs(values.amount),
         transactionDate: values.transactionDate,
         comment: values.comment,
-        categoryId: values.categoryId,
+        categoryId: values.categoryId || 'c9d9e447-1b83-4238-8712-edc77b18b739',
         type: values.type,
       };
       const income = {

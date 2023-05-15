@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 
-
 let patternTwoDigisAfterComma = /^\d+(\.\d{0,2})?$/;
 
 const TransactionSchema = yup.object().shape({
@@ -20,7 +19,6 @@ const TransactionSchema = yup.object().shape({
     ),
 
   transactionDate: yup.date().required('Date is required'),
-
 
   category: yup.string().optional(),
 
